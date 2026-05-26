@@ -19,18 +19,17 @@
       .report-reader {
         position: fixed;
         left: max(18px, calc((100vw - 1180px) / 2 - 138px));
-        top: 92px;
+        top: 18px;
         z-index: 900;
-        width: 214px;
-        max-height: calc(100vh - 150px);
-        overflow: hidden;
+        width: 238px;
+        overflow: visible;
         color: var(--ink, #162024);
         font-family: "Noto Sans TC", sans-serif;
       }
 
       .reader-panel {
         display: grid;
-        gap: 8px;
+        gap: 6px;
         padding: 8px 0;
       }
 
@@ -92,30 +91,32 @@
       }
 
       .reader-list {
-        max-height: min(58vh, 560px);
-        overflow-y: auto;
         margin-left: 19px;
         padding: 4px 0 6px 14px;
         border-left: 1px solid rgba(22, 32, 36, .16);
-        scrollbar-width: thin;
       }
 
       .reader-link {
-        min-height: 32px;
+        min-height: 29px;
+        align-items: flex-start;
         padding: 0 8px;
         color: rgba(22, 32, 36, .42);
         font-size: 13px;
         font-weight: 700;
+        line-height: 1.35;
       }
 
       .reader-link span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        min-width: 0;
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
       }
 
       .reader-page {
-        margin-left: auto;
+        flex: 0 0 auto;
+        margin-left: 8px;
+        padding-top: 1px;
         color: rgba(22, 32, 36, .34);
         font-family: "Archivo", sans-serif;
         font-size: 11px;
@@ -283,12 +284,11 @@
         border-radius: 3px;
       }
 
-      @media screen and (max-width: 1180px) {
+      @media screen and (max-width: 900px) {
         .report-reader {
           left: 12px;
           top: 12px;
           width: 190px;
-          max-height: calc(100vh - 110px);
         }
 
         .reader-list {
