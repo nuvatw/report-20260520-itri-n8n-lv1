@@ -1,0 +1,21 @@
+{
+  "name": "report-timeline-hub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-report-index.mjs",
+    "audit:maintenance": "node scripts/audit-maintenance.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:visual": "node scripts/mobile-visual-check.mjs",
+    "dev": "node scripts/dev-server.mjs",
+    "index": "node scripts/build-report-index.mjs",
+    "release:check": "node scripts/verify-week-five.mjs",
+    "verify": "node scripts/verify-week-five.mjs",
+    "verify:week1": "node scripts/verify-week-one.mjs",
+    "verify:week2": "node scripts/verify-week-two.mjs",
+    "verify:week3": "node scripts/verify-week-three.mjs",
+    "verify:week4": "node scripts/verify-week-four.mjs",
+    "verify:week5": "node scripts/verify-week-five.mjs"
+  }
+}

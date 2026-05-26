@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-05-26T04:50:44.047Z",
+  "reportCount": 2,
+  "clientGroups": {
+    "政府與公共部門": 1,
+    "企業與研究機構": 1
+  },
+  "visibility": {
+    "public": 2
+  },
+  "tags": [
+    "生成式 AI",
+    "自動化",
+    "青年政策",
+    "活動",
+    "校園巡迴",
+    "課程",
+    "AI 素養",
+    "n8n"
+  ],
+  "pdfReadyCount": 0,
+  "thumbnailReadyCount": 0
+}

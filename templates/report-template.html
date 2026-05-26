@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<!-- report-meta
+{
+  "title": "報告標題",
+  "subtitle": "成果報告",
+  "date": "2026-06-01",
+  "period": "2026/06/01",
+  "category": "專案成果",
+  "client": "客戶或合作單位",
+  "clientGroup": "客戶分類",
+  "timeline": "2026 六月",
+  "tags": ["關鍵字"],
+  "visibility": "public"
+}
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成果報告 — 報告標題</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --desk: #e7ebe4;
+      --ink: #182124;
+      --muted: #64706d;
+      --line: rgba(24, 33, 36, .16);
+      --line-strong: rgba(24, 33, 36, .42);
+      --red: #b94636;
+      --teal: #1e7374;
+      --gold: #e7bd42;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(24, 33, 36, .045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(24, 33, 36, .035) 1px, transparent 1px),
+        var(--desk);
+      background-size: 42px 42px;
+      color: var(--ink);
+      font-family: "Noto Sans TC", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 34px 0;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 30px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 10px 36px rgba(24, 33, 36, .18);
+      padding: 21mm 19mm 17mm;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 23mm, rgba(185, 70, 54, .14) 23mm, rgba(185, 70, 54, .14) calc(23mm + 1px), transparent calc(23mm + 1px));
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rh,
+    .kicker,
+    .meta,
+    .stat-k,
+    .pgn {
+      font-family: "Archivo", sans-serif;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .rh {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--ink);
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .pgn {
+      position: absolute;
+      right: 19mm;
+      bottom: 13mm;
+      color: var(--ink);
+      font-size: 11px;
+    }
+
+    .cover {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 225mm;
+      padding-top: 36mm;
+    }
+
+    .kicker {
+      color: var(--teal);
+      font-size: 12px;
+    }
+
+    h1 {
+      max-width: 142mm;
+      margin-top: 16px;
+      font-family: "Noto Serif TC", serif;
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 130mm;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 2px solid var(--ink);
+    }
+
+    .cover-grid > div {
+      min-height: 30mm;
+      padding: 13px 14px 0 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .cover-grid > div:last-child {
+      border-right: 0;
+    }
+
+    .meta {
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 9px;
+    }
+
+    .value {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .sec {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .sec-num {
+      color: var(--red);
+      font-family: "Archivo", sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      line-height: .9;
+    }
+
+    h2 {
+      font-family: "Noto Serif TC", serif;
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .lead {
+      max-width: 154mm;
+      border-left: 4px solid var(--teal);
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.9;
+    }
+
+    .body {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.95;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 26px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .stat {
+      min-height: 36mm;
+      padding: 17px 14px 0 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-k {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .stat-v {
+      margin-top: 8px;
+      color: var(--red);
+      font-family: "Archivo", sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .stat-p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .rows {
+      margin-top: 24px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 68px 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .row-no {
+      padding: 16px 0;
+      color: var(--red);
+      font-family: "Archivo", sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .row-cell {
+      padding: 17px 20px 17px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .row-cell:last-child {
+      border-right: 0;
+      padding-left: 20px;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .row-cell p {
+      color: var(--muted);
+      font-size: 11.8px;
+      line-height: 1.75;
+    }
+
+    .callout {
+      margin-top: 26px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 22px 24px;
+    }
+
+    .callout p {
+      color: rgba(255, 255, 255, .82);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.85;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        break-after: page;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="page" id="cover">
+    <div class="rh"><span>00 / 成果報告</span><span>2026.06.01</span></div>
+    <div class="cover">
+      <div>
+        <div class="kicker">Project Report</div>
+        <h1>報告標題</h1>
+        <p class="subtitle">這裡放置報告副標，說明本成果書的主題、對象與交付情境。</p>
+      </div>
+      <div class="cover-grid">
+        <div>
+          <div class="meta">Client</div>
+          <div class="value">客戶或合作單位</div>
+        </div>
+        <div>
+          <div class="meta">Period</div>
+          <div class="value">2026 / 06 / 01</div>
+        </div>
+        <div>
+          <div class="meta">Category</div>
+          <div class="value">專案成果</div>
+        </div>
+      </div>
+    </div>
+    <div class="pgn">00</div>
+  </section>
+
+  <section class="page" id="summary">
+    <div class="rh"><span>01 / Executive Summary</span><span>成果摘要</span></div>
+    <div class="sec">
+      <div class="sec-num">01</div>
+      <div>
+        <h2>報告摘要</h2>
+      </div>
+    </div>
+    <p class="lead">用一段話說明這份報告最重要的成果、達成的任務，以及它對後續工作的意義。</p>
+    <p class="body">第二段可補充執行背景、參與對象、方法、活動或課程形式。此處建議保持具體，避免只有形容詞，讓讀者能快速知道本案做了什麼、留下了什麼。</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-k">Metric 01</div>
+        <div class="stat-v">00</div>
+        <p class="stat-p">指標說明，例如參與人數、完成率、曝光、輸出件數或課程時數。</p>
+      </div>
+      <div class="stat">
+        <div class="stat-k">Metric 02</div>
+        <div class="stat-v">00</div>
+        <p class="stat-p">指標說明，例如滿意度、觀看數、產出素材或專案完成數。</p>
+      </div>
+      <div class="stat">
+        <div class="stat-k">Metric 03</div>
+        <div class="stat-v">00</div>
+        <p class="stat-p">指標說明，例如後續導流、合作單位、可複製模組或資料留存。</p>
+      </div>
+    </div>
+    <div class="pgn">01</div>
+  </section>
+
+  <section class="page" id="outcomes">
+    <div class="rh"><span>02 / Outcomes</span><span>核心成果</span></div>
+    <div class="sec">
+      <div class="sec-num">02</div>
+      <div>
+        <h2>核心成果與後續建議</h2>
+      </div>
+    </div>
+    <p class="lead">把成果拆成可閱讀、可追蹤、可對照的項目，讓報告不只是描述活動，而是沉澱可延續的工作線索。</p>
+
+    <div class="rows">
+      <div class="row">
+        <div class="row-no">01</div>
+        <div class="row-cell">
+          <h3>成果項目</h3>
+          <p>描述本案已完成的具體成果，例如完成課程、建立模板、完成活動、累積資料或產出素材。</p>
+        </div>
+        <div class="row-cell">
+          <h3>後續價值</h3>
+          <p>說明這項成果如何支援下一步，例如複用、擴散、導流、內部訓練或後續決策。</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-no">02</div>
+        <div class="row-cell">
+          <h3>成果項目</h3>
+          <p>描述第二項成果，盡量使用可被查證的數據、文件、照片、連結或交付物。</p>
+        </div>
+        <div class="row-cell">
+          <h3>後續價值</h3>
+          <p>說明下一步建議，讓報告可以自然銜接後續提案或第二階段工作。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>結論句可以直接點出本案最值得被記住的成果，並把後續方向收束成一個清楚的行動建議。</p>
+    </div>
+    <div class="pgn">02</div>
+  </section>
+</body>
+
+</html>

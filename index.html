@@ -4,31 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>課程結案成果報告 — n8n 初階課程與生成式 AI 自動化</title>
+  <title>成果報告時間軸</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap"
     rel="stylesheet">
   <style>
     :root {
+      --surface: #f4f6f2;
       --paper: #ffffff;
-      --paper-edge: #eef2fb;
-      --desk: #dbe3f0;
-      --ink: #15223f;
-      --ink-s: #454f6b;
-      --ink-faint: #8a93a8;
-      --blue: #1d4ed8;
-      --blue-deep: #12286a;
-      --blue-tint: #eef3fd;
-      --rule: rgba(21, 34, 63, .16);
-      --rule-soft: rgba(21, 34, 63, .085);
+      --ink: #162024;
+      --muted: #687271;
+      --line: rgba(22, 32, 36, .16);
+      --line-strong: rgba(22, 32, 36, .34);
+      --red: #bd3f30;
+      --teal: #1f6e72;
+      --yellow: #e5bc44;
+      --blue: #224a8f;
+      --shadow: rgba(22, 32, 36, .12);
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -36,1741 +35,1150 @@
     }
 
     body {
-      background: var(--desk);
-      font-family: 'Noto Sans TC', sans-serif;
-      font-weight: 400;
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        linear-gradient(90deg, rgba(22, 32, 36, .045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(22, 32, 36, .035) 1px, transparent 1px),
+        var(--surface);
+      background-size: 42px 42px;
       color: var(--ink);
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
-      padding: 34px 0;
     }
 
-    /* ---------- A4 PAGE ---------- */
-    .page {
-      width: 210mm;
-      min-height: 297mm;
-      background: var(--paper);
-      margin: 0 auto 30px;
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 56px;
+    }
+
+    .masthead {
+      border-top: 4px solid var(--ink);
+      border-bottom: 1px solid var(--line-strong);
+      padding: 18px 0 30px;
+    }
+
+    .brandline,
+    .section-label,
+    .meta,
+    .eyebrow,
+    .stat-label,
+    .month-pin,
+    .latest-badge,
+    .clear-filters,
+    .filter-label {
+      font-family: "Archivo", sans-serif;
+      font-weight: 800;
+    }
+
+    .brandline {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: .82rem;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 42px;
+      align-items: end;
+      margin-top: 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--teal);
+      font-size: .92rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-family: "Noto Serif TC", serif;
+      font-size: 5.8rem;
+      line-height: .98;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .dek {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .archive-plate {
       position: relative;
-      padding: 21mm 19mm 16mm;
-      box-shadow: 0 8px 34px rgba(20, 40, 90, .18);
+      min-height: 300px;
+      border-left: 1px solid var(--line-strong);
+      padding-left: 30px;
+    }
+
+    .plate-card {
+      position: absolute;
+      width: 230px;
+      height: 286px;
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      box-shadow: 10px 12px 0 var(--shadow);
+    }
+
+    .plate-card:nth-child(1) {
+      right: 62px;
+      bottom: 4px;
+      transform: rotate(-7deg);
+      background:
+        linear-gradient(90deg, transparent 22%, rgba(189, 63, 48, .2) 22%, rgba(189, 63, 48, .2) 23%, transparent 23%),
+        var(--paper);
+    }
+
+    .plate-card:nth-child(2) {
+      right: 20px;
+      bottom: 20px;
+      transform: rotate(3deg);
+      background:
+        linear-gradient(0deg, transparent 72%, rgba(31, 110, 114, .16) 72%, rgba(31, 110, 114, .16) 88%, transparent 88%),
+        var(--paper);
+    }
+
+    .plate-card:nth-child(3) {
+      right: 42px;
+      bottom: 42px;
+      display: grid;
+      grid-template-rows: 58px 1fr 46px;
       overflow: hidden;
     }
 
-    .page>* {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ---------- RUNNING HEADER / FOOTER ---------- */
-    .rh {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .16em;
-      color: var(--blue);
-      padding-bottom: 7px;
-    }
-
-    .rh .rh-r {
-      color: var(--ink-s);
-      letter-spacing: .26em;
-    }
-
-    .pgn {
-      position: absolute;
-      right: 19mm;
-      bottom: 14mm;
-      z-index: 2;
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .1em;
-      color: var(--ink);
-    }
-
-    .pgn::before {
-      content: "— ";
-      color: var(--ink-faint);
-    }
-
-    /* ---------- SECTION HEADER ---------- */
-    .sec {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      border-bottom: 1.6px solid var(--ink);
-      padding-bottom: 13px;
-      margin: 54px 0 24px;
-    }
-
-    .sec .sn {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      font-size: 34px;
-      line-height: .9;
-      letter-spacing: -.02em;
-      color: var(--blue);
-    }
-
-    .sec .sh h2 {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-weight: 900;
-      font-size: 25px;
-      line-height: 1.18;
-      letter-spacing: .01em;
-    }
-
-    .sec .sh .en {
-      display: block;
-      margin-top: 6px;
-      font-family: 'Space Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--ink-s);
-    }
-
-    .sec.cont {
-      border-bottom-width: 1px;
-      margin-top: 0;
-    }
-
-    .sec.cont .sn {
-      font-size: 22px;
-    }
-
-    .sec.cont .sh h2 {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    /* ---------- TEXT ---------- */
-    .lead {
-      font-size: 15px;
-      line-height: 1.95;
-      font-weight: 500;
-      padding-left: 20px;
-      border-left: 3px solid var(--blue);
-      margin: 18px 0 6px;
-    }
-
-    p.bd {
-      font-size: 12.7px;
-      line-height: 1.95;
-      color: var(--ink-s);
-      margin-top: 13px;
-    }
-
-    p.bd strong,
-    .lead strong {
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    .kicker {
-      font-family: 'Space Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      color: var(--ink-s);
-    }
-
-    /* ---------- STATS ---------- */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 30px;
-      border-top: 1.6px solid var(--ink);
-    }
-
-    .stat {
-      padding: 20px 22px 6px;
-      border-right: 1px solid var(--rule);
-    }
-
-    .stat:last-child {
-      border-right: none;
-    }
-
-    .stat .sk {
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--ink-s);
-      margin-bottom: 8px;
-    }
-
-    .stat .sn-big {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      color: var(--blue);
-      font-size: 64px;
-      line-height: .85;
-      letter-spacing: -.03em;
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-    }
-
-    .stat .sn-big i {
-      font-style: normal;
-      font-size: 21px;
-      font-weight: 700;
-      color: var(--ink);
-      font-family: 'Noto Sans TC';
-      letter-spacing: 0;
-    }
-
-    .stat .sn-big sup {
-      font-size: 26px;
-      top: -.5em;
-    }
-
-    .stat .sc {
-      font-size: 11px;
-      line-height: 1.6;
-      color: var(--ink-s);
-      margin-top: 13px;
-      padding-top: 11px;
-      border-top: 1px solid var(--rule-soft);
-    }
-
-    /* ---------- DAY BLOCKS ---------- */
-    .days {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      margin-top: 24px;
-      border: 1.6px solid var(--ink);
-    }
-
-    .day {
-      padding: 22px 24px;
-    }
-
-    .day:first-child {
-      border-right: 1px solid var(--ink);
-    }
-
-    .day .dk {
-      font-family: 'Space Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .18em;
-      color: var(--ink-s);
-    }
-
-    .day .dh {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      font-size: 46px;
-      line-height: .95;
-      margin: 9px 0 2px;
-      letter-spacing: -.03em;
-      color: var(--blue);
-    }
-
-    .day .dh i {
-      font-style: normal;
-      font-family: 'Noto Sans TC';
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .day h4 {
-      font-size: 17px;
-      font-weight: 900;
-      margin: 13px 0 6px;
-      letter-spacing: .04em;
-    }
-
-    .day p {
-      font-size: 11.5px;
-      line-height: 1.75;
-      color: var(--ink-s);
-    }
-
-    /* ---------- METAPHOR ---------- */
-    .metas {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 22px;
-      border-top: 1px solid var(--rule);
-    }
-
-    .meta {
-      padding: 18px 16px 6px;
-      border-right: 1px solid var(--rule);
-    }
-
-    .meta:last-child {
-      border-right: none;
-    }
-
-    .meta .mk {
-      font-family: 'Space Mono', monospace;
-      font-size: 8.5px;
-      letter-spacing: .18em;
-      color: var(--ink-s);
-    }
-
-    .meta h5 {
-      font-size: 27px;
-      font-weight: 900;
-      margin: 6px 0 9px;
-      letter-spacing: .06em;
-      color: var(--blue);
-    }
-
-    .meta p {
-      font-size: 11px;
-      line-height: 1.78;
-      color: var(--ink-s);
-    }
-
-    /* ---------- PROJECT ROWS ---------- */
-    .projs {
-      margin-top: 20px;
-      border-top: 1.6px solid var(--ink);
-    }
-
-    .proj {
-      display: grid;
-      grid-template-columns: 62px 1fr 1fr;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .proj .pn {
-      padding: 17px 0 14px;
-    }
-
-    .proj .pn .pl {
-      font-family: 'Space Mono', monospace;
-      font-size: 8px;
-      letter-spacing: .16em;
-      color: var(--ink-s);
-    }
-
-    .proj .pn .pnum {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      font-size: 38px;
-      line-height: .9;
-      letter-spacing: -.03em;
-      color: var(--blue);
-    }
-
-    .proj .pc {
-      padding: 17px 22px 15px 6px;
-      border-right: 1px solid var(--rule);
-    }
-
-    .proj .pc:last-child {
-      border-right: none;
-      padding-right: 0;
-      padding-left: 22px;
-    }
-
-    .proj .ph {
-      font-family: 'Space Mono', monospace;
-      font-size: 8.5px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 7px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .proj .ph::before {
+    .plate-card:nth-child(3)::before {
       content: "";
-      width: 5px;
-      height: 5px;
-      background: var(--blue);
-      display: block;
+      background: var(--red);
+      border-bottom: 1px solid var(--ink);
     }
 
-    .proj .pc:last-child .ph::before {
-      background: transparent;
-      border: 1px solid var(--blue);
-    }
-
-    .proj .pc p {
-      font-size: 11.6px;
-      line-height: 1.74;
-      color: var(--ink-s);
-    }
-
-    .proj.boss .pn .pl {
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    /* ---------- INVERTED CALLOUT ---------- */
-    .callout {
-      background: var(--blue-deep);
-      color: #fff;
-      padding: 24px 28px;
-      margin-top: 22px;
-    }
-
-    .callout .ck {
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      color: var(--paper-edge);
-      margin-bottom: 11px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .callout .ck::after {
+    .plate-card:nth-child(3)::after {
       content: "";
-      flex: 1;
-      height: 1px;
-      background: rgba(255, 255, 255, .28);
+      align-self: end;
+      height: 46px;
+      background: var(--yellow);
+      border-top: 1px solid var(--ink);
     }
 
-    .callout p {
-      font-size: 12.6px;
-      line-height: 1.92;
-      color: #d6e0f7;
+    .plate-lines {
+      padding: 24px;
     }
 
-    .callout p strong {
-      color: #fff;
-      font-weight: 700;
-    }
-
-    /* ---------- SCENARIOS ---------- */
-    .scns {
-      margin-top: 20px;
-      border-top: 1.6px solid var(--ink);
-    }
-
-    .scn {
-      padding: 16px 0 16px;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .scn .st {
-      display: flex;
-      align-items: baseline;
-      gap: 13px;
-      margin-bottom: 11px;
-    }
-
-    .scn .st .sr {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      font-size: 18px;
-      min-width: 34px;
-      color: var(--blue);
-    }
-
-    .scn .st h4 {
-      font-size: 14.5px;
-      font-weight: 900;
-      letter-spacing: .02em;
-    }
-
-    .scn-g {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      padding-left: 47px;
-    }
-
-    .scn-g .col {
-      padding-right: 24px;
-    }
-
-    .scn-g .col:last-child {
-      padding-right: 0;
-      padding-left: 24px;
-      border-left: 1px solid var(--rule);
-    }
-
-    .scn-g .ch {
-      font-family: 'Space Mono', monospace;
-      font-size: 8.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--ink-s);
-      margin-bottom: 6px;
-    }
-
-    .scn-g .col p {
-      font-size: 11.4px;
-      line-height: 1.74;
-      color: var(--ink-s);
-    }
-
-    /* ---------- OUTCOMES ---------- */
-    .ocs {
-      margin-top: 22px;
-      border-top: 1.6px solid var(--ink);
-    }
-
-    .oc {
-      display: grid;
-      grid-template-columns: 206px 1fr;
-      gap: 26px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .oc .ol {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .oc .on {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      font-size: 40px;
-      line-height: .9;
-      letter-spacing: -.03em;
-      color: var(--blue);
+    .plate-lines span {
+      display: block;
+      height: 8px;
       margin-bottom: 12px;
+      background: rgba(22, 32, 36, .16);
     }
 
-    .oc h4 {
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: .02em;
-      line-height: 1.4;
+    .plate-lines span:nth-child(1) {
+      width: 72%;
+      height: 14px;
+      background: var(--ink);
     }
 
-    .oc .od {
-      display: flex;
-      align-items: center;
-      border-left: 1px solid var(--rule);
-      padding-left: 26px;
+    .plate-lines span:nth-child(2) {
+      width: 48%;
+      background: var(--teal);
     }
 
-    .oc .od p {
-      font-size: 12.2px;
-      line-height: 1.85;
-      color: var(--ink-s);
-    }
-
-    /* ---------- REFERENCES ---------- */
-    .refs {
-      margin-top: 24px;
-      border-top: 1.6px solid var(--ink);
-      padding-top: 14px;
-    }
-
-    .refs .rt {
-      font-family: 'Space Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--ink-s);
-      margin-bottom: 12px;
-    }
-
-    .ref {
+    .toolbar {
       display: grid;
-      grid-template-columns: 24px 1fr auto;
-      gap: 12px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--rule-soft);
-      align-items: baseline;
-    }
-
-    .ref .rn {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      color: var(--blue);
-    }
-
-    .ref .rl {
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .ref .rl b {
-      font-weight: 700;
-    }
-
-    .ref a {
-      color: var(--blue);
-      text-decoration: none;
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .12em;
-      border: 1px solid var(--blue);
-      padding: 4px 9px;
-      white-space: nowrap;
-      transition: .18s;
-    }
-
-    .ref a:hover {
-      background: var(--blue);
-      color: #fff;
-    }
-
-    /* ---------- SIGN ---------- */
-    .sign {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--rule);
-      margin-top: 24px;
-    }
-
-    .sign div {
-      padding: 16px 18px 0;
-      border-right: 1px solid var(--rule);
-    }
-
-    .sign div:last-child {
-      border-right: none;
-    }
-
-    .sign .sk {
-      font-family: 'Space Mono', monospace;
-      font-size: 8.5px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--ink-s);
-      margin-bottom: 6px;
-    }
-
-    .sign .sv {
-      font-size: 13.5px;
-      font-weight: 700;
-    }
-
-    /* ---------- RESOURCE CARD ---------- */
-    .res {
-      border: 1.6px solid var(--ink);
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-    }
-
-    .res .ri {
-      padding: 20px 24px;
-    }
-
-    .res .rk {
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 9px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .res .rk::before {
-      content: "";
-      width: 13px;
-      height: 13px;
-      border: 1.5px solid var(--blue);
-      display: block;
-    }
-
-    .res h4 {
-      font-size: 16px;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
-    .res p {
-      font-size: 11px;
-      line-height: 1.7;
-      color: var(--ink-s);
-    }
-
-    .res .rgo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--blue);
-      color: #fff;
-      text-decoration: none;
-      padding: 0 30px;
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .16em;
-      transition: .2s;
-    }
-
-    .res .rgo:hover {
-      background: var(--blue-deep);
-    }
-
-    .res .rgo span {
-      display: block;
-      text-align: center;
-    }
-
-    .res .rgo b {
-      font-size: 17px;
-      display: block;
-      margin-top: 3px;
-    }
-
-    /* ================= COVER ================= */
-    .cover {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cover .ctop {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .16em;
-      border-bottom: 1.6px solid var(--ink);
-      padding-bottom: 9px;
-      color: var(--blue);
-    }
-
-    .cover .ctop .r {
-      color: var(--ink-s);
-    }
-
-    .cover .cmid {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6mm 0;
-    }
-
-    .cover .ceye {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--blue);
-      border: 1.5px solid var(--blue);
-      display: inline-block;
-      align-self: flex-start;
-      padding: 7px 14px;
-      margin-bottom: 24px;
-    }
-
-    .cover h1 {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-weight: 900;
-      font-size: 84px;
-      line-height: 1.04;
-      letter-spacing: .01em;
-      color: var(--ink);
-    }
-
-    .cover .crule {
-      height: 3px;
-      background: var(--blue);
-      margin: 22px 0 16px;
-    }
-
-    .cover .csub {
-      font-size: 19px;
-      font-weight: 500;
-      letter-spacing: .02em;
-    }
-
-    .cover .csub b {
-      font-weight: 900;
-      color: var(--blue);
-    }
-
-    .cover .cyear {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 900;
-      font-size: 30px;
-      letter-spacing: -.02em;
-      margin-top: 30px;
-      color: var(--blue);
-    }
-
-    .cmeta {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 1.6px solid var(--ink);
-      margin-bottom: 18px;
-    }
-
-    .cmeta div {
-      padding: 16px 18px;
-      border-right: 1px solid var(--ink);
-    }
-
-    .cmeta div:last-child {
-      border-right: none;
-    }
-
-    .cmeta .mk {
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 8px;
-    }
-
-    .cmeta .mv {
-      font-size: 15px;
-      font-weight: 900;
-      line-height: 1.4;
-    }
-
-    .cmeta .mv small {
-      display: block;
-      font-weight: 400;
-      font-size: 11.5px;
-      color: var(--ink-s);
-      margin-top: 4px;
-      line-height: 1.65;
-    }
-
-    /* ---------- TOC ---------- */
-    .toc-head {
-      font-family: 'Space Mono', monospace;
-      letter-spacing: .16em;
-      font-size: 10px;
-      display: flex;
-      justify-content: space-between;
-      color: var(--blue);
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 8px;
-    }
-
-    .toc {
-      margin-top: 78px;
-    }
-
-    .toc-row {
-      display: grid;
-      grid-template-columns: 268px 1fr;
+      grid-template-columns: minmax(260px, 420px) 1fr;
       gap: 24px;
-      margin-bottom: 30px;
+      align-items: start;
+      margin-top: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line-strong);
     }
 
-    .toc-l {
-      display: flex;
-      gap: 16px;
-    }
-
-    .toc-l .tn {
-      font-family: 'Archivo', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: -.02em;
-      line-height: 1.15;
-      color: var(--blue);
-    }
-
-    .toc-l .tt {
-      font-family: 'Noto Sans TC';
-      font-weight: 900;
-      font-size: 19px;
-      line-height: 1.2;
-      letter-spacing: .01em;
-    }
-
-    .toc-l .tt .te {
-      display: block;
-      font-family: 'Space Mono', monospace;
-      font-size: 8.5px;
-      letter-spacing: .2em;
-      color: var(--ink-s);
-      font-weight: 400;
-      margin-top: 6px;
-    }
-
-    .toc-r {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .toc-sub {
-      display: grid;
-      grid-template-columns: 58px 1fr 34px;
-      gap: 10px;
-      align-items: baseline;
-      padding: 9px 0 8px;
-      border-bottom: 1px solid var(--rule);
-      text-decoration: none;
+    .search {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 0 16px;
       color: var(--ink);
-      transition: .16s;
+      outline: none;
+      box-shadow: 6px 7px 0 rgba(22, 32, 36, .08);
     }
 
-    .toc-sub:hover {
-      padding-left: 8px;
-      background: var(--blue-tint);
+    .search:focus {
+      border-color: var(--red);
+      box-shadow: 6px 7px 0 rgba(189, 63, 48, .16);
     }
 
-    .toc-sub .ts-c {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      color: var(--blue);
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      min-width: 0;
+      max-width: 100%;
     }
 
-    .toc-sub .ts-t {
-      font-family: 'Space Mono', monospace;
-      font-size: 10.5px;
-      letter-spacing: .06em;
+    .filter-panel {
+      display: grid;
+      gap: 14px;
+      justify-items: end;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .filter-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .filter-label {
+      color: var(--muted);
+      font-size: .72rem;
       text-transform: uppercase;
     }
 
-    .toc-sub .ts-p {
-      font-family: 'Space Mono', monospace;
-      font-size: 10.5px;
-      text-align: right;
-    }
-
-    .toc-note {
-      margin-top: 34px;
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .1em;
-      color: var(--ink-s);
-      line-height: 1.8;
-      border-top: 1px solid var(--rule);
-      padding-top: 12px;
-    }
-
-    /* ---------- conclusion big quote ---------- */
-    .concl-q {
-      font-size: 21px;
-      font-weight: 900;
-      line-height: 1.62;
-      letter-spacing: .01em;
-      margin: 22px 0 18px;
-    }
-
-    .concl-q em {
-      font-style: normal;
-      background: var(--blue);
-      color: #fff;
-      padding: 1px 7px;
-    }
-
-    /* ---------- PRINT BUTTON ---------- */
-    .printbtn {
-      position: fixed;
-      right: 26px;
-      bottom: 26px;
-      z-index: 99;
-      background: var(--blue);
-      color: #fff;
-      border: none;
+    .chip,
+    .month-chip,
+    .clear-filters,
+    .inline-clear {
+      min-height: 40px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      padding: 0 16px;
       cursor: pointer;
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      letter-spacing: .12em;
-      padding: 15px 22px;
-      box-shadow: 0 8px 26px rgba(29, 78, 216, .4);
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      transition: .2s;
+      transition: transform .16s ease, background .16s ease, color .16s ease;
     }
 
-    .printbtn:hover {
-      background: var(--blue-deep);
+    .chip:hover,
+    .month-chip:hover,
+    .clear-filters:hover,
+    .inline-clear:hover {
       transform: translateY(-2px);
     }
 
-    .printbtn svg {
-      width: 15px;
-      height: 15px;
+    .chip.is-active,
+    .month-chip.is-active {
+      background: var(--ink);
+      color: var(--paper);
     }
 
-    *[id] {
-      scroll-margin-top: 24px;
+    .chip-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      min-height: 22px;
+      margin-left: 7px;
+      border-radius: 999px;
+      background: rgba(22, 32, 36, .08);
+      color: inherit;
+      font-family: "Archivo", sans-serif;
+      font-size: .74rem;
+      font-weight: 900;
     }
 
-    /* ================= PRINT ================= */
-    @page {
-      size: A4;
+    .chip.is-active .chip-count,
+    .month-chip.is-active .chip-count {
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .month-nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      overflow-x: auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line-strong);
+      scrollbar-width: thin;
+    }
+
+    .month-chip {
+      flex: 0 0 auto;
+      min-height: 42px;
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 5px 6px 0 rgba(22, 32, 36, .07);
+      white-space: nowrap;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .stat {
+      padding: 24px 20px 22px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat + .stat {
+      padding-left: 20px;
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-label {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-family: "Archivo", sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 48px;
+      margin-top: 40px;
+    }
+
+    .rail {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      padding-top: 4px;
+    }
+
+    .section-label {
       margin: 0;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--ink);
+      color: var(--red);
+      font-size: .86rem;
+      text-transform: uppercase;
     }
 
-    @media print {
-      body {
-        background: #fff;
-        padding: 0;
+    .rail-note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: .95rem;
+    }
+
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .filter-token {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .68);
+      padding: 0 10px;
+      color: var(--ink);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .clear-filters {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 14px;
+      min-height: 36px;
+      border-radius: 8px;
+      border-color: var(--red);
+      color: var(--red);
+      font-size: .78rem;
+      text-transform: uppercase;
+    }
+
+    .clear-filters[hidden] {
+      display: none;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background: var(--ink);
+    }
+
+    .month-group {
+      position: relative;
+      margin-bottom: 34px;
+    }
+
+    .month-pin {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      margin-bottom: 14px;
+      border: 1px solid var(--ink);
+      background: var(--yellow);
+      padding: 0 12px;
+      font-size: .9rem;
+    }
+
+    .month-pin::before {
+      content: "";
+      position: absolute;
+      left: -37px;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+      border-radius: 50%;
+    }
+
+    .report-card {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr) 120px;
+      gap: 22px;
+      align-items: stretch;
+      min-height: 164px;
+      margin-bottom: 16px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--paper);
+      text-decoration: none;
+      overflow: hidden;
+      box-shadow: 8px 9px 0 rgba(22, 32, 36, .08);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .report-card.is-latest {
+      border-color: var(--red);
+      box-shadow: 8px 9px 0 rgba(189, 63, 48, .12);
+    }
+
+    .report-card:hover {
+      transform: translate(-2px, -3px);
+      box-shadow: 12px 14px 0 rgba(22, 32, 36, .12);
+    }
+
+    .date-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 18px;
+    }
+
+    .date-day {
+      font-family: "Archivo", sans-serif;
+      font-size: 3.1rem;
+      font-weight: 900;
+      line-height: .9;
+    }
+
+    .date-month {
+      color: rgba(255, 255, 255, .74);
+      font-family: "Archivo", sans-serif;
+      font-weight: 800;
+    }
+
+    .report-body {
+      padding: 20px 0;
+      min-width: 0;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--teal);
+      font-size: .78rem;
+      text-transform: uppercase;
+    }
+
+    .latest-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border: 1px solid var(--red);
+      border-radius: 999px;
+      background: rgba(189, 63, 48, .08);
+      color: var(--red);
+      padding: 0 8px;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .report-title {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .report-subtitle {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.65;
+    }
+
+    .report-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      padding: 20px 18px 18px 0;
+      color: var(--muted);
+      font-size: .9rem;
+      text-align: right;
+    }
+
+    .open-mark {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      border-bottom: 2px solid var(--red);
+      color: var(--red);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .empty {
+      border: 1px dashed var(--line-strong);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .58);
+      padding: 34px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .empty strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 1.08rem;
+    }
+
+    .inline-clear {
+      margin-top: 18px;
+      border-color: var(--red);
+      border-radius: 8px;
+      color: var(--red);
+      font-weight: 900;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        width: min(100% - 28px, 720px);
+        padding-top: 22px;
       }
 
-      .printbtn {
-        display: none;
+      .hero-grid,
+      .content {
+        grid-template-columns: 1fr;
       }
 
-      .page {
-        margin: 0;
-        box-shadow: none;
-        width: 210mm;
-        min-height: 297mm;
-        break-after: page;
+      .toolbar {
+        grid-template-columns: 1fr;
       }
 
-      .page:last-of-type {
-        break-after: auto;
+      h1 {
+        font-size: 3.7rem;
       }
 
-      .proj,
-      .scn,
-      .oc,
-      .day,
-      .callout,
-      .res,
-      .ref,
-      .toc-row,
-      .stat {
-        break-inside: avoid;
+      .archive-plate {
+        min-height: 220px;
+        border-left: 0;
+        border-top: 1px solid var(--line-strong);
+        padding: 24px 0 0;
       }
 
-      .callout,
-      .cmeta,
-      .days,
-      .res,
-      .ref a,
-      .res .rgo,
-      .concl-q em,
-      .sec,
-      .stats,
-      .projs,
-      .scns,
-      .ocs {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      .plate-card {
+        width: 170px;
+        height: 212px;
+      }
+
+      .chips {
+        justify-content: flex-start;
+      }
+
+      .filter-panel {
+        justify-items: start;
+      }
+
+      .filter-line {
+        justify-content: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat,
+      .stat + .stat {
+        padding-left: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .rail {
+        position: static;
+      }
+
+      .report-card {
+        grid-template-columns: 96px minmax(0, 1fr);
+      }
+
+      .report-side {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        padding: 0 18px 18px 114px;
+        text-align: left;
+      }
+
+      .report-side > span:first-child {
+        min-width: 0;
+        overflow-wrap: anywhere;
       }
     }
 
-    @media screen and (max-width:880px) {
-      body {
-        padding: 14px 0;
+    @media (max-width: 560px) {
+      .brandline {
+        flex-direction: column;
       }
 
-      .page {
-        transform: scale(.62);
-        transform-origin: top center;
-        margin-bottom: calc(-297mm * 0.38 + 18px);
+      h1 {
+        font-size: 2.55rem;
+        max-width: 100%;
+      }
+
+      .archive-plate {
+        min-height: 170px;
+        overflow: hidden;
+      }
+
+      .plate-card {
+        width: 142px;
+        height: 178px;
+      }
+
+      .plate-card:nth-child(1) {
+        right: 78px;
+        bottom: 0;
+      }
+
+      .plate-card:nth-child(2) {
+        right: 38px;
+        bottom: 12px;
+      }
+
+      .plate-card:nth-child(3) {
+        right: 58px;
+        bottom: 24px;
+        grid-template-rows: 48px 1fr 34px;
+      }
+
+      .plate-card:nth-child(3)::after {
+        height: 34px;
+      }
+
+      .plate-lines {
+        padding: 18px;
+      }
+
+      .filter-line,
+      .chips {
+        gap: 8px;
+      }
+
+      .chip,
+      .month-chip,
+      .clear-filters,
+      .inline-clear {
+        min-height: 36px;
+        padding: 0 12px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .report-card {
+        grid-template-columns: 1fr;
+      }
+
+      .date-block {
+        min-height: 92px;
+        flex-direction: row;
+        align-items: end;
+      }
+
+      .report-body {
+        padding: 18px;
+      }
+
+      .report-side {
+        padding: 0 18px 18px;
+      }
+
+      .open-mark {
+        flex: 0 0 auto;
+      }
+
+      .timeline {
+        padding-left: 18px;
+      }
+
+      .month-pin::before {
+        left: -27px;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <button class="printbtn" onclick="window.print()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" />
-    </svg>
-    下載 PDF
-  </button>
-
-  <!-- ============================ PAGE 1 — COVER ============================ -->
-  <div class="page cover" id="cover">
-    <div class="ctop">
-      <span>00.0 &nbsp;— &nbsp;PROJECT COMPLETION REPORT</span>
-      <span class="r">NF&nbsp;/&nbsp;2026&nbsp;·&nbsp;05&nbsp;·&nbsp;22</span>
-    </div>
-
-    <div class="cmid">
-      <span class="ceye">n8n &nbsp;×&nbsp; Generative AI Automation</span>
-      <h1>課程結案<br>成果報告</h1>
-      <div class="crule"></div>
-      <p class="csub">課程主題　<b>n8n 初階課程與生成式 AI 自動化</b></p>
-      <div class="cyear">ITRI · 工業技術研究院<br>10 HRS · 6 PROJECTS</div>
-    </div>
-
-    <div class="cmeta">
-      <div>
-        <div class="mk">執行單位 / Provider</div>
-        <div class="mv">努法有限公司<small>統一編號　93616776</small></div>
-      </div>
-      <div>
-        <div class="mk">課程日期 / Date</div>
-        <div class="mv">2026 / 05 / 20–21<small>Day 1　09:10–16:10<br>Day 2　13:10–16:45</small></div>
-      </div>
-      <div>
-        <div class="mk">上課地點 / Venue</div>
-        <div class="mv">工研院<small>67 館　・　51 館</small></div>
-      </div>
-    </div>
-
-    <div class="res">
-      <div class="ri">
-        <div class="rk">附件 02 / Course Slides</div>
-        <h4>課程簡報</h4>
-        <p>本次十小時課程之完整教學投影片，涵蓋觀念講解。</p>
-      </div>
-      <a class="rgo" href="https://drive.google.com/file/d/1ko-pBF1nHhydwLdQS-oZJo2b6XU0eA8m/view?usp=sharing"
-        target="_blank" rel="noopener">
-        <span>OPEN<b>↗</b></span>
-      </a>
-    </div>
-  </div>
-
-  <!-- ============================ PAGE 2 — CONTENTS ============================ -->
-  <div class="page" id="toc">
-    <div class="toc-head"><span>00.0</span><span>CONTENTS&nbsp;／&nbsp;目錄</span></div>
-
-    <div class="toc">
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">01</span>
-          <span class="tt">報告摘要<span class="te">Executive Summary</span></span>
-        </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-summary">
-            <span class="ts-c">01.1 /</span>
-            <span class="ts-t">摘要與關鍵指標</span>
-            <span class="ts-p">02</span>
-          </a>
-        </div>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brandline">
+        <span>Report Timeline Hub</span>
+        <span id="generated-at">Index pending</span>
       </div>
 
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">02</span>
-          <span class="tt">課程設計與<br>教學架構<span class="te">Course Design</span></span>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">成果報告索引</p>
+          <h1>每一份成果，按時間回到現場。</h1>
+          <p class="dek">依日期保存課程、活動與專案的成果報告，讓後續提案、結案與回顧都有清楚入口。</p>
         </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-design">
-            <span class="ts-c">02.1 /</span>
-            <span class="ts-t">兩段式教學設計</span>
-            <span class="ts-p">03</span>
-          </a>
-          <a class="toc-sub" href="#p-design">
-            <span class="ts-c">02.2 /</span>
-            <span class="ts-t">拉水 · 拉電 · 砌磚</span>
-            <span class="ts-p">03</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">03</span>
-          <span class="tt">六個專案的<br>學習成果<span class="te">Six Projects</span></span>
-        </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-proj1">
-            <span class="ts-c">03.1 /</span>
-            <span class="ts-t">Project 01 — 03</span>
-            <span class="ts-p">04</span>
-          </a>
-          <a class="toc-sub" href="#p-proj2">
-            <span class="ts-c">03.2 /</span>
-            <span class="ts-t">Project 04 — 06 · Final Boss</span>
-            <span class="ts-p">05</span>
-          </a>
+        <div class="archive-plate" aria-hidden="true">
+          <div class="plate-card"></div>
+          <div class="plate-card"></div>
+          <div class="plate-card">
+            <div class="plate-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
         </div>
       </div>
+    </header>
 
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">04</span>
-          <span class="tt">與現行需求<br>流程的對接<span class="te">Workflow Alignment</span></span>
-        </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-scn1">
-            <span class="ts-c">04.1 /</span>
-            <span class="ts-t">六大需求場景</span>
-            <span class="ts-p">06</span>
-          </a>
-          <a class="toc-sub" href="#p-scn2">
-            <span class="ts-c">04.2 /</span>
-            <span class="ts-t">下一步建議</span>
-            <span class="ts-p">07</span>
-          </a>
-        </div>
+    <section class="toolbar" aria-label="報告篩選">
+      <label>
+        <span class="sr-only">搜尋報告</span>
+        <input class="search" id="search" type="search" placeholder="搜尋標題、客戶、分類或日期">
+      </label>
+      <div class="filter-panel">
+        <div class="filter-line" id="year-chips" aria-label="年度篩選"></div>
+        <div class="chips" id="category-chips" aria-label="分類篩選"></div>
       </div>
+    </section>
 
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">05</span>
-          <span class="tt">整體成效與<br>結案評估<span class="te">Overall Evaluation</span></span>
-        </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-eval">
-            <span class="ts-c">05.1 /</span>
-            <span class="ts-t">三項實質成果</span>
-            <span class="ts-p">08</span>
-          </a>
-        </div>
-      </div>
+    <nav class="month-nav" id="month-nav" aria-label="月份索引"></nav>
 
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">06</span>
-          <span class="tt">結語與<br>參考依據<span class="te">Conclusion</span></span>
-        </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-conclusion">
-            <span class="ts-c">06.1 /</span>
-            <span class="ts-t">結語</span>
-            <span class="ts-p">09</span>
-          </a>
-          <a class="toc-sub" href="#p-conclusion">
-            <span class="ts-c">06.2 /</span>
-            <span class="ts-t">參考依據</span>
-            <span class="ts-p">09</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="toc-row">
-        <div class="toc-l">
-          <span class="tn">0A</span>
-          <span class="tt">課程資源<br>（附錄）<span class="te">Appendix</span></span>
-        </div>
-        <div class="toc-r">
-          <a class="toc-sub" href="#p-appendix">
-            <span class="ts-c">0A.1 /</span>
-            <span class="ts-t">n8n 專案範例 JSON</span>
-            <span class="ts-p">10</span>
-          </a>
-          <a class="toc-sub" href="#p-appendix">
-            <span class="ts-c">0A.2 /</span>
-            <span class="ts-t">Final Boss 完整製作錄影</span>
-            <span class="ts-p">10</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="toc-note">
-      點擊任一目錄項目可跳轉對應頁面
-    </div>
-    <div class="pgn">01</div>
-  </div>
-
-  <!-- ============================ PAGE 3 — 01 報告摘要 ============================ -->
-  <div class="page" id="p-summary">
-    <div class="rh"><span>01.0</span><span class="rh-r">EXECUTIVE SUMMARY</span></div>
-
-    <div class="sec">
-      <span class="sn">01</span>
-      <div class="sh">
-        <h2>報告摘要</h2><span class="en">Executive Summary</span>
-      </div>
-    </div>
-
-    <p class="lead">本報告目的有二：完整呈現本次十小時課程的學習成果，並將課程內容轉化為可供後續複習、內部溝通與流程落地的參考文件。</p>
-
-    <p class="bd">生成式 AI 的價值不只在單點內容生成，而在於帶動知識型工作的生產力提升，同時逼迫組織重新思考流程、角色與能力配置。McKinsey 指出，生成式 AI
-      可望對整體勞動生產力帶來顯著增益，但前提是組織願意投資於新技能與流程重整；NIST 的 AI 風險管理框架則提醒，生成式 AI 的應用往往需要額外的人工覆核、追蹤、文件化與管理監督。</p>
-
-    <p class="bd">本次課程的真正價值，在於它<strong>同時處理了「效率」與「治理」兩件事</strong>：一方面教會學員把資料流、節點、欄位與 AI
-      串接成自動化流程；另一方面也保留人工校稿、主管確認與資料留痕的思維。</p>
-
-    <div class="stats">
+    <section class="stats" aria-label="索引摘要">
       <div class="stat">
-        <div class="sk">Total Hours</div>
-        <div class="sn-big">10<i>小時</i></div>
-        <div class="sc">總課程時數，分兩日進行的高密度實作型訓練。</div>
+        <div class="stat-label">Reports</div>
+        <div class="stat-value" id="total-count">0</div>
       </div>
       <div class="stat">
-        <div class="sk">Projects</div>
-        <div class="sn-big">6<i>個</i></div>
-        <div class="sc">專案式練習，從最小可用流程逐步堆疊到 Final Boss。</div>
+        <div class="stat-label">Latest</div>
+        <div class="stat-value" id="latest-date">--</div>
       </div>
       <div class="stat">
-        <div class="sk">Completion</div>
-        <div class="sn-big">80<sup>%+</sup></div>
-        <div class="sc">現場學員可獨立完成全部 Project 實作。</div>
+        <div class="stat-label">Categories</div>
+        <div class="stat-value" id="category-count">0</div>
       </div>
-    </div>
-
-    <div class="pgn">02</div>
-  </div>
-
-  <!-- ============================ PAGE 4 — 02 課程設計 ============================ -->
-  <div class="page" id="p-design">
-    <div class="rh"><span>02.0</span><span class="rh-r">COURSE DESIGN</span></div>
-
-    <div class="sec">
-      <span class="sn">02</span>
-      <div class="sh">
-        <h2>課程設計與教學架構</h2><span class="en">Course Design &amp; Structure</span>
+      <div class="stat">
+        <div class="stat-label">Months</div>
+        <div class="stat-value" id="month-count">0</div>
       </div>
-    </div>
+    </section>
 
-    <p class="lead">本次教學採兩段式設計：<strong>先建立共通語言，再用專案反覆練習。</strong></p>
+    <section class="content">
+      <aside class="rail">
+        <p class="section-label">Timeline</p>
+        <p class="rail-note" id="result-note">目前顯示全部報告。</p>
+        <div class="active-filters" id="active-filters"></div>
+        <button class="clear-filters" id="clear-filters" type="button" hidden>Clear Filters</button>
+      </aside>
+      <div class="timeline" id="timeline"></div>
+    </section>
+  </main>
 
-    <div class="days">
-      <div class="day">
-        <div class="dk">DAY 01 — FOUNDATION</div>
-        <div class="dh">6<i>&nbsp;小時</i></div>
-        <h4>拉水 · 拉電 · 砌磚</h4>
-        <p>建立資料流、節點思維與欄位結構化能力，奠定全課程的共通語言基礎。</p>
-      </div>
-      <div class="day">
-        <div class="dk">DAY 02 — PRACTICE</div>
-        <div class="dh">4<i>&nbsp;小時</i></div>
-        <h4>六個 Project 實作</h4>
-        <p>透過專案反覆練習，把第一天的基礎能力轉成可落地的自動化流程。</p>
-      </div>
-    </div>
+  <script>
+    window.REPORT_TIMELINE_LOAD_STATE = 'pending';
+  </script>
+  <script
+    src="data/reports.js"
+    onload="window.REPORT_TIMELINE_LOAD_STATE = 'ready'"
+    onerror="window.REPORT_TIMELINE_LOAD_STATE = 'error'"></script>
+  <script>
+    const dataLoadState = window.REPORT_TIMELINE_LOAD_STATE;
+    const payload = window.REPORT_TIMELINE || { generatedAt: '', reports: [] };
+    const reports = Array.isArray(payload.reports) ? payload.reports : [];
+    const hasIndexLoadError = dataLoadState === 'error';
+    const latestReportId = reports[0]?.id || '';
+    const state = {
+      query: '',
+      category: '全部',
+      year: '全部',
+      month: '全部'
+    };
 
-    <div class="metas">
-      <div class="meta">
-        <div class="mk">METAPHOR 01</div>
-        <h5>拉水</h5>
-        <p>教資料怎麼流。讓學員理解 Fixed 與 Expression 的差異——Expressions 以 <code>{{ }}</code> 在節點參數內動態帶值，Edit Fields 則支援兩者切換。</p>
-      </div>
-      <div class="meta">
-        <div class="mk">METAPHOR 02</div>
-        <h5>拉電</h5>
-        <p>事件觸發與行動執行的流程觀念。n8n 官方將核心節點區分為 Trigger 與 Action，這正是自動化流程最根本的骨架。</p>
-      </div>
-      <div class="meta">
-        <div class="mk">METAPHOR 03</div>
-        <h5>砌磚</h5>
-        <p>把非結構化訊息轉成結構化欄位。先讓 AI 將文字整理成 JSON，再透過 Edit Fields 展開成可被資料表、試算表使用的多個欄位。</p>
-      </div>
-    </div>
+    const nodes = {
+      generatedAt: document.querySelector('#generated-at'),
+      totalCount: document.querySelector('#total-count'),
+      latestDate: document.querySelector('#latest-date'),
+      categoryCount: document.querySelector('#category-count'),
+      monthCount: document.querySelector('#month-count'),
+      yearChips: document.querySelector('#year-chips'),
+      chips: document.querySelector('#category-chips'),
+      monthNav: document.querySelector('#month-nav'),
+      search: document.querySelector('#search'),
+      timeline: document.querySelector('#timeline'),
+      resultNote: document.querySelector('#result-note'),
+      activeFilters: document.querySelector('#active-filters'),
+      clearFilters: document.querySelector('#clear-filters')
+    };
 
-    <p class="bd">OpenAI 文件強調，把高優先級規則與使用者輸入分開，可讓模型更穩定遵循要求。若目標是把 AI 內容直接接入資料流，單純要求「輸出 JSON」並不保證符合欄位
-      Schema；要提升流程可靠度，<strong>Structured Outputs</strong> 才能在 Strict 模式下穩定要求模型輸出符合指定 JSON Schema 的資料。</p>
+    function escapeHtml(value) {
+      return String(value || '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
 
-    <div class="pgn">03</div>
-  </div>
+    function formatDate(date) {
+      if (!date) return '--';
+      const [year, month, day] = date.split('-');
+      return day ? `${year}.${month}.${day}` : date;
+    }
 
-  <!-- ============================ PAGE 5 — 03 六個專案 P1 ============================ -->
-  <div class="page" id="p-proj1">
-    <div class="rh"><span>03.0</span><span class="rh-r">SIX PROJECTS</span></div>
+    function dateParts(date) {
+      const [year = '--', month = '--', day = '--'] = String(date || '').split('-');
+      return { year, month, day };
+    }
 
-    <div class="sec">
-      <span class="sn">03</span>
-      <div class="sh">
-        <h2>六個專案的學習成果</h2><span class="en">Six Projects — Learning Outcomes</span>
-      </div>
-    </div>
+    function reportYear(report) {
+      return String(report.date || '').slice(0, 4) || '未設定';
+    }
 
-    <p class="lead">六個專案從最小流程逐步堆疊到完整閉環，覆蓋了 n8n 最具可遷移性的核心模組。</p>
+    function formatGeneratedAt(value) {
+      if (hasIndexLoadError) return 'Index missing';
+      if (!value) return 'Index pending';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'Index ready';
+      return `Updated ${date.toLocaleString('zh-TW', { hour12: false })}`;
+    }
 
-    <div class="projs">
-      <div class="proj">
-        <div class="pn">
-          <div class="pl">PROJECT</div>
-          <div class="pnum">01</div>
-        </div>
-        <div class="pc">
-          <div class="ph">練習內容</div>
-          <p>建立 Trigger 與 Action，將 Fixed 資料寫入 n8n 內建 Data Table。</p>
-        </div>
-        <div class="pc">
-          <div class="ph">帶走的能力</div>
-          <p>能做出最小可用流程，理解入口、動作、存檔三件事如何串起來。</p>
-        </div>
-      </div>
-      <div class="proj">
-        <div class="pn">
-          <div class="pl">PROJECT</div>
-          <div class="pnum">02</div>
-        </div>
-        <div class="pc">
-          <div class="ph">練習內容</div>
-          <p>使用 Expression 取得動態時間，寫入資料表。</p>
-        </div>
-        <div class="pc">
-          <div class="ph">帶走的能力</div>
-          <p>理解靜態值與動態值差異，開始具備「流程會隨情境變化」的思維。</p>
-        </div>
-      </div>
-      <div class="proj">
-        <div class="pn">
-          <div class="pl">PROJECT</div>
-          <div class="pnum">03</div>
-        </div>
-        <div class="pc">
-          <div class="ph">練習內容</div>
-          <p>建立超過一個 Action：寄送 Email，並把收件人與內容存回資料表。</p>
-        </div>
-        <div class="pc">
-          <div class="ph">帶走的能力</div>
-          <p>學會多動作鏈與留痕思維，不再只做單一步驟自動化。</p>
-        </div>
-      </div>
-    </div>
+    function categories() {
+      return [...new Set(reports.map((report) => report.category).filter(Boolean))];
+    }
 
-    <p class="bd">從 n8n 官方能力對照來看，這些專案完整覆蓋了最具可遷移性的核心模組：Data Table 可直接儲存與管理結構化資料；Send Email 可寄送郵件並支援等待回覆；Loop Over Items
-      可批次處理多筆資料；Webhook 可承接外部事件；Schedule Trigger 可做定時催辦。後續頁面將接續 Project 04 至 Project 06 的成果說明。</p>
+    function years() {
+      return [...new Set(reports.map(reportYear).filter(Boolean))];
+    }
 
-    <div class="pgn">04</div>
-  </div>
+    function months(items = reports) {
+      return [...new Set(items.map((report) => report.month).filter(Boolean))];
+    }
 
-  <!-- ============================ PAGE 6 — 03 六個專案 P2 ============================ -->
-  <div class="page" id="p-proj2">
-    <div class="rh"><span>03.1</span><span class="rh-r">SIX PROJECTS</span></div>
+    function countBy(items, getter) {
+      return items.reduce((counts, item) => {
+        const key = getter(item);
+        counts[key] = (counts[key] || 0) + 1;
+        return counts;
+      }, {});
+    }
 
-    <div class="sec cont">
-      <span class="sn">03</span>
-      <div class="sh">
-        <h2>六個專案的學習成果（續）</h2>
-      </div>
-    </div>
+    function reportsForMonthNav() {
+      return reports.filter((report) => {
+        const categoryMatch = state.category === '全部' || report.category === state.category;
+        const yearMatch = state.year === '全部' || reportYear(report) === state.year;
+        return categoryMatch && yearMatch;
+      });
+    }
 
-    <div class="projs">
-      <div class="proj">
-        <div class="pn">
-          <div class="pl">PROJECT</div>
-          <div class="pnum">04</div>
-        </div>
-        <div class="pc">
-          <div class="ph">練習內容</div>
-          <p>串接 OpenAI API 生成勵志內容，寄出並存下主旨與內容，且每次輸出不同。</p>
-        </div>
-        <div class="pc">
-          <div class="ph">帶走的能力</div>
-          <p>學會把 AI 納入內容生成流程，並讓內容產出與資料紀錄同步發生。</p>
-        </div>
-      </div>
-      <div class="proj">
-        <div class="pn">
-          <div class="pl">PROJECT</div>
-          <div class="pnum">05</div>
-        </div>
-        <div class="pc">
-          <div class="ph">練習內容</div>
-          <p>用 Edit Field 建立變數，讓 AI 判斷三明治口味為鹹或甜並生成報告寄送；同時區分 User Message 與 System Message。</p>
-        </div>
-        <div class="pc">
-          <div class="ph">帶走的能力</div>
-          <p>學會把規則與輸入分層，讓 AI 不只寫內容，也能做分類、判斷與回報。</p>
-        </div>
-      </div>
-      <div class="proj boss">
-        <div class="pn">
-          <div class="pl">FINAL BOSS</div>
-          <div class="pnum">06</div>
-        </div>
-        <div class="pc">
-          <div class="ph">練習內容</div>
-          <p>以 Loop 處理 20 筆資料，讓 AI 擔任 Cleaner、Decider、Producer——清洗姓名與 Email、判斷路徑、生成中文五言絕句或英文 Poetry、寄出並存庫，最後完成提醒。</p>
-        </div>
-        <div class="pc">
-          <div class="ph">帶走的能力</div>
-          <p>學會批次處理、多筆資料迴圈、AI 決策分流、資料清洗、內容產生、通知與資料留痕的完整鏈條。</p>
-        </div>
-      </div>
-    </div>
+    function filteredReports() {
+      const query = state.query.trim().toLowerCase();
+      return reports.filter((report) => {
+        const categoryMatch = state.category === '全部' || report.category === state.category;
+        const yearMatch = state.year === '全部' || reportYear(report) === state.year;
+        const monthMatch = state.month === '全部' || report.month === state.month;
+        const queryMatch = !query || String(report.search || '').toLowerCase().includes(query);
+        return categoryMatch && yearMatch && monthMatch && queryMatch;
+      });
+    }
 
-    <div class="callout">
-      <div class="ck">Why Project 06 Matters</div>
-      <p>第六個專案讓學員真正進入工研院多數業務會遇到的真實水平：<strong>資料不只一筆、內容不只一種、判斷不只是與否、輸出不只是寄出。</strong>必須在清洗、判斷、分流、生成、寄送、存檔與完工通知之間完成閉環 ——
-        這正是從「會操作工具」走向「能設計流程」的分水嶺。</p>
-    </div>
+    function groupByMonth(items) {
+      return items.reduce((groups, report) => {
+        const key = report.month || '未設定日期';
+        groups[key] = groups[key] || [];
+        groups[key].push(report);
+        return groups;
+      }, {});
+    }
 
-    <div class="pgn">05</div>
-  </div>
+    function renderChips() {
+      const counts = countBy(reports, (report) => report.category);
+      const values = ['全部', ...categories()];
+      nodes.chips.innerHTML = values.map((category) => {
+        const active = category === state.category ? ' is-active' : '';
+        const count = category === '全部' ? reports.length : counts[category] || 0;
+        return `
+          <button class="chip${active}" type="button" data-category="${escapeHtml(category)}" aria-pressed="${category === state.category}">
+            ${escapeHtml(category)}
+            <span class="chip-count">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
 
-  <!-- ============================ PAGE 7 — 04 對接分析 P1 ============================ -->
-  <div class="page" id="p-scn1">
-    <div class="rh"><span>04.0</span><span class="rh-r">WORKFLOW ALIGNMENT</span></div>
+    function renderYearChips() {
+      const counts = countBy(reports, reportYear);
+      const values = ['全部', ...years()];
+      nodes.yearChips.innerHTML = values.map((year) => {
+        const active = year === state.year ? ' is-active' : '';
+        const label = year === '全部' ? '全部年度' : year;
+        const count = year === '全部' ? reports.length : counts[year] || 0;
+        return `
+          <button class="chip${active}" type="button" data-year="${escapeHtml(year)}" aria-pressed="${year === state.year}">
+            ${escapeHtml(label)}
+            <span class="chip-count">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
 
-    <div class="sec">
-      <span class="sn">04</span>
-      <div class="sh">
-        <h2>與現行需求流程的對接分析</h2><span class="en">Workflow Alignment</span>
-      </div>
-    </div>
+    function renderMonthNav() {
+      const source = reportsForMonthNav();
+      const availableMonths = months(source);
+      if (state.month !== '全部' && !availableMonths.includes(state.month)) {
+        state.month = '全部';
+      }
 
-    <p class="lead">依學員單位提供之六張流程圖判讀，六大場景表面不同，本質上都能被重述為同一條骨架：用 Trigger 接案、用欄位結構化整理、用規則或 AI 判斷、用 Action 執行，最後留痕並提醒人員。</p>
+      const counts = countBy(source, (report) => report.month);
+      const values = ['全部', ...availableMonths];
+      nodes.monthNav.innerHTML = values.map((month) => {
+        const active = month === state.month ? ' is-active' : '';
+        const label = month === '全部' ? '全部月份' : month;
+        const count = month === '全部' ? source.length : counts[month] || 0;
+        return `
+          <button class="month-chip${active}" type="button" data-month="${escapeHtml(month)}" aria-pressed="${month === state.month}">
+            ${escapeHtml(label)}
+            <span class="chip-count">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
 
-    <div class="scns">
-      <div class="scn">
-        <div class="st"><span class="sr">Ⅰ</span>
-          <h4>Google Forms 稿件提交與發布流程</h4>
-        </div>
-        <div class="scn-g">
-          <div class="col">
-            <div class="ch">課程已建立能力</div>
-            <p>專案一至四已涵蓋 Trigger、Fixed / Expression、資料表、Email、AI 內容生成與留痕。</p>
+    function renderStats(items) {
+      nodes.generatedAt.textContent = formatGeneratedAt(payload.generatedAt);
+      nodes.totalCount.textContent = reports.length;
+      nodes.latestDate.textContent = reports[0] ? formatDate(reports[0].date) : '--';
+      nodes.categoryCount.textContent = categories().length;
+      nodes.monthCount.textContent = months().length;
+      nodes.resultNote.textContent = items.length === reports.length
+        ? '目前顯示全部報告。'
+        : `目前顯示 ${items.length} / ${reports.length} 份報告。`;
+    }
+
+    function activeFilterTokens() {
+      return [
+        state.query.trim() ? `搜尋：${state.query.trim()}` : '',
+        state.category !== '全部' ? `分類：${state.category}` : '',
+        state.year !== '全部' ? `年度：${state.year}` : '',
+        state.month !== '全部' ? `月份：${state.month}` : ''
+      ].filter(Boolean);
+    }
+
+    function renderActiveFilters() {
+      const tokens = activeFilterTokens();
+      nodes.activeFilters.innerHTML = tokens.map((token) => `<span class="filter-token">${escapeHtml(token)}</span>`).join('');
+      nodes.clearFilters.hidden = tokens.length === 0;
+    }
+
+    function resetFilters() {
+      state.query = '';
+      state.category = '全部';
+      state.year = '全部';
+      state.month = '全部';
+      nodes.search.value = '';
+      renderAll();
+    }
+
+    function renderReport(report) {
+      const parts = dateParts(report.date);
+      const isLatest = report.id === latestReportId;
+      const sideText = [
+        report.client,
+        report.pages ? `${report.pages} pages` : '',
+        report.sizeKb ? `${report.sizeKb} KB` : ''
+      ].filter(Boolean).join(' / ');
+
+      return `
+        <a class="report-card${isLatest ? ' is-latest' : ''}" href="${escapeHtml(report.file)}">
+          <div class="date-block">
+            <span class="date-day">${escapeHtml(parts.day)}</span>
+            <span class="date-month">${escapeHtml(parts.year)}.${escapeHtml(parts.month)}</span>
           </div>
-          <div class="col">
-            <div class="ch">後續銜接方向</div>
-            <p>以表單為入口，先做必填欄位與格式驗證，再自動生成文件、寄送、上傳與備份，最後做提醒與簽核通知。</p>
+          <div class="report-body">
+            <div class="meta">
+              <span>${escapeHtml(report.category)}</span>
+              <span>${escapeHtml(report.period || report.date)}</span>
+              ${isLatest ? '<span class="latest-badge">Latest</span>' : ''}
+            </div>
+            <h2 class="report-title">${escapeHtml(report.title)}</h2>
+            <p class="report-subtitle">${escapeHtml(report.subtitle)}</p>
           </div>
-        </div>
-      </div>
-      <div class="scn">
-        <div class="st"><span class="sr">Ⅱ</span>
-          <h4>Google Drive 素材發布與成效回填</h4>
-        </div>
-        <div class="scn-g">
-          <div class="col">
-            <div class="ch">課程已建立能力</div>
-            <p>專案二、四、六已涵蓋動態值、AI 內容處理、批次處理與資料更新。</p>
+          <div class="report-side">
+            <span>${escapeHtml(sideText)}</span>
+            <span class="open-mark">開啟報告</span>
           </div>
-          <div class="col">
-            <div class="ch">後續銜接方向</div>
-            <p>把素材進件、校對、審核、四平台發布與 21 天成效回收做成一條流水線，降低人工搬運與版本錯亂。</p>
-          </div>
-        </div>
-      </div>
-      <div class="scn">
-        <div class="st"><span class="sr">Ⅲ</span>
-          <h4>記者會專案中樞建立</h4>
-        </div>
-        <div class="scn-g">
-          <div class="col">
-            <div class="ch">課程已建立能力</div>
-            <p>專案一、三、四、六已建立入口、文件內容生成、通知、資料追蹤與多步驟流程能力。</p>
-          </div>
-          <div class="col">
-            <div class="ch">後續銜接方向</div>
-            <p>把專案建立、資料夾生成、稿件模板、受邀名單追蹤與跨部門通知，全部收攏到單一專案主流程。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+        </a>
+      `;
+    }
 
-    <div class="pgn">06</div>
-  </div>
+    function emptyState(title, body, canClear = false) {
+      const action = canClear ? '<button class="inline-clear" type="button" data-clear-filters>清除條件</button>' : '';
+      return `<div class="empty"><strong>${escapeHtml(title)}</strong>${escapeHtml(body)}${action}</div>`;
+    }
 
-  <!-- ============================ PAGE 8 — 04 對接分析 P2 ============================ -->
-  <div class="page" id="p-scn2">
-    <div class="rh"><span>04.1</span><span class="rh-r">WORKFLOW ALIGNMENT</span></div>
+    function renderTimeline() {
+      const items = filteredReports();
+      renderMonthNav();
+      renderStats(items);
+      renderActiveFilters();
 
-    <div class="sec cont">
-      <span class="sn">04</span>
-      <div class="sh">
-        <h2>與現行需求流程的對接分析（續）</h2>
-      </div>
-    </div>
+      if (hasIndexLoadError) {
+        nodes.timeline.innerHTML = emptyState('索引資料尚未建立', '請先執行 npm run build。');
+        nodes.resultNote.textContent = '索引資料缺失。';
+        return;
+      }
 
-    <div class="scns">
-      <div class="scn">
-        <div class="st"><span class="sr">Ⅳ</span>
-          <h4>媒體資料產出與 Pitch</h4>
-        </div>
-        <div class="scn-g">
-          <div class="col">
-            <div class="ch">課程已建立能力</div>
-            <p>專案四與五直接練到 AI 生成、變數設計、分類判斷與規則分層。</p>
-          </div>
-          <div class="col">
-            <div class="ch">後續銜接方向</div>
-            <p>先做缺件提醒，再由 AI 產初稿，人工聚焦校稿與定稿，讓角色從「生產者」轉向「總編輯」。</p>
-          </div>
-        </div>
-      </div>
-      <div class="scn">
-        <div class="st"><span class="sr">Ⅴ</span>
-          <h4>名單抓取、比對與更新</h4>
-        </div>
-        <div class="scn-g">
-          <div class="col">
-            <div class="ch">課程已建立能力</div>
-            <p>專案五與六幾乎是完整對應，尤其是 Cleaner / Decider 的做法。</p>
-          </div>
-          <div class="col">
-            <div class="ch">後續銜接方向</div>
-            <p>把名單更新從散落的人工作業，改成批次清洗、比對與分流的規格化流程。</p>
-          </div>
-        </div>
-      </div>
-      <div class="scn">
-        <div class="st"><span class="sr">Ⅵ</span>
-          <h4>行前通知與客製化寄送</h4>
-        </div>
-        <div class="scn-g">
-          <div class="col">
-            <div class="ch">課程已建立能力</div>
-            <p>專案二、三、六對動態值、多步驟流程、批次處理與內容生成已具雛形。</p>
-          </div>
-          <div class="col">
-            <div class="ch">後續銜接方向</div>
-            <p>把「單一事實來源」落實到資料庫與模板，更新一次即全體同步，避免版本不一致與漏發。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      if (!reports.length) {
+        nodes.timeline.innerHTML = emptyState('目前沒有成果報告', '將 HTML 放進 reports/ 後執行 npm run build。');
+        nodes.resultNote.textContent = '目前沒有可顯示的報告。';
+        return;
+      }
 
-    <div class="callout">
-      <div class="ck">Next Step — Recommendation</div>
-      <p>最值得升級的地方是<strong>「結構化輸出標準化」</strong>。課堂已教會學員把資訊轉成 JSON 並拆成多欄位；下一步建議在正式進資料庫、Google Sheets、Notion 或名單系統的流程上，逐步導入
-        JSON Schema 與 Structured Outputs，讓 AI 不只「大致輸出正確格式」，而是穩定輸出符合欄位規格的資料，降低欄位遺漏、型別錯誤與後續補件成本。</p>
-    </div>
+      if (!items.length) {
+        nodes.timeline.innerHTML = emptyState('沒有符合條件的成果報告', '調整搜尋、分類、年度或月份條件。', true);
+        return;
+      }
 
-    <div class="pgn">07</div>
-  </div>
+      const groups = groupByMonth(items);
+      nodes.timeline.innerHTML = Object.entries(groups).map(([month, group]) => `
+        <section class="month-group">
+          <div class="month-pin">${escapeHtml(month)}</div>
+          ${group.map(renderReport).join('')}
+        </section>
+      `).join('');
+    }
 
-  <!-- ============================ PAGE 9 — 05 整體成效 ============================ -->
-  <div class="page" id="p-eval">
-    <div class="rh"><span>05.0</span><span class="rh-r">OVERALL EVALUATION</span></div>
+    function renderAll() {
+      renderYearChips();
+      renderChips();
+      renderTimeline();
+    }
 
-    <div class="sec">
-      <span class="sn">05</span>
-      <div class="sh">
-        <h2>整體成效與結案評估</h2><span class="en">Overall Effectiveness</span>
-      </div>
-    </div>
+    nodes.search.addEventListener('input', (event) => {
+      state.query = event.target.value;
+      renderTimeline();
+    });
 
-    <p class="lead">綜合課程內容、現場完成率與需求流程對照，本案可歸納出三項實質成果。</p>
+    nodes.chips.addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-category]');
+      if (!button) return;
+      state.category = button.dataset.category;
+      renderAll();
+    });
 
-    <div class="ocs">
-      <div class="oc">
-        <div class="ol">
-          <div class="on">01</div>
-          <h4>建立了共通語言</h4>
-        </div>
-        <div class="od">
-          <p>學員已能用 Fixed、Expression、Trigger、Action、JSON、Edit
-            Field、Loop、清洗、分流、寄送、存檔等語言描述流程。團隊未來討論自動化時，已能直接進入「入口是什麼、欄位怎麼拆、哪裡要判斷、誰來核稿、資料存哪裡」的實作層次。</p>
-        </div>
-      </div>
-      <div class="oc">
-        <div class="ol">
-          <div class="on">02</div>
-          <h4>從單點操作到流程思維</h4>
-        </div>
-        <div class="od">
-          <p>拉水、拉電、砌磚不只是入門比喻，而是有效的拆解法：先學資料流，再學事件與動作，再學結構化。第二天以六個專案反覆驗證，使學員逐漸理解任何流程都能被拆成相似模組。</p>
-        </div>
-      </div>
-      <div class="oc">
-        <div class="ol">
-          <div class="on">03</div>
-          <h4>良好的學習轉移性</h4>
-        </div>
-        <div class="od">
-          <p>僅十小時總時數下，超過八成學員能完成所有 Project，說明難度控制得宜、教學順序符合成人學習節奏。多數學員已具備回到工作現場後「能與同事共同重建流程」的基礎，而非只能在課堂跟做一次。</p>
-        </div>
-      </div>
-    </div>
+    nodes.yearChips.addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-year]');
+      if (!button) return;
+      state.year = button.dataset.year;
+      renderAll();
+    });
 
-    <div class="pgn">08</div>
-  </div>
+    nodes.monthNav.addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-month]');
+      if (!button) return;
+      state.month = button.dataset.month;
+      renderAll();
+    });
 
-  <!-- ============================ PAGE 10 — 06 結語 ============================ -->
-  <div class="page" id="p-conclusion">
-    <div class="rh"><span>06.0</span><span class="rh-r">CONCLUSION</span></div>
+    nodes.clearFilters.addEventListener('click', resetFilters);
 
-    <div class="sec">
-      <span class="sn">06</span>
-      <div class="sh">
-        <h2>結語與參考依據</h2><span class="en">Conclusion &amp; References</span>
-      </div>
-    </div>
+    nodes.timeline.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-clear-filters]')) return;
+      resetFilters();
+    });
 
-    <p class="concl-q">本次課程的成果是——<em>工研院相關團隊已在十小時內建立一套 AI 自動化的共通基礎語言</em>，並能把這套語言對接到自身最迫切的六類工作情境。</p>
-
-    <p class="bd">在生成式 AI 持續推動知識型工作重組之下，課程價值在於讓組織提早完成基礎能力布建；治理面上，課程亦已把人工校稿、主管確認、資料留痕與批次追蹤的觀念帶進來，與 NIST
-      所強調的人機協作、角色責任與文件化管理方向一致。若後續能把專案進一步沉澱為可重複套用的模板、欄位規格與標準流程，本次十小時訓練的效益，將真正轉化為工研院後續流程升級的起點。</p>
-
-    <div class="refs">
-      <div class="rt">參考依據 / Reference Sources</div>
-      <div class="ref">
-        <span class="rn">01</span>
-        <span class="rl"><b>McKinsey</b> — The Economic Potential of Generative AI：生成式 AI 對勞動生產力的增益潛力。</span>
-        <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier"
-          target="_blank" rel="noopener">VIEW ↗</a>
-      </div>
-      <div class="ref">
-        <span class="rn">02</span>
-        <span class="rl"><b>NIST</b> — AI Risk Management Framework：人機協作、角色責任與文件化管理。</span>
-        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">VIEW ↗</a>
-      </div>
-      <div class="ref">
-        <span class="rn">03</span>
-        <span class="rl"><b>OpenAI</b> — Structured Outputs Guide：規則與輸入分層、JSON Schema 約束。</span>
-        <a href="https://platform.openai.com/docs/guides/structured-outputs" target="_blank" rel="noopener">VIEW ↗</a>
-      </div>
-      <div class="ref">
-        <span class="rn">04</span>
-        <span class="rl"><b>n8n Docs</b> — Node Types：Trigger / Action、Expressions、Data Table 等核心模組。</span>
-        <a href="https://docs.n8n.io/integrations/builtin/node-types/" target="_blank" rel="noopener">VIEW ↗</a>
-      </div>
-    </div>
-
-    <div class="sign">
-      <div>
-        <div class="sk">執行單位</div>
-        <div class="sv">努法有限公司</div>
-      </div>
-      <div>
-        <div class="sk">課程</div>
-        <div class="sv">n8n 初階課程與生成式 AI 自動化</div>
-      </div>
-      <div>
-        <div class="sk">報告日期</div>
-        <div class="sv">2026 / 05 / 22</div>
-      </div>
-    </div>
-
-    <div class="pgn">09</div>
-  </div>
-
-  <!-- ============================ PAGE 11 — 0A 附錄 ============================ -->
-  <div class="page" id="p-appendix">
-    <div class="rh"><span>0A.0</span><span class="rh-r">APPENDIX</span></div>
-
-    <div class="sec">
-      <span class="sn">0A</span>
-      <div class="sh">
-        <h2>課程資源｜附錄</h2><span class="en">Appendix — Course Materials</span>
-      </div>
-    </div>
-
-    <p class="lead">本頁彙整課程之可下載資源，供學員於課後自行複習、匯入與對照演練。</p>
-
-    <div class="res">
-      <div class="ri">
-        <div class="rk">附件 01 / n8n Workflow JSON</div>
-        <h4>n8n 專案範例 JSON</h4>
-        <p>課程示範流程的可匯入 JSON 檔。於 n8n 中選擇 Import from File 後，即可逐一對照六個專案的節點配置與資料流。</p>
-      </div>
-      <a class="rgo" href="https://drive.google.com/file/d/11qYmEGJfGvczSp1-1tJ2zaW4nZ8A5ml8/view?usp=sharing"
-        target="_blank" rel="noopener">
-        <span>OPEN<b>↗</b></span>
-      </a>
-    </div>
-
-    <div class="res">
-      <div class="ri">
-        <div class="rk">附件 02 / Course Slides</div>
-        <h4>課程簡報</h4>
-        <p>十小時課程之完整教學投影片（同首頁附件），涵蓋觀念講解。</p>
-      </div>
-      <a class="rgo" href="https://drive.google.com/file/d/1ko-pBF1nHhydwLdQS-oZJo2b6XU0eA8m/view?usp=sharing"
-        target="_blank" rel="noopener">
-        <span>OPEN<b>↗</b></span>
-      </a>
-    </div>
-
-    <div class="res">
-      <div class="ri">
-        <div class="rk">附件 03 / Final Boss Full Build</div>
-        <h4>Final Boss 示範完整製作錄影</h4>
-        <p>課程最後說明 Final Boss 專案時的螢幕錄影，完整記錄從拆解需求、建立節點到完成流程的示範製作過程。</p>
-      </div>
-      <a class="rgo" href="https://youtu.be/sB2cffNkYUA" target="_blank" rel="noopener">
-        <span>OPEN<b>↗</b></span>
-      </a>
-    </div>
-
-    <div class="callout">
-      <div class="ck">建議使用方式</div>
-      <p>建議將<strong>課程簡報</strong>、<strong>專案範例 JSON</strong>與<strong>Final Boss 完整製作錄影</strong>並列使用：先以簡報複習觀念，再把 JSON 匯入 n8n，對照每個專案的 Trigger、Action、Edit
-        Field 與 Loop 設定；最後觀看 Final Boss 錄影，回放完整專案如何從需求拆解一路組成可執行流程。當團隊要把六大需求場景落地時，可直接以這些範例為模板，逐步替換成自身的欄位規格與資料來源。</p>
-    </div>
-
-    <div class="pgn">10</div>
-  </div>
-
+    renderAll();
+  </script>
 </body>
 
 </html>

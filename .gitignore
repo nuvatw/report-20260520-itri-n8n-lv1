@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+home-desktop-check.png
+home-mobile-check.png
+artifacts/qa/*.png

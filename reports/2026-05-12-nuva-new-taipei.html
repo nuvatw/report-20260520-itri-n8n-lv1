@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<!-- report-meta
+{
+  "title": "新北站《回到答案之前》",
+  "subtitle": "2026 全國公益露營車校園巡迴成果報告",
+  "date": "2026-05-12",
+  "period": "2026/05/12",
+  "category": "活動成果",
+  "client": "新北市政府青年局 x nuva",
+  "clientGroup": "政府與公共部門",
+  "timeline": "2026 五月",
+  "tags": ["AI 素養", "青年政策", "校園巡迴", "活動"],
+  "visibility": "public"
+}
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成果報告 — 2026 全國公益露營車校園巡迴｜新北站《回到答案之前》</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-edge:#eef2fb;
+    --desk:#dbe3f0;
+    --ink:#15223f;
+    --ink-s:#454f6b;
+    --ink-faint:#8a93a8;
+    --blue:#1d4ed8;
+    --blue-deep:#12286a;
+    --blue-tint:#eef3fd;
+    --rule:rgba(21,34,63,.16);
+    --rule-soft:rgba(21,34,63,.085);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--desk);
+    font-family:'Noto Sans TC',sans-serif;
+    font-weight:400;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    padding:34px 0;
+  }
+
+  /* ---------- A4 PAGE ---------- */
+  .page{
+    width:210mm;min-height:297mm;
+    background:var(--paper);
+    margin:0 auto 30px;
+    position:relative;
+    padding:21mm 19mm 16mm;
+    box-shadow:0 8px 34px rgba(20,40,90,.18);
+    overflow:hidden;
+  }
+  .page > *{position:relative;z-index:1;}
+
+  /* ---------- RUNNING HEADER / FOOTER ---------- */
+  .rh{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:'Space Mono',monospace;font-size:10px;
+    letter-spacing:.16em;color:var(--blue);
+    padding-bottom:7px;
+  }
+  .rh .rh-r{color:var(--ink-s);letter-spacing:.26em;}
+  .pgn{
+    position:absolute;right:19mm;bottom:14mm;z-index:2;
+    font-family:'Space Mono',monospace;font-size:11px;
+    letter-spacing:.1em;color:var(--ink);
+  }
+  .pgn::before{content:"— ";color:var(--ink-faint);}
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec{
+    display:flex;align-items:flex-start;gap:20px;
+    border-bottom:1.6px solid var(--ink);
+    padding-bottom:13px;margin:54px 0 24px;
+  }
+  .sec .sn{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:34px;line-height:.9;letter-spacing:-.02em;color:var(--blue);
+  }
+  .sec .sh h2{
+    font-family:'Noto Sans TC',sans-serif;font-weight:900;
+    font-size:25px;line-height:1.18;letter-spacing:.01em;
+  }
+  .sec .sh .en{
+    display:block;margin-top:6px;
+    font-family:'Space Mono',monospace;font-size:9.5px;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--ink-s);
+  }
+  .sec.cont{border-bottom-width:1px;margin-top:0;}
+  .sec.cont .sn{font-size:22px;}
+  .sec.cont .sh h2{font-size:16px;font-weight:700;}
+
+  /* ---------- TEXT ---------- */
+  .lead{
+    font-size:15px;line-height:1.95;font-weight:500;
+    padding-left:20px;border-left:3px solid var(--blue);
+    margin:18px 0 6px;
+  }
+  p.bd{font-size:12.7px;line-height:1.95;color:var(--ink-s);margin-top:13px;}
+  p.bd strong,.lead strong{color:var(--ink);font-weight:700;}
+  .kicker{
+    font-family:'Space Mono',monospace;font-size:9.5px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ink-s);
+    margin-top:22px;
+  }
+  .subh{font-size:14px;font-weight:900;letter-spacing:.02em;margin-top:20px;
+    display:flex;align-items:center;gap:9px;}
+  .subh::before{content:"";width:6px;height:6px;background:var(--blue);display:block;}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:30px;
+    border-top:1.6px solid var(--ink);}
+  .stats.tight{margin-top:0;}
+  .stat{padding:20px 22px 16px;border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);}
+  .stat:nth-child(3n){border-right:none;}
+  .stat .sk{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-s);margin-bottom:8px;}
+  .stat .sn-big{
+    font-family:'Archivo',sans-serif;font-weight:800;color:var(--blue);
+    font-size:56px;line-height:.85;letter-spacing:-.03em;
+    display:flex;align-items:baseline;gap:5px;
+  }
+  .stat .sn-big i{font-style:normal;font-size:19px;font-weight:700;color:var(--ink);
+    font-family:'Noto Sans TC';letter-spacing:0;}
+  .stat .sn-big sup{font-size:24px;top:-.5em;}
+  .stat .sn-big.sm{font-size:42px;}
+  .stat .sc{font-size:11px;line-height:1.6;color:var(--ink-s);
+    margin-top:12px;padding-top:10px;border-top:1px solid var(--rule-soft);}
+
+  /* ---------- DAY BLOCKS ---------- */
+  .days{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:24px;
+    border:1.6px solid var(--ink);}
+  .day{padding:22px 24px;}
+  .day:first-child{border-right:1px solid var(--ink);}
+  .day .dk{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.18em;
+    color:var(--ink-s);}
+  .day .dh{font-family:'Archivo',sans-serif;font-weight:800;font-size:40px;
+    line-height:.95;margin:9px 0 2px;letter-spacing:-.03em;color:var(--blue);}
+  .day .dh i{font-style:normal;font-family:'Noto Sans TC';font-size:15px;
+    font-weight:700;color:var(--ink);}
+  .day h4{font-size:16px;font-weight:900;margin:13px 0 6px;letter-spacing:.04em;}
+  .day p{font-size:11.5px;line-height:1.75;color:var(--ink-s);}
+  .day .dl{margin-top:11px;padding-top:11px;border-top:1px solid var(--rule-soft);}
+  .day .dl div{font-size:10.8px;line-height:1.55;color:var(--ink-s);
+    display:flex;gap:9px;margin-bottom:5px;}
+  .day .dl div b{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--blue);
+    white-space:nowrap;font-weight:700;}
+
+  /* ---------- METAPHOR / 3-COL CARDS ---------- */
+  .metas{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;
+    border-top:1.6px solid var(--ink);}
+  .meta{padding:18px 17px 16px;border-right:1px solid var(--rule);}
+  .meta:last-child{border-right:none;}
+  .meta .mk{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-s);}
+  .meta h5{font-size:19px;font-weight:900;margin:7px 0 9px;letter-spacing:.03em;
+    color:var(--blue);line-height:1.25;}
+  .meta h5 small{display:block;font-family:'Space Mono',monospace;font-size:8.5px;
+    letter-spacing:.12em;color:var(--ink-s);font-weight:400;margin-top:4px;}
+  .meta p{font-size:11px;line-height:1.78;color:var(--ink-s);}
+
+  /* ---------- PROJECT ROWS ---------- */
+  .projs{margin-top:20px;border-top:1.6px solid var(--ink);}
+  .proj{display:grid;grid-template-columns:62px 1fr 1fr;
+    border-bottom:1px solid var(--rule);}
+  .proj .pn{padding:17px 0 14px;}
+  .proj .pn .pl{font-family:'Space Mono',monospace;font-size:8px;
+    letter-spacing:.16em;color:var(--ink-s);}
+  .proj .pn .pnum{font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:38px;line-height:.9;letter-spacing:-.03em;color:var(--blue);}
+  .proj .pc{padding:17px 22px 15px 6px;border-right:1px solid var(--rule);}
+  .proj .pc:last-child{border-right:none;padding-right:0;padding-left:22px;}
+  .proj .ph{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink);margin-bottom:7px;
+    display:flex;align-items:center;gap:6px;}
+  .proj .ph::before{content:"";width:5px;height:5px;background:var(--blue);display:block;}
+  .proj .pc:last-child .ph::before{background:transparent;border:1px solid var(--blue);}
+  .proj .pc p{font-size:11.6px;line-height:1.74;color:var(--ink-s);}
+
+  /* ---------- INVERTED CALLOUT ---------- */
+  .callout{background:var(--blue-deep);color:#fff;
+    padding:24px 28px;margin-top:22px;}
+  .callout .ck{font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.24em;text-transform:uppercase;
+    color:var(--paper-edge);margin-bottom:11px;
+    display:flex;align-items:center;gap:9px;}
+  .callout .ck::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.28);}
+  .callout p{font-size:12.6px;line-height:1.92;color:#d6e0f7;}
+  .callout p strong{color:#fff;font-weight:700;}
+  .callout .cq{font-size:17px;font-weight:900;line-height:1.6;color:#fff;}
+
+  /* ---------- OUTCOMES ---------- */
+  .ocs{margin-top:22px;border-top:1.6px solid var(--ink);}
+  .oc{display:grid;grid-template-columns:206px 1fr;gap:26px;
+    padding:20px 0;border-bottom:1px solid var(--rule);}
+  .oc .ol{display:flex;flex-direction:column;}
+  .oc .on{font-family:'Archivo',sans-serif;font-weight:800;font-size:38px;
+    line-height:.9;letter-spacing:-.03em;color:var(--blue);margin-bottom:11px;}
+  .oc h4{font-size:16px;font-weight:900;letter-spacing:.02em;line-height:1.4;}
+  .oc .od{display:flex;align-items:center;border-left:1px solid var(--rule);
+    padding-left:26px;}
+  .oc .od p{font-size:12px;line-height:1.85;color:var(--ink-s);}
+
+  /* ---------- REFERENCES / MEDIA LIST ---------- */
+  .refs{margin-top:18px;border-top:1.6px solid var(--ink);padding-top:14px;}
+  .refs .rt{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-s);margin-bottom:6px;}
+  .ref{display:grid;grid-template-columns:24px 1fr auto;gap:12px;
+    padding:8px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline;}
+  .ref .rn{font-family:'Space Mono',monospace;font-size:10px;color:var(--blue);}
+  .ref .rl{font-size:11.4px;line-height:1.5;}
+  .ref .rl b{font-weight:700;}
+  .ref .rl em{font-style:normal;color:var(--ink-s);}
+  .ref a{color:var(--blue);text-decoration:none;
+    font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.1em;
+    border:1px solid var(--blue);padding:4px 8px;white-space:nowrap;
+    transition:.18s;}
+  .ref a:hover{background:var(--blue);color:#fff;}
+
+  /* ---------- SIGN ---------- */
+  .sign{display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--rule);margin-top:22px;}
+  .sign div{padding:16px 18px 0;border-right:1px solid var(--rule);}
+  .sign div:last-child{border-right:none;}
+  .sign .sk{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-s);margin-bottom:6px;}
+  .sign .sv{font-size:13px;font-weight:700;}
+
+  /* ================= COVER ================= */
+  .cover{display:flex;flex-direction:column;}
+  .cover .ctop{display:flex;justify-content:space-between;align-items:baseline;
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;
+    border-bottom:1.6px solid var(--ink);padding-bottom:9px;color:var(--blue);}
+  .cover .ctop .r{color:var(--ink-s);}
+  .cover .cmid{flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:5mm 0;}
+  .cover .ceye{font-family:'Space Mono',monospace;font-size:11px;
+    letter-spacing:.18em;color:var(--blue);
+    border:1.5px solid var(--blue);display:inline-block;align-self:flex-start;
+    padding:7px 14px;margin-bottom:24px;}
+  .cover h1{font-family:'Noto Sans TC',sans-serif;font-weight:900;
+    font-size:78px;line-height:1.06;letter-spacing:.01em;color:var(--ink);}
+  .cover .crule{height:3px;background:var(--blue);margin:22px 0 16px;}
+  .cover .csub{font-size:18px;font-weight:500;letter-spacing:.02em;line-height:1.6;}
+  .cover .csub b{font-weight:900;color:var(--blue);}
+  .cover .cslogan{font-size:14px;font-weight:700;color:var(--ink-s);margin-top:14px;
+    line-height:1.7;}
+  .cover .cyear{font-family:'Archivo',sans-serif;font-weight:900;
+    font-size:21px;letter-spacing:-.01em;margin-top:24px;color:var(--blue);}
+  .cmeta{display:grid;grid-template-columns:repeat(3,1fr);
+    border:1.6px solid var(--ink);margin-bottom:14px;}
+  .cmeta div{padding:15px 17px;border-right:1px solid var(--ink);}
+  .cmeta div:last-child{border-right:none;}
+  .cmeta .mk{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--blue);margin-bottom:7px;}
+  .cmeta .mv{font-size:13.5px;font-weight:900;line-height:1.4;}
+  .cmeta .mv small{display:block;font-weight:400;font-size:10.5px;
+    color:var(--ink-s);margin-top:4px;line-height:1.6;}
+  .cnums{display:grid;grid-template-columns:repeat(3,1fr);
+    border:1.6px solid var(--ink);}
+  .cnum{padding:16px 18px;border-right:1px solid var(--ink);}
+  .cnum:last-child{border-right:none;}
+  .cnum .ck{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-s);margin-bottom:6px;}
+  .cnum .cv{font-family:'Archivo',sans-serif;font-weight:800;font-size:42px;
+    line-height:.85;letter-spacing:-.03em;color:var(--blue);
+    display:flex;align-items:baseline;gap:3px;}
+  .cnum .cv i{font-style:normal;font-size:14px;font-weight:700;color:var(--ink);
+    font-family:'Noto Sans TC';}
+
+  /* ---------- IMAGE PLACEHOLDER ---------- */
+  .imgph{border:1.5px dashed rgba(29,78,216,.45);background:var(--blue-tint);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:26px 20px;}
+  .imgph .ii{width:30px;height:30px;border:1.6px solid var(--blue);
+    display:flex;align-items:center;justify-content:center;margin-bottom:11px;}
+  .imgph .ii::before{content:"";width:13px;height:13px;
+    border:1.6px solid var(--blue);border-radius:50%;}
+  .imgph .ik{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--blue);}
+  .imgph .it{font-size:11.5px;color:var(--ink-s);margin-top:6px;line-height:1.6;}
+
+  /* ---------- TOC ---------- */
+  .toc-head{font-family:'Space Mono',monospace;letter-spacing:.16em;
+    font-size:10px;display:flex;justify-content:space-between;color:var(--blue);
+    border-bottom:1px solid var(--rule);padding-bottom:8px;}
+  .toc{margin-top:40px;}
+  .toc-row{display:grid;grid-template-columns:268px 1fr;gap:24px;
+    margin-bottom:20px;}
+  .toc-l{display:flex;gap:16px;}
+  .toc-l .tn{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;
+    letter-spacing:-.02em;line-height:1.15;color:var(--blue);}
+  .toc-l .tt{font-family:'Noto Sans TC';font-weight:900;font-size:18px;
+    line-height:1.2;letter-spacing:.01em;}
+  .toc-l .tt .te{display:block;font-family:'Space Mono',monospace;
+    font-size:8.5px;letter-spacing:.2em;color:var(--ink-s);
+    font-weight:400;margin-top:6px;}
+  .toc-r{display:flex;flex-direction:column;}
+  .toc-sub{display:grid;grid-template-columns:58px 1fr 34px;gap:10px;
+    align-items:baseline;padding:8px 0 7px;
+    border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);
+    transition:.16s;}
+  .toc-sub:hover{padding-left:8px;background:var(--blue-tint);}
+  .toc-sub .ts-c{font-family:'Space Mono',monospace;font-size:10px;
+    color:var(--blue);}
+  .toc-sub .ts-t{font-family:'Space Mono',monospace;font-size:10.5px;
+    letter-spacing:.05em;text-transform:uppercase;}
+  .toc-sub .ts-p{font-family:'Space Mono',monospace;font-size:10.5px;
+    text-align:right;}
+  .toc-note{margin-top:24px;font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.1em;color:var(--ink-s);line-height:1.8;
+    border-top:1px solid var(--rule);padding-top:12px;}
+
+  /* ---------- BACKGROUND QUESTIONS ---------- */
+  .qbox{display:grid;grid-template-columns:1.05fr 1fr;margin-top:24px;
+    border:1.6px solid var(--ink);}
+  .qbox .ql{padding:30px 26px;background:var(--blue-deep);color:#fff;
+    display:flex;flex-direction:column;justify-content:center;}
+  .qbox .ql .qk{font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.22em;color:var(--paper-edge);margin-bottom:14px;}
+  .qbox .ql h3{font-size:24px;font-weight:900;line-height:1.45;letter-spacing:.01em;}
+  .qbox .ql h3 b{color:#7aa6ff;}
+  .qbox .qr{padding:24px 26px;display:flex;flex-direction:column;
+    justify-content:center;gap:0;}
+  .qbox .qr .qi{padding:15px 0;border-bottom:1px solid var(--rule);}
+  .qbox .qr .qi:last-child{border-bottom:none;}
+  .qbox .qr .qi span{font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.16em;color:var(--blue);}
+  .qbox .qr .qi p{font-size:17px;font-weight:900;margin-top:6px;letter-spacing:.02em;}
+
+  /* ---------- TOUR TIMELINE ---------- */
+  .tour{display:flex;margin-top:24px;border:1.6px solid var(--ink);}
+  .tstop{flex:1;padding:16px 4px;text-align:center;
+    border-right:1px solid var(--rule);}
+  .tstop:last-child{border-right:none;}
+  .tstop .tc{font-family:'Space Mono',monospace;font-size:8px;
+    letter-spacing:.06em;color:var(--ink-faint);}
+  .tstop .tname{font-size:12px;font-weight:900;margin-top:7px;}
+  .tstop.now{background:var(--blue-deep);}
+  .tstop.now .tc{color:#9bb8ff;}
+  .tstop.now .tname{color:#fff;}
+  .tstop.now .tdot{margin:6px auto 0;width:6px;height:6px;background:#7aa6ff;
+    border-radius:50%;}
+
+  /* ---------- RESPONSE / ANSWER ---------- */
+  .ra{display:grid;grid-template-columns:1fr 86px 1fr;margin-top:24px;
+    border:1.6px solid var(--ink);}
+  .ra .rac{padding:24px 24px 22px;}
+  .ra .rac.r2{background:var(--blue-deep);color:#fff;}
+  .ra .rac .rak{font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.2em;color:var(--ink-s);}
+  .ra .rac.r2 .rak{color:#9bb8ff;}
+  .ra .rac h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;
+    letter-spacing:-.01em;margin:8px 0 12px;color:var(--blue);}
+  .ra .rac.r2 h3{color:#fff;}
+  .ra .rac .raw{font-size:13px;font-weight:900;margin-bottom:8px;}
+  .ra .rac p{font-size:11.3px;line-height:1.78;color:var(--ink-s);}
+  .ra .rac.r2 p{color:#c7d4f0;}
+  .ra .ramid{background:var(--blue);color:#fff;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+  .ra .ramid .ja{font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;}
+  .ra .ramid .jt{font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.12em;writing-mode:vertical-rl;}
+
+  /* ---------- 4-COL MINDSET ---------- */
+  .minds{display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px;
+    border-top:1.6px solid var(--ink);}
+  .mind{padding:16px 13px 14px;border-right:1px solid var(--rule);}
+  .mind:last-child{border-right:none;}
+  .mind .mn{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;
+    color:var(--blue);line-height:.9;}
+  .mind h5{font-size:13px;font-weight:900;margin:9px 0 3px;letter-spacing:.02em;}
+  .mind .me{font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:7px;}
+  .mind p{font-size:10.3px;line-height:1.7;color:var(--ink-s);}
+
+  /* ---------- FUNNEL ---------- */
+  .funnel{margin-top:22px;display:flex;flex-direction:column;align-items:center;
+    border-top:1.6px solid var(--ink);padding-top:24px;}
+  .frow{text-align:center;color:#fff;background:var(--blue-deep);
+    padding:14px 20px;}
+  .frow.f1{width:100%;background:var(--blue);}
+  .frow.f2{width:80%;}
+  .frow.f3{width:60%;background:#1b357f;}
+  .frow.f4{width:42%;background:#24438f;}
+  .frow .fk{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.16em;
+    color:#9bb8ff;}
+  .frow .ft{font-size:13px;font-weight:900;margin-top:4px;}
+  .farrow{color:var(--blue);font-size:14px;font-weight:800;margin:5px 0;
+    font-family:'Archivo';}
+
+  /* ---------- RATIO ---------- */
+  .ratio{display:flex;margin-top:24px;border:1.6px solid var(--ink);}
+  .rseg{padding:26px 24px;display:flex;flex-direction:column;justify-content:center;}
+  .rseg.s1{flex:1;}
+  .rseg.s2{flex:2;background:var(--blue-deep);color:#fff;
+    border-left:1.6px solid var(--ink);}
+  .rseg .rsk{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-s);}
+  .rseg.s2 .rsk{color:#9bb8ff;}
+  .rseg .rsf{font-family:'Archivo',sans-serif;font-weight:800;font-size:46px;
+    line-height:.9;letter-spacing:-.02em;color:var(--blue);margin:8px 0 4px;}
+  .rseg.s2 .rsf{color:#fff;}
+  .rseg .rsn{font-size:14px;font-weight:900;margin-bottom:7px;}
+  .rseg p{font-size:10.8px;line-height:1.7;color:var(--ink-s);}
+  .rseg.s2 p{color:#c7d4f0;}
+
+  /* ---------- POLICY 2x2 ---------- */
+  .pols{display:grid;grid-template-columns:1fr 1fr;margin-top:22px;
+    border-top:1.6px solid var(--ink);}
+  .pol{padding:19px 22px;border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);}
+  .pol:nth-child(2n){border-right:none;}
+  .pol .pk{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-s);}
+  .pol h5{font-size:15px;font-weight:900;margin:7px 0 8px;letter-spacing:.02em;
+    color:var(--blue);}
+  .pol p{font-size:11px;line-height:1.78;color:var(--ink-s);}
+
+  /* ---------- FLOW STRIP ---------- */
+  .flowstrip{display:flex;align-items:stretch;margin-top:20px;
+    border:1.6px solid var(--ink);}
+  .fstep{flex:1;padding:14px 8px;text-align:center;
+    border-right:1px solid var(--rule);}
+  .fstep:last-child{border-right:none;}
+  .fstep .fsn{font-family:'Space Mono',monospace;font-size:8px;color:var(--blue);}
+  .fstep .fst{font-size:12.5px;font-weight:900;margin-top:5px;}
+
+  /* ---------- conclusion big quote ---------- */
+  .concl-q{font-size:20px;font-weight:900;line-height:1.6;letter-spacing:.01em;
+    margin:22px 0 16px;}
+  .concl-q em{font-style:normal;background:var(--blue);color:#fff;
+    padding:1px 7px;}
+
+  /* ---------- PHOTO WALL ---------- */
+  .wall{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;}
+  .wall .imgph{min-height:150px;}
+  .wall .imgph.wide{grid-column:1 / -1;min-height:120px;}
+
+  /* ---------- PRINT BUTTON ---------- */
+  .printbtn{position:fixed;right:26px;bottom:26px;z-index:99;
+    background:var(--blue);color:#fff;border:none;cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;
+    padding:15px 22px;box-shadow:0 8px 26px rgba(29,78,216,.4);
+    display:flex;align-items:center;gap:9px;transition:.2s;}
+  .printbtn:hover{background:var(--blue-deep);transform:translateY(-2px);}
+  .printbtn svg{width:15px;height:15px;}
+
+  *[id]{scroll-margin-top:24px;}
+
+  /* ================= PRINT ================= */
+  @page{size:A4;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .printbtn{display:none;}
+    .page{margin:0;box-shadow:none;width:210mm;min-height:297mm;
+      break-after:page;}
+    .page:last-of-type{break-after:auto;}
+    .proj,.oc,.day,.callout,.ref,.toc-row,.stat,.meta,.mind,.pol{break-inside:avoid;}
+    .callout,.cmeta,.cnums,.days,.ref a,.concl-q em,.sec,.stats,.projs,.ocs,
+    .qbox,.tour,.ra,.minds,.funnel,.ratio,.pols,.flowstrip,.imgph,.frow{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+  @media screen and (max-width:880px){
+    body{padding:14px 0;}
+    .page{transform:scale(.62);transform-origin:top center;
+      margin-bottom:calc(-297mm * 0.38 + 18px);}
+  }
+</style>
+</head>
+<body>
+
+<button class="printbtn" onclick="window.print()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+  下載 PDF
+</button>
+
+<!-- ============================ COVER ============================ -->
+<div class="page cover" id="cover">
+  <div class="ctop">
+    <span>00 &nbsp;—&nbsp; 活動成果報告</span>
+    <span class="r">新北&nbsp;/&nbsp;2026&nbsp;·&nbsp;05&nbsp;·&nbsp;12</span>
+  </div>
+
+  <div class="cmid">
+    <span class="ceye">nuva &nbsp;×&nbsp; 新北市政府青年局</span>
+    <h1>新北站<br>成果報告</h1>
+    <div class="crule"></div>
+    <p class="csub">2026 全國公益露營車校園巡迴｜新北站<br><b>《回到答案之前》</b></p>
+    <p class="cslogan">AI 越會回答問題，青年越需要學會判斷答案。</p>
+    <div class="cyear">天主教輔仁大學　／　2026.05.12</div>
+  </div>
+
+  <div class="cmeta">
+    <div>
+      <div class="mk">共同主辦</div>
+      <div class="mv">新北市政府青年局<small>共同推廣　天主教輔仁大學</small></div>
+    </div>
+    <div>
+      <div class="mk">活動日期</div>
+      <div class="mv">2026 / 05 / 12<small>上午　職涯體驗站<br>下午　專題演講暨對談</small></div>
+    </div>
+    <div>
+      <div class="mk">執行單位</div>
+      <div class="mv">nuva｜努法有限公司<small>輔大國璽樓二樓<br>國際會議廳 MD227</small></div>
+    </div>
+  </div>
+
+  <div class="cnums">
+    <div class="cnum">
+      <div class="ck">全國巡演總報名</div>
+      <div class="cv">1,555<i>人</i></div>
+    </div>
+    <div class="cnum">
+      <div class="ck">新北場報名</div>
+      <div class="cv">108<i>人</i></div>
+    </div>
+    <div class="cnum">
+      <div class="ck">社群影片曝光</div>
+      <div class="cv">1.6<i>萬+ 人次</i></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ TOC ============================ -->
+<div class="page" id="toc">
+  <div class="toc-head"><span>00.0</span><span>目錄</span></div>
+
+  <div class="toc">
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">01</span>
+        <span class="tt">報告摘要與<br>關鍵指標</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-summary"><span class="ts-c">01.1 /</span><span class="ts-t">報告摘要</span><span class="ts-p">02</span></a>
+        <a class="toc-sub" href="#p-metrics"><span class="ts-c">01.2 /</span><span class="ts-t">關鍵指標</span><span class="ts-p">03</span></a>
+      </div>
+    </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">02</span>
+        <span class="tt">活動背景與<br>巡演脈絡</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-bg"><span class="ts-c">02.1 /</span><span class="ts-t">活動背景</span><span class="ts-p">04</span></a>
+        <a class="toc-sub" href="#p-tour"><span class="ts-c">02.2 /</span><span class="ts-t">全國巡演脈絡</span><span class="ts-p">05</span></a>
+        <a class="toc-sub" href="#p-pos"><span class="ts-c">02.3 /</span><span class="ts-t">新北站定位</span><span class="ts-p">06</span></a>
+      </div>
+    </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">03</span>
+        <span class="tt">活動執行與<br>參與成果</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-flow"><span class="ts-c">03.1 /</span><span class="ts-t">活動流程</span><span class="ts-p">07</span></a>
+        <a class="toc-sub" href="#p-reach"><span class="ts-c">03.2 /</span><span class="ts-t">現場與線上參與成果</span><span class="ts-p">08</span></a>
+      </div>
+    </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">04</span>
+        <span class="tt">內容成果與<br>判斷力框架</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-talk"><span class="ts-c">04.1 /</span><span class="ts-t">演講內容摘要</span><span class="ts-p">09</span></a>
+        <a class="toc-sub" href="#p-frame"><span class="ts-c">04.2 /</span><span class="ts-t">AI 判斷力學習框架</span><span class="ts-p">10</span></a>
+        <a class="toc-sub" href="#p-panel"><span class="ts-c">04.3 /</span><span class="ts-t">專家對談成果</span><span class="ts-p">11</span></a>
+      </div>
+    </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">05</span>
+        <span class="tt">資源導入與<br>觸及分析</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-res"><span class="ts-c">05.1 /</span><span class="ts-t">青年局資源導入</span><span class="ts-p">12</span></a>
+        <a class="toc-sub" href="#p-aud"><span class="ts-c">05.2 /</span><span class="ts-t">參與者組成與觸及</span><span class="ts-p">13</span></a>
+        <a class="toc-sub" href="#p-sdg"><span class="ts-c">05.3 /</span><span class="ts-t">政策與永續目標對接</span><span class="ts-p">14</span></a>
+        <a class="toc-sub" href="#p-media"><span class="ts-c">05.4 /</span><span class="ts-t">媒體與社群曝光</span><span class="ts-p">15</span></a>
+      </div>
+    </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">06</span>
+        <span class="tt">成效評估與<br>後續建議</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-eval"><span class="ts-c">06.1 /</span><span class="ts-t">整體成效評估</span><span class="ts-p">16</span></a>
+        <a class="toc-sub" href="#p-next"><span class="ts-c">06.2 /</span><span class="ts-t">後續建議</span><span class="ts-p">17</span></a>
+      </div>
+    </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">07</span>
+        <span class="tt">結語與<br>參考依據</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-concl"><span class="ts-c">07.1 /</span><span class="ts-t">結語與參考依據</span><span class="ts-p">18</span></a>
+        <a class="toc-sub" href="#p-appendix"><span class="ts-c">0A.1 /</span><span class="ts-t">附錄 — 活動照片</span><span class="ts-p">19</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc-note">
+    全文共 19 頁 ／ A4 規格 ／ 點擊任一目錄項目可跳轉對應頁面 ／ 右下角可下載 PDF
+  </div>
+  <div class="pgn">01</div>
+</div>
+
+<!-- ============================ 01 報告摘要 ============================ -->
+<div class="page" id="p-summary">
+  <div class="rh"><span>01.0</span><span class="rh-r">報告摘要</span></div>
+
+  <div class="sec">
+    <span class="sn">01</span>
+    <div class="sh"><h2>報告摘要</h2></div>
+  </div>
+
+  <p class="lead">本報告完整留存「2026 年全國公益露營車校園巡迴｜新北站《回到答案之前》」之執行成果，呈現本案如何透過 AI 議題、職涯探索與青年資源導入，協助青年重新理解 AI 時代所需要的核心能力。</p>
+
+  <p class="bd">本活動由新北市政府青年局共同主辦，nuva 擔任執行單位，並由天主教輔仁大學共同推廣。活動於 2026 年 5 月 12 日在輔仁大學舉行，分為上午「職涯體驗站」與下午「專題演講暨專家對談」兩大段落，目的在於引導青年在 AI 時代不只學會使用工具，更培養獨立思考、精準提問與判斷能力。</p>
+
+  <p class="bd">本案的核心價值，不在於教青年追逐更多 AI 工具，而是把問題拉回更根本的層次：<strong>當 AI 越來越能快速產出回答，青年真正需要建立的能力，是判斷回答是否可信、是否合適、是否能成為負責任的答案。</strong>本次新北站共累積 108 位報名者、48 位現場參與者、211 位直播觀看者，並透過社群影片創造 1.6 萬人次曝光；參與者約三分之一為學生、三分之二為社會人士。</p>
+
+  <p class="kicker">本案三項核心成果</p>
+
+  <div class="ocs">
+    <div class="oc">
+      <div class="ol"><div class="on">01</div><h4>將 AI 素養議題<br>帶入青年職涯場域</h4></div>
+      <div class="od"><p>活動不只討論生成式 AI 工具應用，而是聚焦 AI 生成內容的邏輯、限制、查證與判讀，使青年能從「使用者」進一步成為「判斷者」。</p></div>
+    </div>
+    <div class="oc">
+      <div class="ol"><div class="on">02</div><h4>建立新北青年局與<br>青年的資源接觸點</h4></div>
+      <div class="od"><p>現場安排新北市青年局資源站，並於下午設有「新北有課 UKO」資源分享，使青年在參與 AI 議題的同時，看見職涯諮詢、培力課程與實習體驗等後續支持。</p></div>
+    </div>
+    <div class="oc">
+      <div class="ol"><div class="on">03</div><h4>形成可複製的<br>跨域合作模式</h4></div>
+      <div class="od"><p>本案整合政府青年政策、AI 教育品牌與大學場域，建立「青年局 × AI 教育 × 校園推廣」合作模型，可作為未來推動數位素養與職涯探索活動之參考。</p></div>
+    </div>
+  </div>
+
+  <div class="pgn">02</div>
+</div>
+
+<!-- ============================ 02 關鍵指標 ============================ -->
+<div class="page" id="p-metrics">
+  <div class="rh"><span>01.1</span><span class="rh-r">關鍵指標</span></div>
+
+  <div class="sec">
+    <span class="sn">02</span>
+    <div class="sh"><h2>關鍵指標</h2></div>
+  </div>
+
+  <p class="lead">本次成果統計依據活動執行資料、報名紀錄、直播觀看數與社群曝光數整理，以「青年觸及、內容參與、線上延伸與社群擴散」四個面向呈現。</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="sk">全國巡演總報名</div>
+      <div class="sn-big">1,555<i>人</i></div>
+      <div class="sc">全台巡演累積報名人數。露營車於 2026/05/04–05/15 巡迴台中、嘉義、高雄、臺東、花蓮、臺北、新北、桃園、新竹、苗栗。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">新北場報名</div>
+      <div class="sn-big">108<i>人</i></div>
+      <div class="sc">新北場報名人數。由青年局、nuva 與輔仁大學共同推廣，吸引對 AI 應用、職涯探索與思辨能力有興趣的青年參與。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">社群曝光</div>
+      <div class="sn-big">1.6<sup>萬+</sup></div>
+      <div class="sc">社群影片曝光人次。活動後透過社群影音持續擴散，使成果轉化為更長尾的青年觸及與議題傳播。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">現場參與人數</div>
+      <div class="sn-big sm">48<i>人</i></div>
+      <div class="sc">現場實體參與人數，以深度參與為主，完整接收講座內容、現場提問與青年局資源資訊。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">直播觀看人數</div>
+      <div class="sn-big sm">211<i>人</i></div>
+      <div class="sc">當日線上直播觀看人數。直播補足實體空間與時間限制，擴大議題觸及範圍。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">最高同時在線</div>
+      <div class="sn-big sm">12<i>人</i></div>
+      <div class="sc">直播最高同時在線人數，顯示活動內容具備直播、短影音切片與課後內容再利用之基礎。</div>
+    </div>
+  </div>
+
+  <p class="bd">綜觀六項指標，最具代表性的三個數字為 <strong>全國報名 1,555 人、新北報名 108 人與社群曝光 1.6 萬+ 人次</strong>。三者分別對應「巡演規模」「在地號召力」與「議題擴散力」，共同說明本案不只是單場活動，而是一個能在現場、線上與社群三軌同時運作的青年議題行動。</p>
+
+  <div class="pgn">03</div>
+</div>
+
+<!-- ============================ 03 活動背景 ============================ -->
+<div class="page" id="p-bg">
+  <div class="rh"><span>02.0</span><span class="rh-r">活動背景</span></div>
+
+  <div class="sec">
+    <span class="sn">03</span>
+    <div class="sh"><h2>活動背景</h2></div>
+  </div>
+
+  <p class="lead">AI 工具快速普及之後，青年面對的問題已不再只是「會不會使用 AI」，而是「能不能判斷 AI 產出的內容是否可靠、是否適合、是否值得採用」。</p>
+
+  <p class="bd">媒體對本活動的報導亦指出，若問題設定不清或來源未經比對，生成內容仍可能把錯誤包裝成看似合理的答案，影響後續選擇。因此，本活動以《回到答案之前》為主題，將焦點放在「答案產生之前」的能力：如何定義問題、如何提出更精準的問題、如何辨識資訊來源、如何理解 AI 的限制，以及如何在 AI 輔助下保有人的判斷、品味與責任感。</p>
+
+  <p class="bd">在國際脈絡中，<strong>永續發展目標</strong>強調確保包容與公平的優質教育並促進終身學習；<strong>聯合國教科文組織學生 AI 能力框架</strong>也指出，學生不只需要理解 AI 技術與應用，更需要以人本、倫理與社會脈絡理解 AI 如何與人互動。本案正回應這樣的時代需求，透過校園場域與有溫度的活動形式，把 AI 素養、判斷力與職涯探索整合成可理解、可參與、可延伸的公共學習活動。</p>
+
+  <div class="qbox">
+    <div class="ql">
+      <div class="qk">核心命題</div>
+      <h3>AI 給出 <b>回應</b>，<br>不代表青年得到 <b>答案</b>。</h3>
+    </div>
+    <div class="qr">
+      <div class="qi"><span>提問一</span><p>這是真的嗎？</p></div>
+      <div class="qi"><span>提問二</span><p>這適合我嗎？</p></div>
+      <div class="qi"><span>提問三</span><p>我願意為這個答案負責嗎？</p></div>
+    </div>
+  </div>
+
+  <p class="bd">當 AI 生成速度越快，青年越需要慢下來，學會在回答之前判斷問題，在答案之前看見自己。這是《回到答案之前》貫穿全案的核心命題，也是新北站希望帶給每一位參與青年的提問習慣。</p>
+
+  <div class="pgn">04</div>
+</div>
+
+<!-- ============================ 04 全國巡演脈絡 ============================ -->
+<div class="page" id="p-tour">
+  <div class="rh"><span>02.1</span><span class="rh-r">全國巡演脈絡</span></div>
+
+  <div class="sec">
+    <span class="sn">04</span>
+    <div class="sh"><h2>全國巡演脈絡</h2></div>
+  </div>
+
+  <p class="lead">2026 nuva 全國巡演於 2026/05/04–05/15 以露營車巡迴形式走進全台多個城市，主題為「AI 時代下，我們究竟需要什麼樣的人才？」</p>
+
+  <div class="tour">
+    <div class="tstop"><div class="tc">05.04</div><div class="tname">台中</div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">嘉義</div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">高雄</div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">臺東</div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">花蓮</div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">臺北</div></div>
+    <div class="tstop now"><div class="tc">05.12</div><div class="tname">新北</div><div class="tdot"></div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">桃園</div></div>
+    <div class="tstop"><div class="tc">—</div><div class="tname">新竹</div></div>
+    <div class="tstop"><div class="tc">05.15</div><div class="tname">苗栗</div></div>
+  </div>
+  <p class="bd" style="margin-top:9px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:var(--blue);">新北｜05.12｜天主教輔仁大學</p>
+
+  <p class="bd">全國巡演的設計，不只是將同一場演講移動到不同城市，而是透過「露營車」作為移動式學習場域，把 AI 議題帶到青年所在的地方。這種形式具有三層意義。</p>
+
+  <div class="metas">
+    <div class="meta">
+      <div class="mk">意義一</div>
+      <h5>降低參與門檻</h5>
+      <p>活動以免費報名方式開放，不限學生身份。公開活動常見問答亦說明，不懂 AI、非資訊相關科系、非學生者都可以參加。</p>
+    </div>
+    <div class="meta">
+      <div class="mk">意義二</div>
+      <h5>帶出專業圈</h5>
+      <p>AI 不再只是工程師或科技產業的專門議題，而是每位青年在學習、求職、創作、決策與生活中都會遇到的基本能力。</p>
+    </div>
+    <div class="meta">
+      <div class="mk">意義三</div>
+      <h5>連結在地政策</h5>
+      <p>新北站透過新北市青年局共同主辦，使全國巡演不只是品牌活動，也成為地方青年政策與校園青年之間的接觸平台。</p>
+    </div>
+  </div>
+
+  <p class="bd">在巡演路線中，新北站承接臺北場後的北部青年議題能量，並透過輔仁大學校園場域，使活動同時觸及學生與社會青年。</p>
+
+  <div class="pgn">05</div>
+</div>
+
+<!-- ============================ 05 新北站定位 ============================ -->
+<div class="page" id="p-pos">
+  <div class="rh"><span>02.2</span><span class="rh-r">新北站定位</span></div>
+
+  <div class="sec">
+    <span class="sn">05</span>
+    <div class="sh"><h2>新北站定位</h2></div>
+  </div>
+
+  <p class="lead">本次新北站為「新北市青年局 × nuva × 輔仁大學」三方協力推動的青年 AI 素養與職涯探索活動。</p>
+
+  <div class="metas">
+    <div class="meta">
+      <div class="mk">共同主辦</div>
+      <h5>新北市政府青年局<small>青年政策資源</small></h5>
+      <p>作為共同主辦單位，將青年政策資源帶入活動現場。現場設有資源站，提供「新北有課 UKO」培力課程、職涯諮詢及實習體驗等免費資源，協助青年從校園銜接職場。</p>
+    </div>
+    <div class="meta">
+      <div class="mk">執行單位</div>
+      <h5>nuva｜努法<small>AI 教育品牌</small></h5>
+      <p>擔任活動執行單位，負責巡演策劃、內容設計、演講執行與社群擴散。以故事化、遊戲化的互動學習體驗，讓零程式背景學習者也能掌握生成式 AI 工具。</p>
+    </div>
+    <div class="meta">
+      <div class="mk">共同推廣</div>
+      <h5>天主教輔仁大學<small>校園推廣場域</small></h5>
+      <p>作為共同推廣單位，提供校園場域與青年觸點。下午場專題演講於輔仁大學國璽樓二樓國際會議廳 MD227 舉行。</p>
+    </div>
+  </div>
+
+  <p class="bd">三方分工清楚：青年局帶來政策資源與青年支持，nuva 提供 AI 教育內容與巡演執行，輔仁大學提供校園場域與青年觸點。三者結合，使「AI 時代需要什麼人才」這個問題，能被帶到青年真正會做選擇的地方。</p>
+
+  <div class="callout">
+    <div class="ck">新北站定位</div>
+    <p class="cq">新北站不是單一 AI 講座，而是一場結合 AI 素養、職涯思辨、青年資源與城市政策的青年培力行動。</p>
+  </div>
+
+  <div class="pgn">06</div>
+</div>
+
+<!-- ============================ 06 活動流程 ============================ -->
+<div class="page" id="p-flow">
+  <div class="rh"><span>03.0</span><span class="rh-r">活動流程</span></div>
+
+  <div class="sec">
+    <span class="sn">06</span>
+    <div class="sh"><h2>活動流程</h2></div>
+  </div>
+
+  <p class="lead">本次新北站活動分為上午與下午兩個段落，形成「資源接觸 → 主題理解 → 專家對談 → 後續延伸」的完整體驗。</p>
+
+  <div class="days">
+    <div class="day">
+      <div class="dk">上午場 — 體驗與資源接觸</div>
+      <div class="dh">10:00<i>&nbsp;–&nbsp;12:00</i></div>
+      <h4>職涯體驗站</h4>
+      <p>以自由參與方式進行，設置職涯體驗站與青年局資源站，青年可就 AI 工具應用、職涯方向、培力課程與就業支持資源進行初步接觸。</p>
+      <div class="dl">
+        <div><b>10:00</b><span>職涯體驗站｜青年局資源站｜AI 與職涯諮詢</span></div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="dk">下午場 — 演講與深度對談</div>
+      <div class="dh">14:00<i>&nbsp;–&nbsp;16:00</i></div>
+      <h4>專題演講與專家對談</h4>
+      <p>以專題演講《AI 時代下，我們究竟需要什麼樣的人才？》為核心並接續專家對談，引導青年從工具使用走向問題定義、答案判讀與職涯選擇。</p>
+      <div class="dl">
+        <div><b>14:00</b><span>開場與活動說明</span></div>
+        <div><b>14:10</b><span>新北有課 UKO 資源分享</span></div>
+        <div><b>14:15</b><span>主題演講｜AI 時代需要什麼人才</span></div>
+        <div><b>15:15</b><span>專家對談｜青年如何保有判斷力</span></div>
+        <div><b>15:55</b><span>結語與合影</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="bd">下午活動中安排約五分鐘的「新北有課 UKO」簡報分享，向現場青年介紹青年局相關培力資源，使青年能在活動結束後持續接觸學習、職涯與實習支持。整體流程設計，使活動從單點講座延伸為一條可被青年持續使用的行動路徑。</p>
+
+  <div class="flowstrip">
+    <div class="fstep"><div class="fsn">步驟一</div><div class="fst">接觸</div></div>
+    <div class="fstep"><div class="fsn">步驟二</div><div class="fst">理解</div></div>
+    <div class="fstep"><div class="fsn">步驟三</div><div class="fst">判斷</div></div>
+    <div class="fstep"><div class="fsn">步驟四</div><div class="fst">選擇</div></div>
+    <div class="fstep"><div class="fsn">步驟五</div><div class="fst">延伸</div></div>
+  </div>
+
+  <div class="pgn">07</div>
+</div>
+
+<!-- ============================ 07 參與成果 ============================ -->
+<div class="page" id="p-reach">
+  <div class="rh"><span>03.1</span><span class="rh-r">現場與線上參與成果</span></div>
+
+  <div class="sec">
+    <span class="sn">07</span>
+    <div class="sh"><h2>現場與線上參與成果</h2></div>
+  </div>
+
+  <p class="lead">本次新北站透過現場活動、線上直播與社群影片三種形式擴大觸及，使活動成果不僅限於單一場次，而能延伸至更廣泛的青年群體。</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="sk">現場深度參與</div>
+      <div class="sn-big">48<i>人</i></div>
+      <div class="sc">新北場 108 人報名、48 人現場參與。實體活動提供完整沉浸式體驗，參與者能感受議題氛圍、與講者互動並接觸青年局資源。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">直播觀看延伸</div>
+      <div class="sn-big">211<i>人</i></div>
+      <div class="sc">當日直播累積 211 人觀看、最高同時在線 12 人。直播補足時間與地點限制，使無法到場的青年仍能參與。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">社群曝光擴散</div>
+      <div class="sn-big">1.6<sup>萬+</sup></div>
+      <div class="sc">活動相關社群影片達 1.6 萬人次曝光，顯示內容具有被轉化為短影音與社群議題的潛力。</div>
+    </div>
+  </div>
+
+  <p class="bd"><strong>現場是深度，直播是延伸，社群是擴散。</strong>本案透過三種層次的觸及方式，使新北站成果從單場活動延伸為一個可被回看、分享與再討論的青年 AI 素養議題。實體參與者形成深度互動，直播觀看者擴大同步觸及，社群曝光則延伸活動後續聲量。</p>
+
+  <div class="callout">
+    <div class="ck">資料說明</div>
+    <p>以上數據依活動執行單位提供之結案統計整理，包含報名紀錄、當日直播後台數據與社群影音曝光成效。建議於正式定稿時，搭配活動照片與社群截圖一併留存，以利後續成果查驗與政策溝通。</p>
+  </div>
+
+  <div class="pgn">08</div>
+</div>
+
+<!-- ============================ 08 演講內容摘要 ============================ -->
+<div class="page" id="p-talk">
+  <div class="rh"><span>04.0</span><span class="rh-r">演講內容摘要</span></div>
+
+  <div class="sec">
+    <span class="sn">08</span>
+    <div class="sh"><h2>演講內容摘要</h2></div>
+  </div>
+
+  <p class="lead">本次專題演講以《AI 時代下，我們究竟需要什麼樣的人才？》為主軸，引導青年重新理解 AI 生成內容與人類判斷之間的關係。</p>
+
+  <p class="bd">演講指出，在 AI 工具普及的時代，決定一個人價值的關鍵，已不再只是會不會使用 AI，而是是否具備判斷 AI 產出內容的能力。AI 可以快速產生回應，但回應不一定等於答案——這是本次演講最重要的核心觀念。</p>
+
+  <div class="ra">
+    <div class="rac r1">
+      <div class="rak">機器產出</div>
+      <h3>回應</h3>
+      <div class="raw">模型產生的回答</div>
+      <p>AI 生成、快速、流暢，可能流暢完整、看似合理，但仍可能有錯誤、偏誤或缺乏脈絡。本質上可能只是語言模型依據機率生成的內容。</p>
+    </div>
+    <div class="ramid">
+      <span class="ja">→</span>
+      <span class="jt">判斷力</span>
+    </div>
+    <div class="rac r2">
+      <div class="rak">人為判斷</div>
+      <h3>答案</h3>
+      <div class="raw">經人類判斷後願意採用的答案</div>
+      <p>需要被檢查、被理解、被選擇，也需要有人願意為它負責。判斷的過程，才讓回答成為答案。</p>
+    </div>
+  </div>
+
+  <p class="bd">演講中也提到 <strong>AI 幻覺</strong>現象。AI 並不是故意欺騙使用者，而是當模型缺乏足夠資料或脈絡時，仍可能產生看似合理但實際錯誤的內容。因此，使用 AI 的人不能把判斷責任完全交給工具。真正的 AI 素養，不是把提示詞寫得越來越長，而是知道：什麼時候可以相信 AI、什麼時候必須查證 AI、什麼時候應該拒絕 AI 給出的答案。</p>
+
+  <div class="callout">
+    <div class="ck">本頁核心句</div>
+    <p class="cq">AI 給你的是回答；你做出的判斷，才讓回答成為答案。</p>
+  </div>
+
+  <div class="pgn">09</div>
+</div>
+
+<!-- ============================ 09 AI 判斷力學習框架 ============================ -->
+<div class="page" id="p-frame">
+  <div class="rh"><span>04.1</span><span class="rh-r">AI 判斷力學習框架</span></div>
+
+  <div class="sec">
+    <span class="sn">09</span>
+    <div class="sh"><h2>AI 判斷力學習框架</h2></div>
+  </div>
+
+  <p class="lead">本次演講將 AI 時代的判斷力分為兩個層次：基本判斷與品味判斷力，協助青年理解 AI 素養不只是操作技能，也包含資訊辨識、審美選擇與責任意識。</p>
+
+  <div class="days">
+    <div class="day">
+      <div class="dk">層次一 — 直覺與經驗</div>
+      <div class="dh">基本<i>&nbsp;判斷</i></div>
+      <h4>看得出哪裡怪</h4>
+      <p>一種直覺與經驗的累積。讓使用者快速看出 AI 產出是否過度模板化、是否空泛、是否缺少具體脈絡，知道哪裡需要修，不把第一版輸出直接當成最終答案。</p>
+    </div>
+    <div class="day">
+      <div class="dk">層次二 — 品味與選擇</div>
+      <div class="dh">品味<i>&nbsp;判斷力</i></div>
+      <h4>挑得出最精準的表達</h4>
+      <p>更高層次的能力。能從多個選項中挑出最有力量、最符合情境的表達。真正用得好的人，是因為對語言、領域與受眾理解更深，AI 是放大他的能力。</p>
+    </div>
+  </div>
+
+  <p class="kicker">四個日常心法</p>
+
+  <div class="minds">
+    <div class="mind">
+      <div class="mn">01</div>
+      <h5>批判思考</h5>
+      <p>採用前先問自己：為什麼我相信這段？為什麼我喜歡這句？為什麼要採用這個觀點？</p>
+    </div>
+    <div class="mind">
+      <div class="mn">02</div>
+      <h5>領域知識</h5>
+      <p>AI 時代最重要的護城河。理解專業，才能看出 AI 哪裡寫錯、過度簡化或缺乏脈絡。</p>
+    </div>
+    <div class="mind">
+      <div class="mn">03</div>
+      <h5>知識謙遜</h5>
+      <p>越覺得自己懂，越需要回頭查證。願意承認自己可能不知道，並持續驗證。</p>
+    </div>
+    <div class="mind">
+      <div class="mn">04</div>
+      <h5>來源判讀</h5>
+      <p>不只看內容，也判斷來源是誰、背景為何、有無立場，是否需要交叉比對。</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ck">本頁核心句</div>
+    <p class="cq">AI 時代的競爭力，不是誰複製得最快，而是誰判斷得最好。</p>
+  </div>
+
+  <div class="pgn">10</div>
+</div>
+
+<!-- ============================ 10 專家對談成果 ============================ -->
+<div class="page" id="p-panel">
+  <div class="rh"><span>04.2</span><span class="rh-r">專家對談成果</span></div>
+
+  <div class="sec">
+    <span class="sn">10</span>
+    <div class="sh"><h2>專家對談成果</h2></div>
+  </div>
+
+  <p class="lead">本次新北站下午場安排專家對談，透過不同觀點回應同一個核心問題：當 AI 越來越會回答問題，青年如何保有判斷力、選擇權與不可被取代的能力？</p>
+
+  <div class="metas">
+    <div class="meta">
+      <div class="mk">AI 教育觀點</div>
+      <h5>林上哲<small>nuva 創辦人</small></h5>
+      <p>從 AI 教育角度，青年不應只追逐最新工具，而應理解工具背後的生成邏輯、限制與適用情境。若沒有清楚定義問題，AI 也可能只是更快地產生不夠精準的內容。</p>
+    </div>
+    <div class="meta">
+      <div class="mk">青年政策觀點</div>
+      <h5>邱兆梅<small>新北市青年局局長</small></h5>
+      <p>從青年政策角度，AI 素養已成為職涯發展的重要基礎。青年除具備工具應用能力外，更重要的是理解 AI 運作方式，並著重思考與查證以把關生成內容。</p>
+    </div>
+    <div class="meta">
+      <div class="mk">產業技術觀點</div>
+      <h5>Jason<small>AMD AI 工程師</small></h5>
+      <p>從產業與 AI 工程角度，技術越強，越需要人類具備問題拆解、系統思考與結果驗證能力。青年的價值是理解任務、判斷輸出、整合資源並對結果負責。</p>
+    </div>
+  </div>
+
+  <p class="bd">本次對談形成清楚共識：<strong>AI 不會淘汰所有人，但會改變「有價值的人」如何被定義。</strong>在 AI 時代，青年需要培養的不是單一工具能力，而是能跨越工具變動的底層能力，包括提問能力、判讀能力、領域知識、表達能力、協作能力與職涯選擇能力。從教育、政策到產業，三方共同指向同一件事：青年要成為能判斷答案的人。</p>
+
+  <p class="bd" style="font-size:11px;color:var(--ink-faint);">附註：公開新聞資料原先列示之與談名單曾包含 臺灣領導未來協會共同創辦人林祐良；本報告主文依現場實際出席資訊撰寫，正式定稿時建議再確認 Jason 之中文姓名、完整職稱與是否可公開揭露。</p>
+
+  <div class="pgn">11</div>
+</div>
+
+<!-- ============================ 11 青年局資源導入 ============================ -->
+<div class="page" id="p-res">
+  <div class="rh"><span>05.0</span><span class="rh-r">青年局資源導入</span></div>
+
+  <div class="sec">
+    <span class="sn">11</span>
+    <div class="sh"><h2>青年局資源導入</h2></div>
+  </div>
+
+  <p class="lead">本次新北站的重要特色，是將新北市青年局資源直接帶入活動現場，使青年在參與 AI 講座與對談的同時，也能接觸具體的學習、職涯與實習支持。</p>
+
+  <div class="projs">
+    <div class="proj">
+      <div class="pn"><div class="pl">資源</div><div class="pnum">01</div></div>
+      <div class="pc"><div class="ph">新北有課 UKO</div><p>下午場安排約五分鐘簡報分享，介紹青年局課程與培力資源。讓活動從「一場講座」延伸為「青年可以持續行動的入口」。</p></div>
+      <div class="pc"><div class="ph">成果意義</div><p>時間雖不長，但具成果留存上的重要意義，是後續導流的關鍵接觸點。</p></div>
+    </div>
+    <div class="proj">
+      <div class="pn"><div class="pl">資源</div><div class="pnum">02</div></div>
+      <div class="pc"><div class="ph">職涯諮詢</div><p>上午職涯體驗站與青年局資源攤位，提供青年對職涯方向、AI 工具應用與未來能力培養的初步詢問機會。</p></div>
+      <div class="pc"><div class="ph">成果意義</div><p>對正在求職、轉職或探索方向的青年，現場接觸有助於降低尋找資源的門檻。</p></div>
+    </div>
+    <div class="proj">
+      <div class="pn"><div class="pl">資源</div><div class="pnum">03</div></div>
+      <div class="pc"><div class="ph">實習體驗</div><p>透過青年局資源介紹，青年得以理解除課程外，仍有更接近職場情境的實習體驗支持方案。</p></div>
+      <div class="pc"><div class="ph">成果意義</div><p>使活動不只停留於概念啟發，也能連結後續實際職涯行動。</p></div>
+    </div>
+  </div>
+
+  <div class="funnel">
+    <div class="frow f1"><div class="fk">階段一</div><div class="ft">AI 議題吸引青年</div></div>
+    <div class="farrow">↓</div>
+    <div class="frow f2"><div class="fk">階段二</div><div class="ft">現場資源接觸</div></div>
+    <div class="farrow">↓</div>
+    <div class="frow f3"><div class="fk">階段三</div><div class="ft">UKO ／ 職涯諮詢 ／ 實習體驗</div></div>
+    <div class="farrow">↓</div>
+    <div class="frow f4"><div class="fk">階段四</div><div class="ft">後續學習與職涯行動</div></div>
+  </div>
+
+  <div class="pgn">12</div>
+</div>
+
+<!-- ============================ 12 參與者組成 ============================ -->
+<div class="page" id="p-aud">
+  <div class="rh"><span>05.1</span><span class="rh-r">參與者組成與觸及分析</span></div>
+
+  <div class="sec">
+    <span class="sn">12</span>
+    <div class="sh"><h2>參與者組成與觸及分析</h2></div>
+  </div>
+
+  <p class="lead">本次新北站參與者約三分之一為學生、三分之二為社會人士，顯示 AI 時代的人才焦慮與能力轉型需求，不只存在於校園內，也存在於已進入職場的青年族群。</p>
+
+  <div class="ratio">
+    <div class="rseg s1">
+      <div class="rsk">學生族群</div>
+      <div class="rsf">1/3</div>
+      <div class="rsn">學生族群</div>
+      <p>以 48 位現場參與者估算約 16 位。主要需求是理解未來職場如何被 AI 改變，以及現在應培養什麼能力。</p>
+    </div>
+    <div class="rseg s2">
+      <div class="rsk">社會人士族群</div>
+      <div class="rsf">2/3</div>
+      <div class="rsn">社會人士族群</div>
+      <p>以 48 位現場參與者估算約 32 位。代表 AI 工具普及後，許多已進入職場者同樣需要重新整理自己的能力定位；活動所談的判斷力、領域知識、品味與來源判讀，直接對應日常工作中的資訊處理、內容產出、決策與溝通。</p>
+    </div>
+  </div>
+
+  <p class="bd">本活動雖於校園舉行，但其議題並不侷限於校園。<strong>AI 判讀力是一種跨身份、跨年齡、跨職涯階段的能力</strong>，因此本案同時吸引學生與社會人士，正好呈現新北青年局在青年職涯與數位素養推動上的廣泛服務對象。正式報告中建議保留「約」字，以避免造成精確統計的誤解。</p>
+
+  <div class="callout">
+    <div class="ck">本頁核心句</div>
+    <p class="cq">AI 時代的青年不只在校園裡，也在轉職路上、工作現場與每一次重新選擇的時刻。</p>
+  </div>
+
+  <div class="pgn">13</div>
+</div>
+
+<!-- ============================ 13 政策與 SDGs ============================ -->
+<div class="page" id="p-sdg">
+  <div class="rh"><span>05.2</span><span class="rh-r">政策與永續目標對接</span></div>
+
+  <div class="sec">
+    <span class="sn">13</span>
+    <div class="sh"><h2>政策與永續目標對接</h2></div>
+  </div>
+
+  <p class="lead">本案可對應新北市青年局在青年職涯、數位能力、學習培力與公共參與上的政策方向，也可連結國際上對 AI 素養、終身學習與青年就業力的討論。</p>
+
+  <div class="pols">
+    <div class="pol">
+      <div class="pk">對接一</div>
+      <h5>數位素養</h5>
+      <p>本次活動將 AI 工具應用提升為 AI 判讀力，協助青年理解生成式 AI 的使用方式、限制與風險，與 聯合國教科文組織學生 AI 能力框架所強調的人本與倫理觀點相符。</p>
+    </div>
+    <div class="pol">
+      <div class="pk">對接二</div>
+      <h5>青年就業力</h5>
+      <p>以「AI 時代需要什麼樣的人才」為核心提問，將 AI 素養放回職涯發展脈絡。青年理解未來職場更需要能定義問題、判斷資訊與負責任決策的人。</p>
+    </div>
+    <div class="pol">
+      <div class="pk">對接三</div>
+      <h5>永續發展目標：優質教育</h5>
+      <p>永續發展目標強調優質教育與終身學習，其中 4.4 關注青年是否具備就業、體面工作與創業所需技能。本案透過免費活動與校園場域，具備對應永續發展目標的合理性。</p>
+    </div>
+    <div class="pol">
+      <div class="pk">對接四</div>
+      <h5>青年政策資源可近性</h5>
+      <p>青年局資源站與 UKO 簡報分享，使青年資源從網站與公告走入活動現場，降低青年理解與使用政府資源的門檻，提升政策的可見度與可親近性。</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ck">本頁核心句</div>
+    <p class="cq">本案不是單點活動，而是一次把 AI 素養、職涯能力與青年政策資源接在一起的實驗。</p>
+  </div>
+
+  <div class="pgn">14</div>
+</div>
+
+<!-- ============================ 14 媒體與社群曝光 ============================ -->
+<div class="page" id="p-media">
+  <div class="rh"><span>05.3</span><span class="rh-r">媒體與社群曝光</span></div>
+
+  <div class="sec">
+    <span class="sn">14</span>
+    <div class="sh"><h2>媒體與社群曝光</h2></div>
+  </div>
+
+  <p class="lead">本次活動除現場活動外，也透過官方新聞、活動報名頁、媒體報導與社群影音擴大觸及，使活動議題在活動前後皆具備傳播效果。</p>
+
+  <div class="stats" style="margin-top:18px;">
+    <div class="stat">
+      <div class="sk">社群影片曝光</div>
+      <div class="sn-big sm">1.6<sup>萬+</sup></div>
+      <div class="sc">社群影片曝光人次，使核心概念「AI 越會回答，青年越需要判斷」持續被看見。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">直播觀看人數</div>
+      <div class="sn-big sm">211<i>人</i></div>
+      <div class="sc">當日線上直播觀看人數，補足實體空間與時間限制。</div>
+    </div>
+    <div class="stat">
+      <div class="sk">媒體露出則數</div>
+      <div class="sn-big sm">17<i>則+</i></div>
+      <div class="sc">官方新聞、入口網站、報系媒體與社群平台之露出報導。</div>
+    </div>
+  </div>
+
+  <div class="refs">
+    <div class="rt">新北站官方與媒體露出</div>
+    <div class="ref"><span class="rn">01</span><span class="rl"><b>新北市政府青年局</b> — 官方新聞稿。<em>確認活動時間、地點、形式與青年局合作定位。</em></span><a href="https://www.ntpc.gov.tw/ch/home.jsp?id=e8ca970cde5c00e1&dataserno=1da1f7033a2b505529666a906a303cf0" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">02</span><span class="rl"><b>Yahoo 新聞</b> — AI 浪潮來襲，新北青年局攜手 nuva 前進校園帶青年找答案。</span><a href="https://tw.news.yahoo.com/ai%E6%B5%AA%E6%BD%AE%E4%BE%86%E8%A5%B2-%E6%96%B0%E5%8C%97%E9%9D%92%E5%B9%B4%E5%B1%80%E6%94%9C%E6%89%8Bnuva-%E5%89%8D%E9%80%B2%E6%A0%A1%E5%9C%92%E5%B8%B6%E9%9D%92%E5%B9%B4%E6%89%BE%E7%AD%94%E6%A1%88-095845843.html" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">03</span><span class="rl"><b>新頭殼</b> — 論壇報導：AI 時代青年人才培育。</span><a href="https://newtalk.tw/forum/post/82007" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">04</span><span class="rl"><b>新台灣新聞（臉書）</b> — AI 浪潮、校園、職場競爭力專題露出。</span><a href="https://www.facebook.com/newstaiwan.tw/posts/1297650849140428/" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">05</span><span class="rl"><b>新住民全球新聞網</b> — AI 進職場成新課題，校園巡迴談提問與查證。</span><a href="https://nchn.news/archives/153744" target="_blank" rel="noopener">連結 ↗</a></div>
+  </div>
+
+  <div class="refs" style="margin-top:14px;border-top-width:1px;">
+    <div class="rt">全國巡演媒體露出</div>
+    <div class="ref"><span class="rn">06</span><span class="rl"><b>風傳媒</b> — AI 浪潮重塑職場，青年職涯競爭力專題。</span><a href="https://www.storm.mg/article/11126022" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">07</span><span class="rl"><b>中華日報</b> — nuva 校園巡迴與青年培力報導。</span><a href="https://www.cdns.com.tw/articles/1392892" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">08</span><span class="rl"><b>LINE 新聞</b> — AI 校園巡迴與職涯競爭力專題。</span><a href="https://today.line.me/tw/v3/article/3NYJ7XE" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">09</span><span class="rl"><b>LINE 新聞</b> — AI 時代人才培育延伸報導。</span><a href="https://today.line.me/tw/v3/article/DR7moRw" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">10</span><span class="rl"><b>蕃薯藤新聞</b> — nuva 全國巡演與未來職涯報導。</span><a href="https://n.yam.com/Article/20260521463128" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">11</span><span class="rl"><b>中央社</b> — AI 浪潮席捲校園，nuva 打造未來職涯新視野。</span><a href="https://www.cna.com.tw/postwrite/chi/434078" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">12</span><span class="rl"><b>MSN 新聞</b> — AI 浪潮席捲校園，元智攜手 nuva 打造未來職涯新視野。</span><a href="https://www.msn.com/zh-tw/news/other/ar-AA23aiPH" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">13</span><span class="rl"><b>焦點新聞</b> — AI 校園巡迴與青年人才培育報導。</span><a href="https://focusnews.com.tw/2026/05/701028/" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">14</span><span class="rl"><b>Yahoo 新聞</b> — 桃園青年局攜手 AI 教育品牌，助學子深化軟實力。</span><a href="https://tw.news.yahoo.com/%E6%A1%83%E5%9C%92%E9%9D%92%E5%B9%B4%E5%B1%80%E6%94%9C%E6%89%8Bai%E6%95%99%E8%82%B2%E5%93%81%E7%89%8C-%E5%8A%A9%E5%AD%B8%E5%AD%90%E6%B7%B1%E5%8C%96%E8%BB%9F%E5%AF%A6%E5%8A%9B%E5%9B%A0%E6%87%89%E6%9C%AA%E4%BE%86%E6%8C%91%E6%88%B0-040133771.html" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">15</span><span class="rl"><b>Yahoo 新聞</b> — 高雄市青年局舉辦人工智慧校園祭，跨界對談深入解析。</span><a href="https://tw.news.yahoo.com/%E9%AB%98%E9%9B%84%E5%B8%82%E9%9D%92%E5%B9%B4%E5%B1%80%E8%88%89%E8%BE%A6-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9C%92%E7%A5%AD-%E8%B7%A8%E7%95%8C%E5%B0%8D%E8%AB%87%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-100733608.html" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">16</span><span class="rl"><b>Yahoo 新聞</b> — AI 浪潮重塑職場，高市青年局攜手產學前進校園。</span><a href="https://tw.news.yahoo.com/ai%E6%B5%AA%E6%BD%AE%E9%87%8D%E5%A1%91%E8%81%B7%E5%A0%B4-%E9%AB%98%E5%B8%82%E9%9D%92%E5%B9%B4%E5%B1%80%E6%94%9C%E6%89%8B%E7%94%A2%E5%AD%B8%E5%89%8D%E9%80%B2%E6%A0%A1%E5%9C%92%E8%AB%87%E9%9D%92%E5%B9%B4%E7%AB%B6%E7%88%AD%E5%8A%9B-043940052.html" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">17</span><span class="rl"><b>三立新聞（臉書）</b> — AI 浪潮重塑全球各領域，青年職涯競爭力專題。</span><a href="https://www.facebook.com/setnews/posts/1580600567442910/" target="_blank" rel="noopener">連結 ↗</a></div>
+  </div>
+
+  <div class="pgn">15</div>
+</div>
+
+<!-- ============================ 15 整體成效評估 ============================ -->
+<div class="page" id="p-eval">
+  <div class="rh"><span>06.0</span><span class="rh-r">整體成效評估</span></div>
+
+  <div class="sec">
+    <span class="sn">15</span>
+    <div class="sh"><h2>整體成效評估</h2></div>
+  </div>
+
+  <p class="lead">綜合活動設計、參與成果、內容主題與政策對接，本案可歸納出五項實質成果。</p>
+
+  <div class="ocs">
+    <div class="oc">
+      <div class="ol"><div class="on">01</div><h4>成功建立<br>AI 判讀力議題</h4></div>
+      <div class="od"><p>將 AI 學習從工具操作提升到判斷力、品味、來源查證與責任意識，使青年的理解從「學會哪個工具」進一步思考「我如何判斷工具給我的結果」。</p></div>
+    </div>
+    <div class="oc">
+      <div class="ol"><div class="on">02</div><h4>擴大<br>青年局資源接觸</h4></div>
+      <div class="od"><p>透過上午資源站與下午 UKO 簡報分享，讓青年局資源以更自然、更接近青年情境的方式出現。青年在面對 AI 與職涯問題時，同時看見可使用的公共資源。</p></div>
+    </div>
+    <div class="oc">
+      <div class="ol"><div class="on">03</div><h4>創造<br>線上線下整合觸及</h4></div>
+      <div class="od"><p>本案同時具備現場參與、直播觀看與社群曝光三種成果。48 位現場深度互動、211 位直播同步觸及、1.6 萬人次社群曝光延伸後續聲量。</p></div>
+    </div>
+    <div class="oc">
+      <div class="ol"><div class="on">04</div><h4>觸及<br>學生與社會青年</h4></div>
+      <div class="od"><p>參與者約三分之一為學生、三分之二為社會人士，顯示活動議題對不同階段青年皆具吸引力，AI 素養與職涯判斷力已是跨族群的共同需求。</p></div>
+    </div>
+    <div class="oc">
+      <div class="ol"><div class="on">05</div><h4>建立<br>可延伸合作模式</h4></div>
+      <div class="od"><p>整合青年局政策資源、nuva AI 教育內容與輔仁大學校園場域，形成可複製的合作模型，未來可延伸為系列講座、工作坊或校園巡迴合作方案。</p></div>
+    </div>
+  </div>
+
+  <div class="pgn">16</div>
+</div>
+
+<!-- ============================ 16 後續建議 ============================ -->
+<div class="page" id="p-next">
+  <div class="rh"><span>06.1</span><span class="rh-r">後續建議</span></div>
+
+  <div class="sec">
+    <span class="sn">16</span>
+    <div class="sh"><h2>後續建議</h2></div>
+  </div>
+
+  <p class="lead">為延續本次新北站成果，建議後續可從「內容深化、資源導流、系列化推動、強化評估」四個方向發展。</p>
+
+  <div class="projs">
+    <div class="proj">
+      <div class="pn"><div class="pl">建議</div><div class="pnum">01</div></div>
+      <div class="pc"><div class="ph">深化內容</div><p>將「回應不等於答案」核心概念延伸為實作型工作坊：AI 生成內容查核、提示詞與問題定義、履歷與面試 AI 應用、AI 寫作與來源判讀。</p></div>
+      <div class="pc"><div class="ph">預期效益</div><p>讓青年從聽懂概念，進一步進入實際操作與能力養成。</p></div>
+    </div>
+    <div class="proj">
+      <div class="pn"><div class="pl">建議</div><div class="pnum">02</div></div>
+      <div class="pc"><div class="ph">導流資源</div><p>每場活動後設計更明確的後續行動：掃描 QR 碼領取資源包、填寫職涯需求問卷、預約職涯諮詢、報名青年局課程、加入學習社群。</p></div>
+      <div class="pc"><div class="ph">預期效益</div><p>讓活動成果從「當日參與」轉化為「後續學習與政策資源使用」。</p></div>
+    </div>
+    <div class="proj">
+      <div class="pn"><div class="pl">建議</div><div class="pnum">03</div></div>
+      <div class="pc"><div class="ph">模板化合作</div><p>將「青年局 × 校園 × AI 教育」整理為標準模板：活動前宣傳、活動中資源站與直播、活動後影音切片與問卷追蹤、成果留存。</p></div>
+      <div class="pc"><div class="ph">預期效益</div><p>未來可更容易擴大到其他校園、青年基地或主題式系列活動。</p></div>
+    </div>
+    <div class="proj">
+      <div class="pn"><div class="pl">建議</div><div class="pnum">04</div></div>
+      <div class="pc"><div class="ph">強化評估</div><p>增加活動前後問卷：滿意度、AI 判讀力自評提升、是否更理解青年局資源、是否願意參與後續課程、最有收穫的段落。</p></div>
+      <div class="pc"><div class="ph">預期效益</div><p>使後續成果報告更具說服力，有助於青年局評估政策推廣成效。</p></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ck">後續建議重點</div>
+    <p class="cq">下一步不是再辦一場一樣的活動，而是把這次的議題、資源與青年觸點，沉澱成可以持續運作的培力機制。</p>
+  </div>
+
+  <div class="pgn">17</div>
+</div>
+
+<!-- ============================ 17 結語與參考依據 ============================ -->
+<div class="page" id="p-concl">
+  <div class="rh"><span>07.0</span><span class="rh-r">結語</span></div>
+
+  <div class="sec">
+    <span class="sn">17</span>
+    <div class="sh"><h2>結語與參考依據</h2></div>
+  </div>
+
+  <p class="concl-q">如果 AI 越來越會回答問題，那人還需要成為什麼樣的人？本案給出的答案，不是更多工具清單，而是——<em>青年要成為能定義問題、判斷資訊、並對自己採用的答案負責的人。</em></p>
+
+  <p class="bd">2026 年全國公益露營車校園巡迴新北站《回到答案之前》，以輔仁大學為場域，將 AI 時代最關鍵的問題帶到青年面前。對新北市青年局而言，本案不只是一次活動合作，而是一次青年政策與 AI 素養議題的有效結合。透過職涯體驗站、青年局資源站、UKO 分享、專題演講、專家對談、直播與社群擴散，新北站讓青年在面對 AI 浪潮時，不只感到焦慮，也能看見可學習、可提問、可選擇的方向。未來若能將本次成果延伸為系列課程、工作坊與青年資源導流機制，將有機會使新北市在青年 AI 素養與數位職涯培育上，形成更具辨識度與持續性的城市品牌。</p>
+
+  <div class="refs">
+    <div class="rt">參考依據</div>
+    <div class="ref"><span class="rn">01</span><span class="rl"><b>新北市政府青年局官方新聞</b> — 確認活動時間、地點、活動形式與青年局合作定位。</span><a href="https://www.ntpc.gov.tw/ch/home.jsp?id=e8ca970cde5c00e1&dataserno=1da1f7033a2b505529666a906a303cf0" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">02</span><span class="rl"><b>新北市青年局活動報名頁</b> — 確認活動主題、免費參與、對象、講者與新北站資訊。</span><a href="https://www.ntpc.gov.tw/ch/home.jsp?id=e8ca970cde5c00e1" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">03</span><span class="rl"><b>Accupass 全國巡演活動頁</b> — 確認巡演期間、城市、活動主題與「AI 判讀力」核心訴求。</span><a href="https://www.accupass.com" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">04</span><span class="rl"><b>新住民全球新聞網報導</b> — 補充 AI 提問、答案判讀、職涯探索與資訊查證脈絡。</span><a href="https://nchn.news/archives/153744" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">05</span><span class="rl"><b>聯合國永續發展目標第 4 項（優質教育）</b> — 對接優質教育、終身學習與青年技能培育的國際參考。</span><a href="https://sdgs.un.org/goals/goal4" target="_blank" rel="noopener">連結 ↗</a></div>
+    <div class="ref"><span class="rn">06</span><span class="rl"><b>聯合國教科文組織《學生人工智慧能力框架》</b> — 連結 AI 素養、人本思維、倫理與負責任使用。</span><a href="https://www.unesco.org/en/digital-education/ai-future-learning" target="_blank" rel="noopener">連結 ↗</a></div>
+  </div>
+
+  <div class="sign">
+    <div><div class="sk">執行單位</div><div class="sv">nuva｜努法有限公司</div></div>
+    <div><div class="sk">活動</div><div class="sv">新北站《回到答案之前》</div></div>
+    <div><div class="sk">報告日期</div><div class="sv">2026 / 05</div></div>
+  </div>
+
+  <div class="pgn">18</div>
+</div>
+
+<!-- ============================ 0A 附錄 ============================ -->
+<div class="page" id="p-appendix">
+  <div class="rh"><span>0A.0</span><span class="rh-r">附錄</span></div>
+
+  <div class="sec">
+    <span class="sn">0A</span>
+    <div class="sh"><h2>附錄｜活動照片</h2></div>
+  </div>
+
+  <p class="lead">本頁彙整新北站活動照片留存區，供成果書編輯時置入大合照、現場與露營車互動畫面。</p>
+
+  <div class="wall">
+    <div class="imgph wide">
+      <div class="ii"></div>
+      <div class="ik">照片 01 — 活動大合照</div>
+      <div class="it">圖片預留：新北站活動大合照</div>
+    </div>
+    <div class="imgph">
+      <div class="ii"></div>
+      <div class="ik">照片 02 — 專題演講</div>
+      <div class="it">圖片預留：下午場專題演講畫面</div>
+    </div>
+    <div class="imgph">
+      <div class="ii"></div>
+      <div class="ik">照片 03 — 專家對談</div>
+      <div class="it">圖片預留：專家對談現場</div>
+    </div>
+    <div class="imgph">
+      <div class="ii"></div>
+      <div class="ik">照片 04 — 青年局資源站</div>
+      <div class="it">圖片預留：青年局資源站 / 職涯體驗站</div>
+    </div>
+    <div class="imgph">
+      <div class="ii"></div>
+      <div class="ik">照片 05 — 露營車互動</div>
+      <div class="it">圖片預留：露營車與青年互動畫面</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ck">建議使用方式</div>
+    <p>正式成果書編排時，建議於封面置入大合照或露營車照片，本附錄頁作為現場照片牆。若照片不足，可改以活動現場花絮、社群影片截圖與媒體露出截圖補充，使成果書同時具備數據、影像與媒體三種佐證。</p>
+  </div>
+
+  <div class="pgn">19</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.report.timeline/report-metadata.schema.json",
+  "title": "Report Timeline Metadata",
+  "type": "object",
+  "required": ["title", "subtitle", "date", "period", "category", "client", "timeline"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "首頁卡片主標題。"
+    },
+    "subtitle": {
+      "type": "string",
+      "minLength": 1,
+      "description": "首頁卡片副標或成果報告類型。"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^20[0-9]{2}-[0-9]{2}-[0-9]{2}$",
+      "description": "排序用日期，格式為 YYYY-MM-DD。"
+    },
+    "period": {
+      "type": "string",
+      "minLength": 1,
+      "description": "報告涵蓋期間，可為單日或區間。"
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "description": "首頁篩選分類，例如課程成果、活動成果。"
+    },
+    "client": {
+      "type": "string",
+      "minLength": 1,
+      "description": "客戶、主辦或合作單位。"
+    },
+    "clientGroup": {
+      "type": "string",
+      "minLength": 1,
+      "description": "客戶分類，例如政府與公共部門、企業與研究機構。"
+    },
+    "timeline": {
+      "type": "string",
+      "minLength": 1,
+      "description": "人工標註的時間軸群組，例如 2026 五月。"
+    },
+    "tags": {
+      "type": "array",
+      "description": "搜尋與後續分類用關鍵字。",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "thumbnail": {
+      "type": "string",
+      "minLength": 1,
+      "description": "選填縮圖路徑或 URL。"
+    },
+    "pdf": {
+      "type": "string",
+      "minLength": 1,
+      "description": "選填 PDF 下載路徑或 URL。"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "internal", "private"],
+      "description": "選填可見性標籤。純靜態部署不提供真正權限控管。"
+    }
+  }
+}
