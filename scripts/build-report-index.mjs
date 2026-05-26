@@ -8,6 +8,7 @@ const DATA_DIR = 'data';
 const JSON_FILE = 'reports.json';
 const JS_FILE = 'reports.js';
 const SITE_AUTH_SCRIPT = '../assets/site-auth.js';
+const REPORT_READER_SCRIPT = '../assets/report-reader.js';
 const REPORT_ACTIONS_SCRIPT = '../assets/report-actions.js';
 
 export const REQUIRED_META_FIELDS = ['title', 'subtitle', 'date', 'period', 'category', 'client', 'timeline'];
@@ -113,6 +114,10 @@ function hasReportActionsScript(html) {
   return /<script\b[^>]+\bsrc=["'][^"']*assets\/report-actions\.js[^"']*["'][^>]*>/i.test(html);
 }
 
+function hasReportReaderScript(html) {
+  return /<script\b[^>]+\bsrc=["'][^"']*assets\/report-reader\.js[^"']*["'][^>]*>/i.test(html);
+}
+
 function hasSiteAuthScript(html) {
   return /<script\b[^>]+\bsrc=["'][^"']*assets\/site-auth\.js[^"']*["'][^>]*>/i.test(html);
 }
@@ -136,10 +141,25 @@ function injectReportActionsScript(html) {
   return `${html.trimEnd()}\n${scriptTag}`;
 }
 
+function injectReportReaderScript(html) {
+  if (hasReportReaderScript(html)) return html;
+
+  const scriptTag = `  <script src="${REPORT_READER_SCRIPT}" defer></script>\n`;
+  if (hasReportActionsScript(html)) {
+    return html.replace(
+      /(\s*<script\b[^>]+\bsrc=["'][^"']*assets\/report-actions\.js[^"']*["'][^>]*>\s*<\/script>)/i,
+      `\n${scriptTag}$1`
+    );
+  }
+  if (/<\/body>/i.test(html)) return html.replace(/<\/body>/i, `${scriptTag}</body>`);
+  if (/<\/html>/i.test(html)) return html.replace(/<\/html>/i, `${scriptTag}</html>`);
+  return `${html.trimEnd()}\n${scriptTag}`;
+}
+
 async function ensureReportActionsScript(root, fileName) {
   const filePath = path.join(root, REPORTS_DIR, fileName);
   const html = await fs.readFile(filePath, 'utf8');
-  const nextHtml = injectReportActionsScript(injectSiteAuthScript(html));
+  const nextHtml = injectReportActionsScript(injectReportReaderScript(injectSiteAuthScript(html)));
   if (nextHtml !== html) await fs.writeFile(filePath, nextHtml, 'utf8');
 }
 

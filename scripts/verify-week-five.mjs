@@ -37,6 +37,7 @@ const requiredFiles = [
   'templates/report-template.html',
   'assets/favicon.svg',
   'assets/site-auth.js',
+  'assets/report-reader.js',
   'assets/report-actions.js'
 ];
 
@@ -92,6 +93,10 @@ async function verifyReportActions() {
     assert(
       html.includes('../assets/site-auth.js'),
       `${file} missing shared site auth script`
+    );
+    assert(
+      html.includes('../assets/report-reader.js'),
+      `${file} missing shared report reader script`
     );
     assert(
       html.includes('../assets/report-actions.js'),

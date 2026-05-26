@@ -31,6 +31,7 @@ const requiredFiles = [
   'templates/report-template.html',
   'assets/favicon.svg',
   'assets/site-auth.js',
+  'assets/report-reader.js',
   'assets/report-actions.js'
 ];
 
