@@ -97,9 +97,10 @@
       }
 
       .reader-link {
-        min-height: 29px;
-        align-items: flex-start;
-        padding: 0 8px;
+        min-height: 32px;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 10px;
         color: rgba(22, 32, 36, .42);
         font-size: 13px;
         font-weight: 700;
@@ -108,6 +109,7 @@
 
       .reader-link span {
         min-width: 0;
+        display: block;
         overflow: visible;
         text-overflow: clip;
         white-space: normal;
@@ -115,12 +117,14 @@
 
       .reader-page {
         flex: 0 0 auto;
-        margin-left: 8px;
-        padding-top: 1px;
+        align-self: center;
+        margin-left: auto;
+        padding-top: 0;
         color: rgba(22, 32, 36, .34);
         font-family: "Archivo", sans-serif;
         font-size: 11px;
         font-weight: 800;
+        line-height: 1;
       }
 
       .reader-search-popover {
