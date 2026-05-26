@@ -76,13 +76,8 @@
 
   /* ---------- SECTION HEADER ---------- */
   .sec{
-    display:flex;align-items:flex-start;gap:20px;
     border-bottom:1.6px solid var(--ink);
     padding-bottom:13px;margin:54px 0 24px;
-  }
-  .sec .sn{
-    font-family:'Archivo',sans-serif;font-weight:800;
-    font-size:34px;line-height:.9;letter-spacing:-.02em;color:var(--blue);
   }
   .sec .sh h2{
     font-family:'Noto Sans TC',sans-serif;font-weight:900;
@@ -94,7 +89,6 @@
     letter-spacing:.3em;text-transform:uppercase;color:var(--ink-s);
   }
   .sec.cont{border-bottom-width:1px;margin-top:0;}
-  .sec.cont .sn{font-size:22px;}
   .sec.cont .sh h2{font-size:16px;font-weight:700;}
 
   /* ---------- TEXT ---------- */
@@ -453,6 +447,36 @@
   .wall .imgph{min-height:150px;}
   .wall .imgph.wide{grid-column:1 / -1;min-height:120px;}
 
+  /* ---------- APPENDIX PHOTO ---------- */
+  .appendix-photo{margin-top:24px;border:1.6px solid var(--ink);background:var(--paper);}
+  .appendix-photo img{display:block;width:100%;height:520px;object-fit:cover;
+    object-position:center 50%;}
+  .appendix-photo figcaption{display:flex;justify-content:space-between;gap:20px;
+    padding:12px 14px;border-top:1px solid var(--ink);}
+  .appendix-photo .ak{font-family:'Space Mono',monospace;font-size:9px;
+    letter-spacing:.18em;color:var(--blue);white-space:nowrap;}
+  .appendix-photo .at{font-size:11.5px;line-height:1.55;color:var(--ink-s);
+    text-align:right;}
+  .appendix-note{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    margin-top:20px;border-top:1.6px solid var(--ink);}
+  .appendix-note div{padding:16px 18px;border-right:1px solid var(--rule);}
+  .appendix-note div:last-child{border-right:none;}
+  .appendix-note .nk{font-family:'Space Mono',monospace;font-size:8.5px;
+    letter-spacing:.16em;color:var(--ink-s);margin-bottom:7px;}
+  .appendix-note p{font-size:11px;line-height:1.7;color:var(--ink-s);}
+
+  /* ---------- DENSE MEDIA PAGE ---------- */
+  .media-page .sec{margin-top:42px;margin-bottom:18px;}
+  .media-page .lead{margin-top:12px;}
+  .media-page .stats .stat{padding:14px 16px 12px;}
+  .media-page .stat .sn-big.sm{font-size:36px;}
+  .media-page .stat .sc{font-size:10.4px;line-height:1.45;margin-top:8px;padding-top:8px;}
+  .media-page .refs{margin-top:10px;padding-top:10px;}
+  .media-page .refs .rt{margin-bottom:4px;}
+  .media-page .ref{padding:5px 0;gap:10px;}
+  .media-page .ref .rl{font-size:10.7px;line-height:1.38;}
+  .media-page .ref a{font-size:8px;padding:3px 6px;}
+
   *[id]{scroll-margin-top:24px;}
 
   /* ================= PRINT ================= */
@@ -588,20 +612,26 @@
         <a class="toc-sub" href="#p-concl"><span class="ts-c">07.1 /</span><span class="ts-t">結語與參考依據</span><span class="ts-p">17</span></a>
       </div>
     </div>
+    <div class="toc-row">
+      <div class="toc-l"><span class="tn">08</span>
+        <span class="tt">附件</span></div>
+      <div class="toc-r">
+        <a class="toc-sub" href="#p-appendix-photo"><span class="ts-c">08.1 /</span><span class="ts-t">活動大合照</span><span class="ts-p">18</span></a>
+      </div>
+    </div>
   </div>
 
   <div class="toc-note">
-    正文共 17 頁 ／ A4 規格 ／ 點擊任一目錄項目可跳轉對應頁面 ／ 右下角可下載 PDF
+    目錄、正文與附件共 18 頁 ／ A4 規格 ／ 點擊任一目錄項目可跳轉對應頁面 ／ 右下角可下載 PDF
   </div>
   <div class="pgn">01</div>
 </div>
 
 <!-- ============================ 01 報告摘要 ============================ -->
 <div class="page" id="p-summary">
-  <div class="rh"><span>01.0</span><span class="rh-r">報告摘要</span></div>
+  <div class="rh"><span>01.1</span><span class="rh-r">報告摘要</span></div>
 
   <div class="sec">
-    <span class="sn">01</span>
     <div class="sh"><h2>報告摘要</h2></div>
   </div>
 
@@ -633,10 +663,9 @@
 
 <!-- ============================ 02 關鍵指標 ============================ -->
 <div class="page" id="p-metrics">
-  <div class="rh"><span>01.1</span><span class="rh-r">關鍵指標</span></div>
+  <div class="rh"><span>01.2</span><span class="rh-r">關鍵指標</span></div>
 
   <div class="sec">
-    <span class="sn">02</span>
     <div class="sh"><h2>關鍵指標</h2></div>
   </div>
 
@@ -682,10 +711,9 @@
 
 <!-- ============================ 03 活動背景 ============================ -->
 <div class="page" id="p-bg">
-  <div class="rh"><span>02.0</span><span class="rh-r">活動背景</span></div>
+  <div class="rh"><span>02.1</span><span class="rh-r">活動背景</span></div>
 
   <div class="sec">
-    <span class="sn">03</span>
     <div class="sh"><h2>活動背景</h2></div>
   </div>
 
@@ -714,10 +742,9 @@
 
 <!-- ============================ 04 全國巡演脈絡 ============================ -->
 <div class="page" id="p-tour">
-  <div class="rh"><span>02.1</span><span class="rh-r">全國巡演脈絡</span></div>
+  <div class="rh"><span>02.2</span><span class="rh-r">全國巡演脈絡</span></div>
 
   <div class="sec">
-    <span class="sn">04</span>
     <div class="sh"><h2>全國巡演脈絡</h2></div>
   </div>
 
@@ -764,10 +791,9 @@
 
 <!-- ============================ 05 新北站定位 ============================ -->
 <div class="page" id="p-pos">
-  <div class="rh"><span>02.2</span><span class="rh-r">新北站定位</span></div>
+  <div class="rh"><span>02.3</span><span class="rh-r">新北站定位</span></div>
 
   <div class="sec">
-    <span class="sn">05</span>
     <div class="sh"><h2>新北站定位</h2></div>
   </div>
 
@@ -803,10 +829,9 @@
 
 <!-- ============================ 06 活動流程 ============================ -->
 <div class="page" id="p-flow">
-  <div class="rh"><span>03.0</span><span class="rh-r">活動流程</span></div>
+  <div class="rh"><span>03.1</span><span class="rh-r">活動流程</span></div>
 
   <div class="sec">
-    <span class="sn">06</span>
     <div class="sh"><h2>活動流程</h2></div>
   </div>
 
@@ -852,10 +877,9 @@
 
 <!-- ============================ 07 參與成果 ============================ -->
 <div class="page" id="p-reach">
-  <div class="rh"><span>03.1</span><span class="rh-r">現場與線上參與成果</span></div>
+  <div class="rh"><span>03.2</span><span class="rh-r">現場與線上參與成果</span></div>
 
   <div class="sec">
-    <span class="sn">07</span>
     <div class="sh"><h2>現場與線上參與成果</h2></div>
   </div>
 
@@ -891,10 +915,9 @@
 
 <!-- ============================ 08 演講內容摘要 ============================ -->
 <div class="page" id="p-talk">
-  <div class="rh"><span>04.0</span><span class="rh-r">演講內容摘要</span></div>
+  <div class="rh"><span>04.1</span><span class="rh-r">演講內容摘要</span></div>
 
   <div class="sec">
-    <span class="sn">08</span>
     <div class="sh"><h2>演講內容摘要</h2></div>
   </div>
 
@@ -933,10 +956,9 @@
 
 <!-- ============================ 09 AI 判斷力學習框架 ============================ -->
 <div class="page" id="p-frame">
-  <div class="rh"><span>04.1</span><span class="rh-r">AI 判斷力學習框架</span></div>
+  <div class="rh"><span>04.2</span><span class="rh-r">AI 判斷力學習框架</span></div>
 
   <div class="sec">
-    <span class="sn">09</span>
     <div class="sh"><h2>AI 判斷力學習框架</h2></div>
   </div>
 
@@ -992,10 +1014,9 @@
 
 <!-- ============================ 10 專家對談成果 ============================ -->
 <div class="page" id="p-panel">
-  <div class="rh"><span>04.2</span><span class="rh-r">專家對談成果</span></div>
+  <div class="rh"><span>04.3</span><span class="rh-r">專家對談成果</span></div>
 
   <div class="sec">
-    <span class="sn">10</span>
     <div class="sh"><h2>專家對談成果</h2></div>
   </div>
 
@@ -1028,10 +1049,9 @@
 
 <!-- ============================ 11 青年局資源導入 ============================ -->
 <div class="page" id="p-res">
-  <div class="rh"><span>05.0</span><span class="rh-r">青年局資源導入</span></div>
+  <div class="rh"><span>05.1</span><span class="rh-r">青年局資源導入</span></div>
 
   <div class="sec">
-    <span class="sn">11</span>
     <div class="sh"><h2>青年局資源導入</h2></div>
   </div>
 
@@ -1070,10 +1090,9 @@
 
 <!-- ============================ 12 參與者組成 ============================ -->
 <div class="page" id="p-aud">
-  <div class="rh"><span>05.1</span><span class="rh-r">參與者組成與觸及分析</span></div>
+  <div class="rh"><span>05.2</span><span class="rh-r">參與者組成與觸及分析</span></div>
 
   <div class="sec">
-    <span class="sn">12</span>
     <div class="sh"><h2>參與者組成與觸及分析</h2></div>
   </div>
 
@@ -1106,10 +1125,9 @@
 
 <!-- ============================ 13 政策與 SDGs ============================ -->
 <div class="page" id="p-sdg">
-  <div class="rh"><span>05.2</span><span class="rh-r">政策與永續目標對接</span></div>
+  <div class="rh"><span>05.3</span><span class="rh-r">政策與永續目標對接</span></div>
 
   <div class="sec">
-    <span class="sn">13</span>
     <div class="sh"><h2>政策與永續目標對接</h2></div>
   </div>
 
@@ -1147,11 +1165,10 @@
 </div>
 
 <!-- ============================ 14 媒體與社群曝光 ============================ -->
-<div class="page" id="p-media">
-  <div class="rh"><span>05.3</span><span class="rh-r">媒體與社群曝光</span></div>
+<div class="page media-page" id="p-media">
+  <div class="rh"><span>05.4</span><span class="rh-r">媒體與社群曝光</span></div>
 
   <div class="sec">
-    <span class="sn">14</span>
     <div class="sh"><h2>媒體與社群曝光</h2></div>
   </div>
 
@@ -1205,10 +1222,9 @@
 
 <!-- ============================ 15 整體成效評估 ============================ -->
 <div class="page" id="p-eval">
-  <div class="rh"><span>06.0</span><span class="rh-r">整體成效評估</span></div>
+  <div class="rh"><span>06.1</span><span class="rh-r">整體成效評估</span></div>
 
   <div class="sec">
-    <span class="sn">15</span>
     <div class="sh"><h2>整體成效評估</h2></div>
   </div>
 
@@ -1242,10 +1258,9 @@
 
 <!-- ============================ 16 結語與參考依據 ============================ -->
 <div class="page" id="p-concl">
-  <div class="rh"><span>07.0</span><span class="rh-r">結語</span></div>
+  <div class="rh"><span>07.1</span><span class="rh-r">結語與參考依據</span></div>
 
   <div class="sec">
-    <span class="sn">16</span>
     <div class="sh"><h2>結語與參考依據</h2></div>
   </div>
 
@@ -1270,6 +1285,33 @@
   </div>
 
   <div class="pgn">17</div>
+</div>
+
+<!-- ============================ 08.1 活動大合照 ============================ -->
+<div class="page" id="p-appendix-photo">
+  <div class="rh"><span>08.1</span><span class="rh-r">活動大合照</span></div>
+
+  <div class="sec">
+    <div class="sh"><h2>附件｜活動大合照</h2></div>
+  </div>
+
+  <p class="lead">本頁留存新北站活動結束後之現場合影，作為活動參與情境、場地使用與青年實際到場成果的影像附件。</p>
+
+  <figure class="appendix-photo">
+    <img src="../assets/reports/2026-05-12-nuva-new-taipei/group-photo.jpg" alt="2026 全國公益露營車校園巡迴新北站活動大合照">
+    <figcaption>
+      <span class="ak">附件影像</span>
+      <span class="at">2026 / 05 / 12｜天主教輔仁大學國璽樓二樓國際會議廳 MD227｜新北站《回到答案之前》活動大合照</span>
+    </figcaption>
+  </figure>
+
+  <div class="appendix-note">
+    <div><div class="nk">活動場域</div><p>輔仁大學國璽樓二樓國際會議廳 MD227，作為本次下午專題演講與專家對談場地。</p></div>
+    <div><div class="nk">照片用途</div><p>作為正式成果報告附件，補充活動現場參與樣貌與結案佐證資料。</p></div>
+    <div><div class="nk">對應內容</div><p>可與「現場與線上參與成果」及「整體成效評估」頁面共同參照。</p></div>
+  </div>
+
+  <div class="pgn">18</div>
 </div>
   <script src="../assets/report-reader.js" defer></script>
 
