@@ -1,16 +1,17 @@
 {
-  "generatedAt": "2026-05-27T05:29:42.184Z",
-  "reportCount": 5,
+  "generatedAt": "2026-05-27T06:52:01.666Z",
+  "reportCount": 6,
   "clientGroups": {
     "政府與公共部門": 1,
     "企業與研究機構": 1,
     "AI 教育與內容製作": 1,
     "媒體、科技論壇與職場學習": 1,
+    "設計商品、跨境電商與品牌零售": 1,
     "零售、商場與餐飲營運": 1
   },
   "visibility": {
     "public": 3,
-    "private": 2
+    "private": 3
   },
   "tags": [
     "一人公司",
@@ -18,23 +19,30 @@
     "生成式 AI",
     "自動化",
     "青年政策",
+    "品牌 AI 說明書",
+    "客服 AI",
     "活動",
+    "流程自動化",
     "食安巡檢",
     "校園巡迴",
     "剪輯",
     "商場營運",
+    "數據分析",
     "課程",
     "餐飲管理",
+    "趨勢分析",
     "AI 自動化",
     "AI 協作",
     "AI 音樂影像",
     "AI 素養",
+    "AI 陪跑",
     "AI Agent",
     "AI Agent 流程",
     "AI TAIWAN",
     "ChatGPT",
     "Higgsfield",
     "n8n",
+    "nuvaClub",
     "Project-Based Learning",
     "Seedance 2.0",
     "Suno"
