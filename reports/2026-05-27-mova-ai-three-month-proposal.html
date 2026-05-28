@@ -2278,66 +2278,106 @@
       text-wrap: balance;
     }
 
-    .mova-toc-page .mova-reading-map {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 16mm;
-    }
-
-    .mova-toc-page .mova-reading-map div {
-      min-height: 31mm;
-      border: 1px solid rgba(37, 99, 235, .28);
-      border-left: 5px solid var(--teal);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, .94), rgba(238, 245, 255, .82));
-      padding: 16px 17px;
-    }
-
-    .mova-toc-page .mova-reading-map span {
-      font-size: 11px;
-    }
-
-    .mova-toc-page .mova-reading-map strong {
-      margin-top: 14px;
-      font-size: 20px;
-      line-height: 1.3;
-    }
-
-    .mova-reading-map {
+    .mova-toc {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 18px;
+      gap: 14px;
+      margin-top: 15mm;
     }
 
-    .mova-reading-map div {
-      min-height: 58px;
-      border: 1px solid rgba(37, 99, 235, .28);
-      background: rgba(255, 255, 255, .86);
-      padding: 10px;
-      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    .mova-toc-row {
+      display: grid;
+      grid-template-columns: 46mm 1fr;
+      gap: 18px;
+      align-items: start;
+      break-inside: avoid;
     }
 
-    .mova-reading-map div:hover {
-      transform: translateY(-2px);
-      border-color: rgba(37, 99, 235, .68);
-      background: #fff;
+    .mova-toc-l {
+      display: grid;
+      grid-template-columns: 16mm 1fr;
+      gap: 10px;
+      align-items: start;
     }
 
-    .mova-reading-map span {
+    .mova-toc-l .tn {
+      color: var(--teal);
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .mova-toc-l .tt {
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .mova-toc-l .te {
       display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-size: 9.5px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .mova-toc-r {
+      display: grid;
+      gap: 0;
+    }
+
+    .mova-toc .toc-sub {
+      display: grid;
+      grid-template-columns: 22mm 1fr 11mm;
+      gap: 10px;
+      align-items: center;
+      min-height: 34px;
+      border-bottom: 1px solid rgba(19, 33, 63, .16);
+      color: var(--ink);
+      text-decoration: none;
+      transition: background .14s ease, color .14s ease, padding-left .14s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .mova-toc .toc-sub:hover,
+    .mova-toc .toc-sub:focus-visible {
+      background: rgba(37, 99, 235, .08);
+      color: var(--teal-deep);
+      outline: none;
+      padding-left: 8px;
+    }
+
+    .mova-toc .ts-c,
+    .mova-toc .ts-p {
       color: var(--teal);
       font-family: "Space Mono", "Noto Sans TC", sans-serif;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 900;
     }
 
-    .mova-reading-map strong {
-      display: block;
-      margin-top: 7px;
+    .mova-toc .ts-t {
+      color: inherit;
+      font-size: 12.5px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .mova-toc .ts-p {
       color: var(--ink);
-      font-size: 13px;
-      line-height: 1.35;
+      text-align: right;
+    }
+
+    .mova-toc-note {
+      margin-top: 13mm;
+      border-top: 1px solid rgba(19, 33, 63, .18);
+      padding-top: 10px;
+      color: var(--muted);
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1.7;
     }
 
     .mova-cover-route {
@@ -2952,9 +2992,11 @@
         grid-template-columns: 1fr;
       }
 
-      .mova-reading-map,
       .mova-cover-route,
       .mova-month-board,
+      .mova-toc-row,
+      .mova-toc-l,
+      .mova-toc .toc-sub,
       .mova-module-row,
       .mova-eval-board,
       .mova-template-board,
@@ -3069,7 +3111,7 @@
     <div class="pgn">01</div>
   </section>
 
-  <section class="page mova-v2 mova-toc-page">
+  <section class="page mova-v2 mova-toc-page" id="toc">
     <div class="rh">
       <span>目錄</span>
       <span>01-06</span>
@@ -3080,19 +3122,51 @@
       <h2>報告目錄</h2>
     </div>
 
-    <div class="mova-reading-map" aria-label="報告目錄">
-      <div><span>01</span><strong>提案核心</strong></div>
-      <div><span>02</span><strong>三個月節奏</strong></div>
-      <div><span>03</span><strong>課程到作品</strong></div>
-      <div><span>04</span><strong>作品檢核</strong></div>
-      <div><span>05</span><strong>期末交流</strong></div>
-      <div><span>06</span><strong>啟動準備</strong></div>
+    <div class="mova-toc" aria-label="報告目錄">
+      <div class="mova-toc-row">
+        <div class="mova-toc-l"><span class="tn">01</span><span class="tt">提案核心<span class="te">Project foundation</span></span></div>
+        <div class="mova-toc-r">
+          <a class="toc-sub" href="#mova-core"><span class="ts-c">01.1 /</span><span class="ts-t">提案核心</span><span class="ts-p">03</span></a>
+        </div>
+      </div>
+      <div class="mova-toc-row">
+        <div class="mova-toc-l"><span class="tn">02</span><span class="tt">三個月節奏<span class="te">Monthly cadence</span></span></div>
+        <div class="mova-toc-r">
+          <a class="toc-sub" href="#mova-cadence"><span class="ts-c">02.1 /</span><span class="ts-t">三個月節奏</span><span class="ts-p">04</span></a>
+        </div>
+      </div>
+      <div class="mova-toc-row">
+        <div class="mova-toc-l"><span class="tn">03</span><span class="tt">課程到作品<span class="te">Course to output</span></span></div>
+        <div class="mova-toc-r">
+          <a class="toc-sub" href="#mova-modules"><span class="ts-c">03.1 /</span><span class="ts-t">課程到作品</span><span class="ts-p">05</span></a>
+        </div>
+      </div>
+      <div class="mova-toc-row">
+        <div class="mova-toc-l"><span class="tn">04</span><span class="tt">作品檢核<span class="te">Output review</span></span></div>
+        <div class="mova-toc-r">
+          <a class="toc-sub" href="#mova-review"><span class="ts-c">04.1 /</span><span class="ts-t">作品檢核</span><span class="ts-p">06</span></a>
+        </div>
+      </div>
+      <div class="mova-toc-row">
+        <div class="mova-toc-l"><span class="tn">05</span><span class="tt">期末交流<span class="te">Final showcase</span></span></div>
+        <div class="mova-toc-r">
+          <a class="toc-sub" href="#mova-showcase"><span class="ts-c">05.1 /</span><span class="ts-t">期末交流</span><span class="ts-p">07</span></a>
+        </div>
+      </div>
+      <div class="mova-toc-row">
+        <div class="mova-toc-l"><span class="tn">06</span><span class="tt">啟動準備<span class="te">Launch prep</span></span></div>
+        <div class="mova-toc-r">
+          <a class="toc-sub" href="#mova-launch"><span class="ts-c">06.1 /</span><span class="ts-t">啟動準備</span><span class="ts-p">08</span></a>
+        </div>
+      </div>
     </div>
+
+    <div class="mova-toc-note">目錄與正文共 8 頁 / A4 規格 / MOVA AI Keep Building v2</div>
 
     <div class="pgn">02</div>
   </section>
 
-  <section class="page mova-v2">
+  <section class="page mova-v2" id="mova-core">
     <div class="rh">
       <span>提案核心</span>
       <span>六個 Project 作品方向</span>
@@ -3202,7 +3276,7 @@
     <div class="pgn">03</div>
   </section>
 
-  <section class="page mova-v2">
+  <section class="page mova-v2" id="mova-cadence">
     <div class="rh">
       <span>時程設計</span>
       <span>8/1-10/31 三個月節奏</span>
@@ -3309,7 +3383,7 @@
     <div class="pgn">04</div>
   </section>
 
-  <section class="page mova-v2">
+  <section class="page mova-v2" id="mova-modules">
     <div class="rh">
       <span>課程與作品</span>
       <span>nuvaClub 線上學習路徑</span>
@@ -3395,7 +3469,7 @@
     <div class="pgn">05</div>
   </section>
 
-  <section class="page mova-v2">
+  <section class="page mova-v2" id="mova-review">
     <div class="rh">
       <span>作品機制</span>
       <span>月底交付與檢核標準</span>
@@ -3477,7 +3551,7 @@
     <div class="pgn">06</div>
   </section>
 
-  <section class="page mova-v2">
+  <section class="page mova-v2" id="mova-showcase">
     <div class="rh">
       <span>期末交流</span>
       <span>10 月底 3 小時成果驗收</span>
@@ -3525,7 +3599,7 @@
     <div class="pgn">07</div>
   </section>
 
-  <section class="page mova-v2">
+  <section class="page mova-v2" id="mova-launch">
     <div class="rh">
       <span>啟動準備</span>
       <span>8/1 前確認事項</span>
