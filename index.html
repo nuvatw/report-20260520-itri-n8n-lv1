@@ -449,19 +449,19 @@
 
     .month-group {
       position: relative;
-      margin-bottom: 34px;
+      margin-bottom: 22px;
     }
 
     .month-pin {
       position: relative;
       display: inline-flex;
       align-items: center;
-      min-height: 34px;
-      margin-bottom: 14px;
+      min-height: 28px;
+      margin-bottom: 10px;
       border: 1px solid var(--ink);
       background: var(--yellow);
-      padding: 0 12px;
-      font-size: .9rem;
+      padding: 0 10px;
+      font-size: .78rem;
     }
 
     .month-pin::before {
@@ -477,18 +477,18 @@
 
     .report-card {
       display: grid;
-      grid-template-columns: 130px minmax(0, 1fr) 120px;
-      gap: 22px;
+      grid-template-columns: 76px minmax(0, 1fr) 96px;
+      gap: 14px;
       align-items: stretch;
-      min-height: 164px;
-      margin-bottom: 16px;
+      min-height: 94px;
+      margin-bottom: 8px;
       border: 1px solid var(--ink);
-      border-radius: 8px;
+      border-radius: 6px;
       background: var(--paper);
       text-decoration: none;
       overflow: hidden;
-      box-shadow: 8px 9px 0 rgba(22, 32, 36, .08);
-      transition: transform .16s ease, box-shadow .16s ease;
+      box-shadow: 4px 5px 0 rgba(22, 32, 36, .06);
+      transition: transform .14s cubic-bezier(.23, 1, .32, 1), box-shadow .14s ease;
     }
 
     .report-main-link {
@@ -499,7 +499,7 @@
 
     .report-card.is-latest {
       border-color: var(--red);
-      box-shadow: 8px 9px 0 rgba(29, 78, 216, .12);
+      box-shadow: 4px 5px 0 rgba(29, 78, 216, .1);
     }
 
     .report-card.is-private {
@@ -510,8 +510,8 @@
     }
 
     .report-card:hover {
-      transform: translate(-2px, -3px);
-      box-shadow: 12px 14px 0 rgba(22, 32, 36, .12);
+      transform: translateY(-1px);
+      box-shadow: 5px 6px 0 rgba(22, 32, 36, .09);
     }
 
     .date-block {
@@ -520,12 +520,12 @@
       justify-content: space-between;
       background: var(--ink);
       color: var(--paper);
-      padding: 18px;
+      padding: 12px 10px;
     }
 
     .date-day {
       font-family: "Archivo", sans-serif;
-      font-size: 3.1rem;
+      font-size: 2rem;
       font-weight: 900;
       line-height: .9;
     }
@@ -533,11 +533,12 @@
     .date-month {
       color: rgba(255, 255, 255, .74);
       font-family: "Archivo", sans-serif;
+      font-size: .74rem;
       font-weight: 800;
     }
 
     .report-body {
-      padding: 20px 0;
+      padding: 12px 0;
       min-width: 0;
     }
 
@@ -545,23 +546,23 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 6px;
+      margin-bottom: 6px;
       color: var(--teal);
-      font-size: .78rem;
+      font-size: .72rem;
       text-transform: uppercase;
     }
 
     .latest-badge {
       display: inline-flex;
       align-items: center;
-      min-height: 24px;
+      min-height: 20px;
       border: 1px solid var(--red);
       border-radius: 999px;
       background: rgba(29, 78, 216, .08);
       color: var(--red);
-      padding: 0 8px;
-      font-size: .68rem;
+      padding: 0 7px;
+      font-size: .62rem;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
@@ -569,16 +570,24 @@
     .report-title {
       margin: 0;
       font-family: "Noto Serif TC", serif;
-      font-size: 1.55rem;
+      font-size: 1.1rem;
       font-weight: 900;
-      line-height: 1.35;
+      line-height: 1.28;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     .report-subtitle {
-      margin: 10px 0 0;
+      margin: 5px 0 0;
       color: var(--muted);
-      font-size: .98rem;
-      line-height: 1.65;
+      font-size: .84rem;
+      line-height: 1.45;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
 
     .report-side {
@@ -586,18 +595,18 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 16px;
-      padding: 20px 18px 18px 0;
+      gap: 8px;
+      padding: 12px 12px 12px 0;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: .76rem;
       text-align: right;
     }
 
     .open-mark {
       display: inline-flex;
       align-items: center;
-      min-height: 36px;
-      border-bottom: 2px solid var(--red);
+      min-height: 24px;
+      border-bottom: 1px solid var(--red);
       color: var(--red);
       font-weight: 900;
       white-space: nowrap;
@@ -606,12 +615,12 @@
     .visibility-badge {
       display: inline-flex;
       align-items: center;
-      min-height: 24px;
+      min-height: 20px;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
-      padding: 0 8px;
+      padding: 0 7px;
       color: var(--muted);
-      font-size: .68rem;
+      font-size: .62rem;
       font-weight: 900;
       letter-spacing: .06em;
     }
@@ -630,25 +639,25 @@
     .admin-controls {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: minmax(180px, 1fr) auto;
+      grid-template-columns: minmax(160px, 1fr) auto auto;
       align-items: center;
-      gap: 16px;
-      min-height: 52px;
+      gap: 10px;
+      min-height: 38px;
       border-top: 1px solid var(--line);
       background: rgba(244, 246, 242, .72);
-      padding: 10px 18px;
+      padding: 6px 12px;
     }
 
     .admin-status-text {
       color: var(--muted);
-      font-size: .86rem;
+      font-size: .78rem;
       font-weight: 800;
     }
 
     .visibility-toggle {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       border: 0;
       background: transparent;
       color: var(--muted);
@@ -659,8 +668,8 @@
 
     .toggle-track {
       position: relative;
-      width: 58px;
-      height: 32px;
+      width: 44px;
+      height: 24px;
       border: 1px solid rgba(104, 114, 113, .44);
       border-radius: 999px;
       background: #d6ddda;
@@ -669,10 +678,10 @@
 
     .toggle-knob {
       position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 22px;
-      height: 22px;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: #fff;
       box-shadow: 0 2px 6px rgba(22, 32, 36, .18);
@@ -689,7 +698,7 @@
     }
 
     .visibility-toggle.is-public .toggle-knob {
-      transform: translateX(26px);
+      transform: translateX(20px);
     }
 
     .visibility-toggle:focus-visible {
@@ -702,22 +711,22 @@
       display: grid;
       grid-template-columns: minmax(160px, 1fr) auto auto;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       border-top: 1px solid var(--line);
-      padding-top: 12px;
+      padding-top: 8px;
     }
 
     .guest-pin-copy {
       display: grid;
       gap: 3px;
       color: var(--muted);
-      font-size: .82rem;
-      line-height: 1.45;
+      font-size: .76rem;
+      line-height: 1.35;
     }
 
     .guest-pin-copy strong {
       color: var(--ink);
-      font-size: .9rem;
+      font-size: .82rem;
       font-weight: 900;
     }
 
@@ -739,18 +748,18 @@
 
     .guest-pin-digits {
       display: grid;
-      grid-template-columns: repeat(4, 34px);
-      gap: 7px;
+      grid-template-columns: repeat(4, 28px);
+      gap: 6px;
       pointer-events: none;
     }
 
     .guest-pin-cell {
       display: grid;
       place-items: center;
-      width: 34px;
-      height: 38px;
+      width: 28px;
+      height: 30px;
       border: 1px solid var(--line-strong);
-      border-radius: 8px;
+      border-radius: 6px;
       background: rgba(255, 255, 255, .8);
       color: var(--ink-faint);
       font-family: "Archivo", sans-serif;
@@ -777,14 +786,51 @@
       justify-content: flex-end;
     }
 
+    .guest-pin-details {
+      justify-self: end;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .guest-pin-details summary {
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .68);
+      cursor: pointer;
+      padding: 0 10px;
+      transition: background .14s ease, border-color .14s ease, color .14s ease, transform .14s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .guest-pin-details summary:hover,
+    .guest-pin-details summary:focus-visible {
+      border-color: var(--teal);
+      color: var(--teal);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .guest-pin-details[open] {
+      grid-column: 1 / -1;
+      justify-self: stretch;
+    }
+
+    .guest-pin-details[open] summary {
+      margin-bottom: 8px;
+    }
+
     .pin-save,
     .pin-clear {
-      min-height: 38px;
+      min-height: 32px;
       border: 1px solid var(--ink);
-      border-radius: 8px;
+      border-radius: 6px;
       background: var(--ink);
       color: var(--paper);
-      padding: 0 12px;
+      padding: 0 10px;
       cursor: pointer;
       font-weight: 900;
       transition: transform .16s ease, background .16s ease, opacity .16s ease;
@@ -1118,15 +1164,15 @@
       }
 
       .report-card {
-        grid-template-columns: 96px minmax(0, 1fr);
+        grid-template-columns: 72px minmax(0, 1fr);
       }
 
       .report-side {
         grid-column: 1 / -1;
         flex-direction: row;
         align-items: center;
-        gap: 14px;
-        padding: 0 18px 18px 114px;
+        gap: 12px;
+        padding: 0 12px 10px 84px;
         text-align: left;
       }
 
@@ -1211,20 +1257,21 @@
 
       .report-card {
         grid-template-columns: 1fr;
+        gap: 0;
       }
 
       .date-block {
-        min-height: 92px;
+        min-height: 56px;
         flex-direction: row;
         align-items: end;
       }
 
       .report-body {
-        padding: 18px;
+        padding: 12px;
       }
 
       .report-side {
-        padding: 0 18px 18px;
+        padding: 0 12px 12px;
       }
 
       .admin-controls {
@@ -1607,20 +1654,20 @@
     .report-card {
       overflow: hidden;
       border: 1px solid rgba(16, 42, 95, .14);
-      border-radius: 8px;
+      border-radius: 6px;
       background: rgba(255, 255, 255, .94);
-      box-shadow: 0 18px 42px rgba(26, 65, 130, .09);
+      box-shadow: 0 8px 22px rgba(26, 65, 130, .07);
     }
 
     .report-card.is-latest {
       border-color: rgba(37, 99, 235, .38);
-      box-shadow: 0 24px 52px rgba(37, 99, 235, .14);
+      box-shadow: 0 10px 26px rgba(37, 99, 235, .12);
     }
 
     .report-main-link:hover,
     .report-main-link:focus-visible {
       outline: none;
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       text-decoration: none;
     }
 
@@ -2486,6 +2533,7 @@
         report.pages ? `${report.pages} 頁` : '',
         report.sizeKb ? `${report.sizeKb} KB` : ''
       ].filter(Boolean).join(' / ');
+      const guestPinControls = renderGuestPinEditor(report, isPublic);
       const adminControls = adminState.isAdmin ? `
         <div class="admin-controls">
           <span class="admin-status-text">目前狀態：${escapeHtml(visibilityLabel)}</span>
@@ -2499,7 +2547,7 @@
             <span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span>
             <span>${escapeHtml(visibilityLabel)}</span>
           </button>
-          ${renderGuestPinEditor(report, isPublic)}
+          ${guestPinControls ? `<details class="guest-pin-details"><summary>訪客密碼</summary>${guestPinControls}</details>` : ''}
         </div>
       ` : '';
 
