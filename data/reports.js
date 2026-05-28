@@ -1,5 +1,5 @@
 window.REPORT_TIMELINE = {
-  "generatedAt": "2026-05-28T09:46:17.357Z",
+  "generatedAt": "2026-05-28T10:05:24.854Z",
   "count": 8,
   "reports": [
     {
@@ -177,8 +177,8 @@ window.REPORT_TIMELINE = {
       "visibility": "private",
       "guestPin": "",
       "pages": 14,
-      "updatedAt": "2026-05-28T04:43:29.651Z",
-      "sizeKb": 88,
+      "updatedAt": "2026-05-28T10:05:17.451Z",
+      "sizeKb": 90,
       "search": "mova ai keep building 2026/08/01-2026/10/31，三個月 ai 陪跑提案 課程提案 mova 設計商品、跨境電商與品牌零售 2026/08/01-2026/10/31 2026 八月至十月 nuvaclub ai 陪跑 品牌 ai 說明書 客服 ai 數據分析 趨勢分析 流程自動化 reports/2026-05-27-mova-ai-three-month-proposal.html"
     },
     {

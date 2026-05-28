@@ -1225,10 +1225,19 @@
 
       .page {
         width: 210mm;
+        height: 297mm;
         min-height: 297mm;
+        max-height: 297mm;
         margin: 0;
+        overflow: hidden;
         box-shadow: none;
         break-after: page;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .page:last-of-type {
+        break-after: auto;
       }
     }
 
@@ -2693,6 +2702,11 @@
     }
 
     @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
       body[data-version="mova-simplified"] .module-tab {
         box-shadow: none !important;
       }
@@ -2716,6 +2730,44 @@
         transform: none !important;
         border-color: rgba(37, 99, 235, .2) !important;
         background: #fff !important;
+      }
+
+      body[data-version="mova-simplified"] .mova-project-card,
+      body[data-version="mova-simplified"] .mova-project-inner,
+      body[data-version="mova-simplified"] .mova-project-face {
+        transform: none !important;
+        transition: none !important;
+      }
+
+      body[data-version="mova-simplified"] .mova-project-card {
+        min-height: 39mm;
+        cursor: default;
+        perspective: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body[data-version="mova-simplified"] .mova-project-inner {
+        min-height: 39mm;
+        transform-style: flat !important;
+      }
+
+      body[data-version="mova-simplified"] .mova-project-front {
+        display: none !important;
+      }
+
+      body[data-version="mova-simplified"] .mova-project-back {
+        position: relative !important;
+        inset: auto !important;
+        min-height: 39mm;
+        backface-visibility: visible !important;
+        -webkit-backface-visibility: visible !important;
+        justify-content: flex-start;
+        padding: 13px 15px;
+      }
+
+      body[data-version="mova-simplified"] .mova-project-face::after {
+        display: none !important;
       }
     }
 
