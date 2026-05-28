@@ -1180,8 +1180,8 @@
   }
 
   function itemsFromPages() {
-    return [...document.querySelectorAll('.page[id]')]
-      .filter((page) => page.id !== 'toc')
+    return [...document.querySelectorAll('.page')]
+      .filter((page) => page.id !== 'toc' && !page.classList.contains('cover'))
       .map((page, index) => {
         const { title, page: pageNumber } = titleForPage(page, index);
         const body = cleanText(page.querySelector('.lead, .body, .bd, p')?.textContent || '');
