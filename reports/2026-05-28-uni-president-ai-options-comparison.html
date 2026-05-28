@@ -3,7 +3,7 @@
 <!-- report-meta
 {
   "title": "統一超商商場事業部 AI 課程兩方案比較",
-  "subtitle": "預算內講座與品牌案例合作工作坊的決策摘要",
+  "subtitle": "延續完整工作坊框架，補充 90 分鐘講座與 180 分鐘工作坊比較",
   "date": "2026-05-28",
   "period": "2026/09/09 下午",
   "category": "課程提案",
@@ -24,30 +24,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --paper: oklch(99% 0.006 250);
-      --surface: oklch(97.5% 0.009 250);
-      --surface-blue: oklch(96% 0.027 255);
-      --surface-green: oklch(96% 0.027 168);
-      --ink: oklch(23% 0.038 257);
-      --muted: oklch(44% 0.035 257);
-      --faint: oklch(63% 0.035 257);
-      --line: oklch(75% 0.026 257 / .36);
-      --line-strong: oklch(34% 0.04 257 / .58);
-      --blue: oklch(47% 0.18 260);
-      --blue-deep: oklch(31% 0.12 260);
-      --green: oklch(45% 0.12 165);
-      --green-deep: oklch(31% 0.09 165);
+      --paper: #ffffff;
+      --desk: #f8fbff;
+      --ink: #15223f;
+      --muted: #46516f;
+      --faint: #8790a7;
+      --line: rgba(21, 34, 63, .16);
+      --line-strong: rgba(21, 34, 63, .42);
+      --blue: #1d4ed8;
+      --blue-deep: #12286a;
+      --blue-tint: #eef3fd;
+      --green: #007a4d;
+      --green-deep: #07503b;
+      --gold: #dbeafe;
+      --shadow: rgba(20, 40, 90, .18);
       --report-bg-base: #f8fbff;
       --report-bg-line: rgba(29, 78, 216, .034);
       --report-bg-line-strong: rgba(29, 78, 216, .046);
       --report-bg-size: 42px;
-      --shadow: oklch(23% 0.04 257 / .16);
-      --ease-out: cubic-bezier(.23, 1, .32, 1);
-      --ease-in-out: cubic-bezier(.77, 0, .175, 1);
     }
 
     * {
@@ -73,19 +71,15 @@
       padding: 34px 0;
     }
 
-    button {
-      font: inherit;
-    }
-
     .page {
       position: relative;
-      width: min(1180px, calc(100vw - 30px));
+      width: min(210mm, calc(100vw - 28px));
       min-height: 297mm;
       margin: 0 auto 30px;
       overflow: hidden;
       background: var(--paper);
       box-shadow: 0 10px 36px var(--shadow);
-      padding: clamp(28px, 5vw, 64px);
+      padding: 21mm 19mm 16mm;
     }
 
     .page > * {
@@ -93,27 +87,16 @@
       z-index: 1;
     }
 
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, transparent 72px, oklch(47% 0.18 260 / .11) 72px, oklch(47% 0.18 260 / .11) 73px, transparent 73px),
-        radial-gradient(circle at 92% 7%, oklch(47% 0.18 260 / .08), transparent 28%),
-        linear-gradient(180deg, oklch(96% 0.024 255 / .72), transparent 34%);
-    }
-
     .rh,
     .kicker,
     .meta,
+    .tag,
+    .time,
     .label,
-    .price-note,
-    .path-tag,
-    .chip,
-    .tab-button,
-    .table-head {
-      font-family: "Archivo", "Noto Sans TC", sans-serif;
+    .pgn,
+    .eyebrow,
+    .money-note {
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
       font-weight: 800;
       letter-spacing: 0;
     }
@@ -122,20 +105,31 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 2px solid var(--ink);
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.5;
+      font-size: 10px;
+      line-height: 1.55;
     }
 
-    .hero {
+    .pgn {
+      position: absolute;
+      right: 19mm;
+      bottom: 13mm;
+      color: var(--ink);
+      font-size: 11px;
+    }
+
+    .cover {
       display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(290px, .82fr);
-      gap: clamp(24px, 5vw, 58px);
-      align-items: end;
-      padding: clamp(34px, 6vw, 72px) 0 28px;
-      border-bottom: 1px solid var(--line);
+      grid-template-rows: auto 1fr auto;
+      min-height: 297mm;
+    }
+
+    .cover-main {
+      display: grid;
+      align-content: start;
+      padding-top: 10mm;
     }
 
     .kicker {
@@ -144,415 +138,410 @@
     }
 
     h1 {
-      max-width: 720px;
+      max-width: 154mm;
       margin-top: 14px;
-      font-size: clamp(36px, 6vw, 72px);
+      font-size: 54px;
       font-weight: 900;
       line-height: 1.08;
       letter-spacing: 0;
       text-wrap: balance;
     }
 
-    .conclusion {
-      margin-top: 22px;
-      max-width: 760px;
-      color: var(--ink);
-      font-size: clamp(17px, 2vw, 22px);
-      font-weight: 800;
-      line-height: 1.75;
+    h1 span {
+      display: block;
+    }
+
+    .subtitle {
+      max-width: 146mm;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.8;
       text-wrap: pretty;
     }
 
-    .hero-panel {
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      padding: 20px;
-    }
-
-    .hero-panel strong {
-      display: block;
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.45;
-    }
-
-    .hero-panel p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .signal-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .signal-box {
-      min-height: 82px;
-      border: 1px solid var(--line-strong);
-      background: var(--paper);
-      padding: 12px;
-    }
-
-    .signal-box b {
-      display: block;
-      color: var(--blue);
-      font-size: 24px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .signal-box span {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .section {
-      margin-top: clamp(34px, 5vw, 58px);
-    }
-
-    .section-head {
+    .tagline {
       display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--ink);
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
     }
 
-    h2 {
-      font-size: clamp(24px, 3vw, 34px);
-      font-weight: 900;
-      line-height: 1.2;
-      text-wrap: balance;
-    }
-
-    .section-note {
-      max-width: 420px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.75;
-      text-align: right;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .plan-card {
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      min-height: 430px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
-      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
-    }
-
-    .plan-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 8px 10px 0 oklch(47% 0.18 260 / .13);
-    }
-
-    .plan-card:focus-within {
-      outline: 3px solid oklch(47% 0.18 260 / .2);
-      outline-offset: 3px;
-    }
-
-    .plan-card[data-plan="b"] {
-      background: linear-gradient(180deg, var(--surface-blue), var(--paper) 36%);
-    }
-
-    .plan-top {
-      padding: 22px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .meta {
-      color: var(--blue);
-      font-size: 12px;
-    }
-
-    .plan-card[data-plan="b"] .meta {
-      color: var(--green);
-    }
-
-    .plan-title {
-      margin-top: 8px;
-      font-size: clamp(22px, 2.4vw, 32px);
-      font-weight: 900;
-      line-height: 1.25;
-      text-wrap: balance;
-    }
-
-    .plan-price {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      align-items: end;
-      padding: 18px 22px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .price {
-      font-family: "Archivo", "Noto Sans TC", sans-serif;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 900;
-      line-height: .95;
-    }
-
-    .price small {
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .price-note {
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.55;
-      text-align: right;
-    }
-
-    .plan-list {
-      display: grid;
-      gap: 0;
-      padding: 0 22px 20px;
-      list-style: none;
-    }
-
-    .plan-list li {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .plan-list li:last-child {
-      border-bottom: 0;
-    }
-
-    .label {
-      color: var(--ink);
-      font-size: 12px;
-    }
-
-    .path-visual {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 18px;
-      padding: 20px;
-      border: 2px solid var(--ink);
-      background:
-        linear-gradient(90deg, oklch(99% 0.006 250) 0 49.8%, oklch(27% 0.045 257) 49.8% 50.2%, oklch(97% 0.02 255) 50.2%);
-    }
-
-    .path {
-      position: relative;
-      min-height: 258px;
-      padding: 18px;
+    .tag {
       border: 1px solid var(--line-strong);
-      background: oklch(99% 0.006 250 / .88);
-      overflow: hidden;
-    }
-
-    .path[data-path="b"] {
-      background: oklch(97% 0.024 255 / .94);
-    }
-
-    .path-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 7px 10px;
-      background: var(--ink);
-      color: var(--paper);
-      font-size: 11px;
-    }
-
-    .path[data-path="b"] .path-tag {
-      background: var(--green-deep);
-    }
-
-    .track {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 38px;
-    }
-
-    .track::before {
-      content: "";
-      position: absolute;
-      left: 11%;
-      right: 11%;
-      top: 31px;
-      height: 3px;
-      background: var(--line);
-      transform-origin: left center;
-      animation: pathLine 4.8s var(--ease-in-out) infinite;
-    }
-
-    .path[data-path="b"] .track::before {
-      background: oklch(45% 0.12 165 / .36);
-      animation-delay: .5s;
-    }
-
-    .node {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 10px;
-      justify-items: center;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.5;
-      text-wrap: balance;
-    }
-
-    .dot {
-      display: grid;
-      place-items: center;
-      width: 64px;
-      height: 64px;
-      border: 2px solid var(--ink);
-      background: var(--paper);
+      background: #fff;
       color: var(--ink);
-      font-family: "Archivo", "Noto Sans TC", sans-serif;
-      font-size: 15px;
-      font-weight: 900;
-      animation: nodePulse 4.8s var(--ease-out) infinite;
+      font-size: 10px;
+      padding: 6px 9px;
     }
 
-    .node:nth-child(2) .dot {
-      animation-delay: .42s;
-    }
-
-    .node:nth-child(3) .dot {
-      animation-delay: .84s;
-    }
-
-    .path[data-path="b"] .dot {
-      border-color: var(--green-deep);
-      color: var(--green-deep);
-    }
-
-    .path-copy {
-      margin-top: 28px;
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.75;
-    }
-
-    .path-copy strong {
-      color: var(--ink);
-      font-weight: 900;
-    }
-
-    .detail-shell {
+    .cover-board {
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 1.02fr .98fr;
       gap: 18px;
+      margin-top: 24px;
       align-items: stretch;
     }
 
-    .tabs {
+    .signal {
       display: grid;
-      gap: 8px;
-      align-content: start;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: start;
+      border-top: 2px solid var(--ink);
+      padding-top: 14px;
     }
 
-    .tab-button {
-      width: 100%;
-      min-height: 50px;
-      border: 1px solid var(--line-strong);
-      background: var(--paper);
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 13px;
-      text-align: left;
-      padding: 13px 14px;
-      transition: transform 160ms var(--ease-out), background-color 160ms ease, color 160ms ease;
+    .signal + .signal {
+      margin-top: 18px;
     }
 
-    .tab-button:hover,
-    .tab-button:focus-visible {
-      color: var(--ink);
-      transform: translateX(2px);
-      outline: none;
-    }
-
-    .tab-button:active {
-      transform: scale(.98);
-    }
-
-    .tab-button.is-active {
-      border-color: var(--ink);
-      background: var(--ink);
-      color: var(--paper);
-    }
-
-    .detail-panel {
-      min-height: 244px;
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      padding: 22px;
-    }
-
-    .detail-panel[hidden] {
-      display: none;
-    }
-
-    .detail-grid {
+    .signal-mark {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      background: var(--blue-deep);
+      color: #fff;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 12px;
+      font-weight: 900;
     }
 
-    .detail-item {
-      background: var(--paper);
-      border: 1px solid var(--line-strong);
-      padding: 16px;
-    }
-
-    .detail-item h3 {
+    .signal h3,
+    .path-card h3,
+    .role h3,
+    .principle h3,
+    .deliverable h3,
+    .flow-node h3,
+    .timeline-item h3,
+    .case-note h3 {
       font-size: 16px;
       font-weight: 900;
       line-height: 1.4;
     }
 
-    .detail-item p {
+    .signal p,
+    .role p,
+    .principle p,
+    .deliverable p,
+    .flow-node p,
+    .timeline-item p,
+    .body,
+    .case-note p,
+    .case-note li,
+    .table-row div,
+    .path-card p {
+      color: var(--muted);
+      font-size: 12.6px;
+      line-height: 1.85;
+    }
+
+    .operation-map {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 9px;
+      border: 2px solid var(--ink);
+      background: #fff;
+      padding: 12px;
+      box-shadow: 8px 8px 0 rgba(29, 78, 216, .12);
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .map-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .map-dot {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      background: var(--blue-tint);
+      color: var(--blue-deep);
+      font-size: 11px;
+      font-weight: 900;
+      border: 1px solid var(--line-strong);
+    }
+
+    .map-row strong {
+      display: block;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .map-row span {
+      display: block;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+
+    .cover-grid,
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .cover-grid > div,
+    .stats > div {
+      min-height: 29mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px 16px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .cover-grid > div:last-child,
+    .stats > div:last-child {
+      border-right: 0;
+    }
+
+    .meta {
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 9px;
+    }
+
+    .value {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .sec {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      margin: 34px 0 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .sec-num {
+      color: var(--blue);
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      line-height: .9;
+    }
+
+    h2 {
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .lead {
+      max-width: 154mm;
+      border-left: 4px solid var(--blue);
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.9;
+      text-wrap: pretty;
+    }
+
+    .stats {
+      margin: 20px 0 18px;
+    }
+
+    .stat-k {
+      color: var(--blue);
+      font-size: 10px;
+    }
+
+    .stat-v {
+      margin-top: 6px;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .stat-s {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .roles,
+    .principles,
+    .path-grid,
+    .deliverables,
+    .decision {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .roles,
+    .journey {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .principles,
+    .path-grid,
+    .deliverables,
+    .decision {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .role,
+    .principle,
+    .path-card,
+    .deliverable,
+    .case-note,
+    .decision-card {
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      padding: 16px;
+    }
+
+    .principle,
+    .path-card,
+    .decision-card {
+      border-top: 5px solid var(--blue);
+    }
+
+    .path-card.alt,
+    .decision-card.alt {
+      border-top-color: var(--green);
+      background: linear-gradient(180deg, #f2fbf7, #fff 52%);
+    }
+
+    .path-card .money {
+      margin-top: 12px;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 31px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .money-note {
+      display: block;
       margin-top: 8px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .journey {
+      display: grid;
+      gap: 0;
+      margin-top: 20px;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .journey-step {
+      min-height: 118px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .journey-step:last-child {
+      border-right: 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--blue);
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    .journey-step h3 {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .journey-step p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12.5px;
       line-height: 1.75;
     }
 
+    .agenda,
+    .timeline-list {
+      margin-top: 16px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .agenda-row,
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 33mm 1fr 40mm;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .timeline-item {
+      grid-template-columns: 31mm 1fr;
+    }
+
+    .time {
+      color: var(--blue);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .agenda-main h3 {
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .agenda-main p,
+    .agenda-side {
+      color: var(--muted);
+      font-size: 12.1px;
+      line-height: 1.75;
+    }
+
+    .agenda-main p {
+      margin-top: 5px;
+    }
+
+    .agenda-side {
+      border-left: 3px solid var(--gold);
+      padding-left: 10px;
+    }
+
     .compare-table {
+      margin-top: 18px;
       border: 2px solid var(--ink);
-      background: var(--paper);
+      background: #fff;
     }
 
     .table-row {
       display: grid;
-      grid-template-columns: minmax(150px, .72fr) minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-columns: 34mm 1fr 1fr;
       border-bottom: 1px solid var(--line);
     }
 
@@ -561,12 +550,9 @@
     }
 
     .table-row > div {
-      min-height: 56px;
-      padding: 14px 16px;
+      min-height: 52px;
+      padding: 12px 13px;
       border-right: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.65;
     }
 
     .table-row > div:last-child {
@@ -574,10 +560,12 @@
     }
 
     .table-head > div {
-      min-height: 46px;
+      min-height: 42px;
       background: var(--ink);
-      color: var(--paper);
-      font-size: 12px;
+      color: #fff;
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-size: 10px;
+      font-weight: 800;
       line-height: 1.45;
     }
 
@@ -586,278 +574,103 @@
       font-weight: 900;
     }
 
-    .decision {
+    .demo-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 16px;
       margin-top: 18px;
+      align-items: start;
     }
 
-    .decision-card {
-      min-height: 128px;
+    .flow {
       border: 2px solid var(--ink);
-      background: var(--paper);
-      padding: 20px;
+      background: #fff;
+      padding: 14px;
     }
 
-    .decision-card strong {
-      display: block;
-      font-size: 21px;
-      font-weight: 900;
-      line-height: 1.35;
+    .flow-node {
+      position: relative;
+      padding: 13px 13px 13px 48px;
+      border-bottom: 1px solid var(--line);
+      min-height: 68px;
     }
 
-    .decision-card p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
+    .flow-node:last-child {
+      border-bottom: 0;
     }
 
-    .decision-card[data-decision="b"] {
-      background: var(--surface-green);
-    }
-
-    .ui-notes {
+    .flow-node::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0;
+      top: 14px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .ui-note {
-      border: 1px solid var(--line-strong);
-      background: var(--paper);
-      padding: 16px;
-    }
-
-    .ui-note .chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      border: 1px solid var(--line-strong);
-      padding: 6px 8px;
-      color: var(--blue);
-      font-size: 10px;
-    }
-
-    .ui-note h3 {
-      margin-top: 12px;
-      font-size: 16px;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      background: var(--blue-deep);
+      color: #fff;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 11px;
       font-weight: 900;
-      line-height: 1.4;
     }
 
-    .ui-note p {
+    .case-note {
+      border-left: 6px solid var(--blue);
+    }
+
+    .case-note h3 {
+      color: var(--blue-deep);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .check-list {
+      margin-top: 12px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12.7px;
+      line-height: 1.85;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 8px;
+      height: 2px;
+      background: var(--blue);
+    }
+
+    .quote-box {
+      margin-top: 18px;
+      border: 2px solid var(--ink);
+      background:
+        linear-gradient(90deg, rgba(29, 78, 216, .12), transparent 58%),
+        #fff;
+      padding: 18px 20px;
+    }
+
+    .quote-box strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.6;
+    }
+
+    .quote-box p {
       margin-top: 8px;
       color: var(--muted);
-      font-size: 12.6px;
-      line-height: 1.75;
-    }
-
-    @keyframes pathLine {
-      0% {
-        transform: scaleX(.04);
-        opacity: .45;
-      }
-      38%,
-      76% {
-        transform: scaleX(1);
-        opacity: 1;
-      }
-      100% {
-        transform: scaleX(1);
-        opacity: .45;
-      }
-    }
-
-    @keyframes nodePulse {
-      0%,
-      22%,
-      100% {
-        background: var(--paper);
-        transform: translateY(0);
-      }
-      9% {
-        background: var(--surface-blue);
-        transform: translateY(-3px);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .001ms !important;
-      }
-    }
-
-    @media (max-width: 920px) {
-      .hero,
-      .cards,
-      .path-visual,
-      .detail-shell,
-      .decision,
-      .ui-notes {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-note {
-        margin-top: 8px;
-        text-align: left;
-      }
-
-      .plan-card {
-        min-height: auto;
-      }
-
-      .detail-shell {
-        gap: 12px;
-      }
-
-      .tabs {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .tab-button:hover,
-      .tab-button:focus-visible {
-        transform: translateY(-1px);
-      }
-    }
-
-    @media (max-width: 680px) {
-      body {
-        padding: 12px 0;
-      }
-
-      .page {
-        width: calc(100vw - 18px);
-        min-height: auto;
-        padding: 28px 20px 88px;
-      }
-
-      .page::before {
-        background:
-          radial-gradient(circle at 96% 3%, oklch(47% 0.18 260 / .08), transparent 26%),
-          linear-gradient(180deg, oklch(96% 0.024 255 / .72), transparent 28%);
-      }
-
-      .rh {
-        display: grid;
-        gap: 4px;
-      }
-
-      .hero {
-        padding-top: 32px;
-      }
-
-      .hero-panel,
-      .path-visual,
-      .detail-panel,
-      .decision-card {
-        padding: 16px;
-      }
-
-      .signal-row,
-      .detail-grid,
-      .tabs {
-        grid-template-columns: 1fr;
-      }
-
-      .plan-price,
-      .plan-list li {
-        grid-template-columns: 1fr;
-      }
-
-      .price-note {
-        text-align: left;
-      }
-
-      .path {
-        min-height: auto;
-      }
-
-      .track {
-        grid-template-columns: 1fr;
-        gap: 22px;
-        margin-top: 24px;
-      }
-
-      .track::before {
-        left: 31px;
-        right: auto;
-        top: 20px;
-        bottom: 20px;
-        width: 3px;
-        height: auto;
-        transform-origin: top center;
-        animation-name: pathLineMobile;
-      }
-
-      .node {
-        grid-template-columns: 64px 1fr;
-        justify-items: start;
-        text-align: left;
-      }
-
-      .table-row {
-        grid-template-columns: 1fr;
-      }
-
-      .table-row > div {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .table-row > div:last-child {
-        border-bottom: 0;
-      }
-
-      .table-head {
-        display: none;
-      }
-
-      .table-row > div:nth-child(2)::before {
-        content: "方案 A：90 分鐘講座";
-        display: block;
-        margin-bottom: 6px;
-        color: var(--ink);
-        font-weight: 900;
-      }
-
-      .table-row > div:nth-child(3)::before {
-        content: "方案 B：3 小時工作坊";
-        display: block;
-        margin-bottom: 6px;
-        color: var(--ink);
-        font-weight: 900;
-      }
-    }
-
-    @keyframes pathLineMobile {
-      0% {
-        transform: scaleY(.04);
-        opacity: .45;
-      }
-      38%,
-      76% {
-        transform: scaleY(1);
-        opacity: 1;
-      }
-      100% {
-        transform: scaleY(1);
-        opacity: .45;
-      }
+      font-size: 12.8px;
+      line-height: 1.85;
     }
 
     @media print {
@@ -873,14 +686,84 @@
         box-shadow: none;
         break-after: page;
       }
+    }
 
-      .tab-button:not(.is-active),
-      .ui-notes {
-        display: none;
+    @media (max-width: 780px) {
+      body {
+        padding: 12px 0;
       }
 
-      .detail-shell {
+      .page {
+        width: calc(100vw - 18px);
+        min-height: auto;
+        padding: 30px 22px 42px;
+        margin-bottom: 14px;
+      }
+
+      .cover {
+        min-height: auto;
+      }
+
+      .pgn {
+        right: 22px;
+        bottom: 18px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .cover-board,
+      .demo-layout,
+      .principles,
+      .deliverables,
+      .roles,
+      .stats,
+      .cover-grid,
+      .journey,
+      .path-grid,
+      .decision {
         grid-template-columns: 1fr;
+      }
+
+      .cover-grid > div,
+      .stats > div,
+      .journey-step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cover-grid > div:last-child,
+      .stats > div:last-child,
+      .journey-step:last-child {
+        border-bottom: 0;
+      }
+
+      .sec,
+      .agenda-row,
+      .timeline-item,
+      .table-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .agenda-side {
+        border-left: 0;
+        border-top: 3px solid var(--gold);
+        padding: 8px 0 0;
+      }
+
+      .table-row > div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .table-row > div:last-child {
+        border-bottom: 0;
       }
     }
   </style>
@@ -888,309 +771,546 @@
 </head>
 
 <body>
-  <main class="page">
+  <section class="page cover">
     <div class="rh">
-      <span>nuva AI 課程提案比較</span>
+      <span>nuva AI 工作坊提案</span>
       <span>統一超商股份有限公司｜商場事業部｜2026-05-28</span>
     </div>
 
-    <header class="hero" aria-labelledby="main-title">
+    <div class="cover-main">
       <div>
-        <p class="kicker">極簡版方案比較頁</p>
-        <h1 id="main-title">兩種合作方式：預算內講座 vs. 品牌合作工作坊</h1>
-        <p class="conclusion">方案 A 是預算內的精簡講座；方案 B 是以品牌案例合作與素材授權，換取更完整課程價值的專案合作方案。</p>
-      </div>
-      <aside class="hero-panel" aria-label="核心判斷">
-        <strong>30 秒判斷</strong>
-        <p>重視預算單純與流程簡化，選 90 分鐘講座。可配合品牌案例合作，則可用專案價保留完整 3 小時工作坊。</p>
-        <div class="signal-row" aria-label="方案摘要">
-          <div class="signal-box">
-            <b>A</b>
-            <span>預算內、時數短、合作條件低</span>
-          </div>
-          <div class="signal-box">
-            <b>B</b>
-            <span>專案價、內容完整、需素材授權</span>
-          </div>
-        </div>
-      </aside>
-    </header>
-
-    <section class="section" aria-labelledby="cards-title">
-      <div class="section-head">
-        <h2 id="cards-title">方案比較卡片</h2>
-        <p class="section-note">只保留會影響決策的差異：價格、時數、形式、交付與合作條件。</p>
-      </div>
-
-      <div class="cards">
-        <article class="plan-card" data-plan="a" tabindex="0">
-          <div class="plan-top">
-            <p class="meta">方案 A</p>
-            <h3 class="plan-title">90 分鐘 AI 主題講座</h3>
-          </div>
-          <div class="plan-price">
-            <p class="price">NT$33,000 <small>未稅</small></p>
-            <p class="price-note">含 5% 營業稅為 NT$34,650<br>控制在 NT$36,000 預算內</p>
-          </div>
-          <ul class="plan-list">
-            <li><span class="label">適合情境</span><span>預算明確，需單次主題分享。</span></li>
-            <li><span class="label">時數</span><span>90 分鐘。</span></li>
-            <li><span class="label">課程形式</span><span>講座分享，不安排完整工作坊實作。</span></li>
-            <li><span class="label">核心交付</span><span>巡場 AI Agent 示範、匿名問答、問卷、課後問答行動白皮書。</span></li>
-            <li><span class="label">課前準備</span><span>兩次 20 分鐘線上對焦會議。</span></li>
-            <li><span class="label">限制</span><span>不含完整教材、150 人份紙本教具與完整現場實作。</span></li>
-          </ul>
-        </article>
-
-        <article class="plan-card" data-plan="b" tabindex="0">
-          <div class="plan-top">
-            <p class="meta">方案 B</p>
-            <h3 class="plan-title">3 小時 AI 工作坊｜品牌案例合作專案價</h3>
-          </div>
-          <div class="plan-price">
-            <p class="price">NT$32,000</p>
-            <p class="price-note">稅別以正式報價單為準<br>原完整提案含稅 NT$72,450</p>
-          </div>
-          <ul class="plan-list">
-            <li><span class="label">適合情境</span><span>希望保留完整課程設計與現場實作。</span></li>
-            <li><span class="label">時數</span><span>3 小時，含 2.5 小時分享與實作、30 分鐘匿名問答。</span></li>
-            <li><span class="label">課程形式</span><span>完整工作坊，沿用既有完整提案內容。</span></li>
-            <li><span class="label">核心交付</span><span>150 人份講義與流程設計表、AI Agent 示範、現場實作、課後白皮書。</span></li>
-            <li><span class="label">課前準備</span><span>兩次 30 分鐘線上對焦會議。</span></li>
-            <li><span class="label">合作條件</span><span>需配合品牌案例合作與素材授權，實際使用範圍由雙方確認。</span></li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="path-title">
-      <div class="section-head">
-        <h2 id="path-title">兩條選擇路徑</h2>
-        <p class="section-note">方案 B 不是單純降價，而是以品牌案例合作交換完整工作坊價值。</p>
-      </div>
-
-      <div class="path-visual" aria-label="兩條選擇路徑比較圖">
-        <article class="path" data-path="a">
-          <span class="path-tag">方案 A：低合作條件、較短時數、預算內</span>
-          <div class="track">
-            <div class="node">
-              <span class="dot">01</span>
-              <span>預算明確</span>
-            </div>
-            <div class="node">
-              <span class="dot">02</span>
-              <span>精簡講座</span>
-            </div>
-            <div class="node">
-              <span class="dot">03</span>
-              <span>快速理解 AI 應用</span>
-            </div>
-          </div>
-          <p class="path-copy"><strong>決策重點：</strong>以最低合作複雜度完成一次 AI 主題分享。</p>
-        </article>
-
-        <article class="path" data-path="b">
-          <span class="path-tag">方案 B：較高合作條件、完整內容、專案價</span>
-          <div class="track">
-            <div class="node">
-              <span class="dot">01</span>
-              <span>可配合品牌授權</span>
-            </div>
-            <div class="node">
-              <span class="dot">02</span>
-              <span>完整工作坊</span>
-            </div>
-            <div class="node">
-              <span class="dot">03</span>
-              <span>更高課程價值與實作深度</span>
-            </div>
-          </div>
-          <p class="path-copy"><strong>決策重點：</strong>以品牌案例合作與素材授權，換取完整課程設計、教材與現場實作。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="detail-title">
-      <div class="section-head">
-        <h2 id="detail-title">互動式細節展開</h2>
-        <p class="section-note">預設只顯示摘要，點選項目查看差異。</p>
-      </div>
-
-      <div class="detail-shell">
-        <div class="tabs" role="tablist" aria-label="差異細節">
-          <button class="tab-button is-active" id="tab-fee" type="button" role="tab" aria-selected="true" aria-controls="panel-fee" data-tab="fee">費用差異</button>
-          <button class="tab-button" id="tab-content" type="button" role="tab" aria-selected="false" aria-controls="panel-content" data-tab="content">內容差異</button>
-          <button class="tab-button" id="tab-deliver" type="button" role="tab" aria-selected="false" aria-controls="panel-deliver" data-tab="deliver">交付差異</button>
-          <button class="tab-button" id="tab-terms" type="button" role="tab" aria-selected="false" aria-controls="panel-terms" data-tab="terms">合作條件差異</button>
+        <div class="kicker">2026 課程提案</div>
+        <h1><span>統一超商商場事業部</span><span>AI 工作坊提案</span></h1>
+        <p class="subtitle">從商場巡檢、餐飲櫃位管理、食安職安表單到宣導溝通，建立同仁能帶回工作現場的 AI 自動化思維。本版延續原 3 小時工作坊框架，補充 90 分鐘講座與 180 分鐘工作坊兩種合作方式。</p>
+        <div class="tagline">
+          <span class="tag">AI 不是取代人，而是放大人</span>
+          <span class="tag">不需攜帶電腦</span>
+          <span class="tag">紙本工作流程設計表</span>
+          <span class="tag">商場經理巡場 AI Agent 流程示範</span>
         </div>
 
-        <div class="detail-panel" id="panel-fee" role="tabpanel" aria-labelledby="tab-fee">
-          <div class="detail-grid">
-            <div class="detail-item">
-              <h3>方案 A：預算控管</h3>
-              <p>NT$33,000 未稅；含稅 NT$34,650，落在 NT$36,000 預算內。</p>
+        <div class="cover-board">
+          <div>
+            <div class="signal">
+              <div class="signal-mark">01</div>
+              <div>
+                <h3>從餐飲與商場現場出發</h3>
+                <p>課程以私廚精緻餐飲階段的 AI 應用經驗開場，銜接菜單、標準作業流程、食材採買、食譜翻譯與餐飲櫃位管理情境。</p>
+              </div>
             </div>
-            <div class="detail-item">
-              <h3>方案 B：專案合作價</h3>
-              <p>NT$32,000；稅別以正式報價單為準。此價格以品牌案例合作與素材授權為前提。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="detail-panel" id="panel-content" role="tabpanel" aria-labelledby="tab-content" hidden>
-          <div class="detail-grid">
-            <div class="detail-item">
-              <h3>方案 A：講座濃縮</h3>
-              <p>聚焦案例、AI 第一原則、巡場 AI Agent 示範、學習旅程與問答。</p>
-            </div>
-            <div class="detail-item">
-              <h3>方案 B：完整工作坊</h3>
-              <p>沿用完整 3 小時內容，加入紙本 AI Agent 流程設計練習與現場實作。</p>
+            <div class="signal">
+              <div class="signal-mark">02</div>
+              <div>
+                <h3>用 AI Agent 流程重新理解營運</h3>
+                <p>透過巡場、食安檢查、職安表格、宣導簽收與通訊群組溝通，讓同仁理解觸發條件、執行動作與人機協作。</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="detail-panel" id="panel-deliver" role="tabpanel" aria-labelledby="tab-deliver" hidden>
-          <div class="detail-grid">
-            <div class="detail-item">
-              <h3>方案 A：必要交付</h3>
-              <p>兩次 20 分鐘對焦、示範流程、匿名問答、問卷、課後問答行動白皮書。</p>
+          <div class="operation-map" aria-label="商場營運應用情境">
+            <div class="map-row">
+              <div class="map-dot">巡</div>
+              <div><strong>櫃位環境與服儀檢查</strong><span>現場描述、照片與備註彙整</span></div>
             </div>
-            <div class="detail-item">
-              <h3>方案 B：完整交付</h3>
-              <p>兩次 30 分鐘對焦、150 人份講義與流程設計表、3 小時工作坊、課後白皮書。</p>
+            <div class="map-row">
+              <div class="map-dot">食</div>
+              <div><strong>食材、食安與廚房作業流程</strong><span>表單勾稽、異常紀錄、改善追蹤</span></div>
             </div>
-          </div>
-        </div>
-
-        <div class="detail-panel" id="panel-terms" role="tabpanel" aria-labelledby="tab-terms" hidden>
-          <div class="detail-grid">
-            <div class="detail-item">
-              <h3>方案 A：條件單純</h3>
-              <p>不需額外品牌案例合作與素材授權，執行邊界清楚。</p>
+            <div class="map-row">
+              <div class="map-dot">宣</div>
+              <div><strong>朝會與政策宣導</strong><span>宣導單、簽收回收、通訊群組提醒</span></div>
             </div>
-            <div class="detail-item">
-              <h3>方案 B：案例合作</h3>
-              <p>需配合活動影像紀錄、2 位參與者短訪，並授權 nuva 使用活動影像、訪談與統一超商／7-ELEVEN 相關品牌識別於 IG 短影音或案例分享素材。實際使用範圍以雙方確認版本為準。</p>
+            <div class="map-row">
+              <div class="map-dot">析</div>
+              <div><strong>週報與管理洞察</strong><span>把零散巡檢資訊整理成可判斷的管理報告</span></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section" aria-labelledby="table-title">
-      <div class="section-head">
-        <h2 id="table-title">精簡比較表</h2>
-        <p class="section-note">同一項資訊只出現一次，供簽核前快速比對。</p>
+    <div class="cover-grid">
+      <div>
+        <div class="meta">提案對象</div>
+        <div class="value">統一超商股份有限公司<br>商場事業部</div>
+      </div>
+      <div>
+        <div class="meta">時間與地點</div>
+        <div class="value">2026/09/09 下午<br>新竹馬武督</div>
+      </div>
+      <div>
+        <div class="meta">課程形式</div>
+        <div class="value">90 分鐘講座<br>或 3 小時工作坊</div>
+      </div>
+    </div>
+    <div class="pgn">01</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>01｜提案背景</span>
+      <span>商場經營與餐飲管理核心業務</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">01</div>
+      <div>
+        <h2>課程背景與提案目標</h2>
+      </div>
+    </div>
+
+    <p class="lead">商場事業部的工作高度依賴現場判斷、跨角色溝通與流程紀律。本次課程的核心不是讓同仁多認識幾個 AI 工具，而是讓大家看見 AI 如何貼近商場經營與餐飲管理的日常工作。</p>
+
+    <div class="stats">
+      <div>
+        <div class="stat-k">參與人數</div>
+        <div class="stat-v">約 100</div>
+        <div class="stat-s">完整工作坊教材以 150 人份準備</div>
+      </div>
+      <div>
+        <div class="stat-k">課程時數</div>
+        <div class="stat-v">90 / 180</div>
+        <div class="stat-s">90 分鐘講座或 3 小時工作坊</div>
+      </div>
+      <div>
+        <div class="stat-k">設備需求</div>
+        <div class="stat-v">免電腦</div>
+        <div class="stat-s">以示範、討論與紙本教材為主</div>
+      </div>
+    </div>
+
+    <p class="body">本次年度特訓活動可作為商場事業部導入 AI 的第一個共同語言：先理解 AI 自動化與 AI 協作，再回到現場工作，辨識哪些流程可以被標準化、哪些資訊可以被結構化、哪些判斷仍需要人的領域知識與管理經驗。</p>
+
+    <div class="roles">
+      <article class="role">
+        <h3>商場經理與巡場管理者</h3>
+        <p>約 20 人。聚焦於巡場、櫃位環境、餐飲櫃位管理、食安職安檢查與異常回報。</p>
+      </article>
+      <article class="role">
+        <h3>後勤企劃與營運支援</h3>
+        <p>約 20 人。聚焦於宣導資料、政策推進、表單回收、跨場域資訊整理與分析報告。</p>
+      </article>
+      <article class="role">
+        <h3>店長、區長與場地管理角色</h3>
+        <p>協助把朝會、通訊群組、紙本簽收與現場任務串成更容易追蹤的工作流。</p>
+      </article>
+    </div>
+
+    <div class="quote-box">
+      <strong>這堂課的成果，是讓同仁開始問出更好的問題。</strong>
+      <p>這個流程的觸發條件是什麼？AI 可以判斷哪一段？人應該在哪裡把關？具備這樣的基本思維，後續導入自動化平台、生成式 AI 工具或內部系統時，才不會停留在工具展示，而能回到真實營運問題。</p>
+    </div>
+    <div class="pgn">02</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>02｜學習原則</span>
+      <span>AI 第一原則與持續建構</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">02</div>
+      <div>
+        <h2>課程核心觀念</h2>
+      </div>
+    </div>
+
+    <p class="lead">nuva 的核心思想是：AI 不是取代人，而是放大人。AI 能同時在「時間」與「精力」兩個維度提升效率，但前提是人仍然保有領域知識、判斷力與責任感。</p>
+
+    <div class="principles">
+      <article class="principle">
+        <h3>AI 自動化</h3>
+        <p>將低價值、重複性、流程化的任務交給 AI 或自動化流程處理，讓同仁把時間留給更重要的判斷、溝通與現場決策。</p>
+      </article>
+      <article class="principle">
+        <h3>AI 協作</h3>
+        <p>在高價值任務中與 AI 一起推進工作，例如整理巡檢紀錄、撰寫報告、拆解標準作業流程、生成宣導素材與分析異常趨勢。</p>
+      </article>
+    </div>
+
+    <p class="body" style="margin-top:18px;">正因為商場與餐飲營運同仁具備現場經驗，才知道哪些流程能被標準化，哪些資訊要被追蹤，哪些結果看起來漂亮但其實不符合管理現場。</p>
+
+    <div class="sec">
+      <div class="sec-num">03</div>
+      <div>
+        <h2>最有效的 AI 學習旅程</h2>
+      </div>
+    </div>
+
+    <p class="body">nuva 過去進入南山人壽、國泰人壽、台北捷運、工業技術研究院等組織進行 AI 內訓時，觀察到最有效的學習通常會經歷三個階段：吸收、創造與擴散。真正有效的學習不是花大錢猛學各種 AI 工具，而是在初步理解 AI 技巧後，回到自己的工作情境，透過與真實世界互動的專題主動創造解法。</p>
+
+    <div class="journey">
+      <div class="journey-step">
+        <span class="eyebrow">一｜吸收</span>
+        <h3>吸收</h3>
+        <p>理解 AI 的能力邊界、常見工作型態與基本提示思維，建立共同語言。</p>
+      </div>
+      <div class="journey-step">
+        <span class="eyebrow">二｜創造</span>
+        <h3>創造</h3>
+        <p>從自己的工作問題出發，設計可被 AI 協作或自動化推進的工作流。</p>
+      </div>
+      <div class="journey-step">
+        <span class="eyebrow">三｜擴散</span>
+        <h3>擴散</h3>
+        <p>把個人解法變成團隊可以討論、修正、複製與延伸的內部素材。</p>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <strong>我們稱這個精神為持續建構。</strong>
+      <p>真正有力量的學習，不是記住標準答案，而是能夠創造自己的答案。這也是完整工作坊會安排現場流程設計練習與課後問答行動白皮書的原因。</p>
+    </div>
+    <div class="pgn">03</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>04｜方案比較</span>
+      <span>預算內講座 vs. 品牌案例合作工作坊</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">04</div>
+      <div>
+        <h2>兩種合作方式</h2>
+      </div>
+    </div>
+
+    <p class="lead">方案 A 是預算內的精簡講座；方案 B 是以品牌案例合作與素材授權，換取更完整課程價值的專案合作方案。</p>
+
+    <div class="path-grid">
+      <article class="path-card">
+        <h3>方案 A｜90 分鐘 AI 主題講座</h3>
+        <p>適合預算明確、流程需單純、目標是一次主題分享與共同理解的情況。</p>
+        <div class="money">NT$33,000</div>
+        <span class="money-note">未稅；含 5% 營業稅為 NT$34,650，控制在 NT$36,000 預算內。</span>
+      </article>
+      <article class="path-card alt">
+        <h3>方案 B｜3 小時 AI 工作坊｜品牌案例合作專案價</h3>
+        <p>適合希望保留完整課程設計、教材、示範與現場實作，並可配合品牌案例合作的情況。</p>
+        <div class="money">NT$32,000</div>
+        <span class="money-note">稅別以正式報價單為準；原完整提案含稅總金額為 NT$72,450。</span>
+      </article>
+    </div>
+
+    <div class="compare-table" role="table" aria-label="方案比較表">
+      <div class="table-row table-head" role="row">
+        <div role="columnheader">比較項目</div>
+        <div role="columnheader">方案 A：90 分鐘講座</div>
+        <div role="columnheader">方案 B：3 小時工作坊</div>
+      </div>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">費用</div>
+        <div role="cell">NT$33,000 未稅；含稅 NT$34,650。</div>
+        <div role="cell">NT$32,000；稅別以正式報價單為準。</div>
+      </div>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">課程形式</div>
+        <div role="cell">講座分享，不屬於完整工作坊。</div>
+        <div role="cell">完整工作坊，含分享、示範、紙本流程設計實作與問答。</div>
+      </div>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">教材與實作</div>
+        <div role="cell">不含 150 人份紙本教具，不安排完整現場實作。</div>
+        <div role="cell">含 150 人份講義與紙本流程設計表，保留完整實作段落。</div>
+      </div>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">課後交付</div>
+        <div role="cell">現場問卷、匿名問答、課後問答行動白皮書。</div>
+        <div role="cell">匿名問答、課後問答行動白皮書，並可作為內部推動素材。</div>
+      </div>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">合作條件</div>
+        <div role="cell">條件單純，依講座範圍執行。</div>
+        <div role="cell">需品牌案例合作與素材授權，實際使用範圍以雙方確認版本為準。</div>
+      </div>
+    </div>
+
+    <div class="decision">
+      <article class="decision-card">
+        <h3>預算單純、流程簡單：選方案 A</h3>
+        <p>用 90 分鐘完成核心觀念、案例與巡場 AI Agent 示範，讓同仁快速理解 AI 應用方向。</p>
+      </article>
+      <article class="decision-card alt">
+        <h3>願意配合素材授權、希望保留完整價值：選方案 B</h3>
+        <p>以品牌案例合作取得完整 3 小時工作坊、教材、現場實作與更高課程深度。</p>
+      </article>
+    </div>
+    <div class="pgn">04</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>05｜90 分鐘流程</span>
+      <span>預算內 AI 主題講座</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">05</div>
+      <div>
+        <h2>方案 A｜90 分鐘會教什麼</h2>
+      </div>
+    </div>
+
+    <p class="lead">90 分鐘版本保留原工作坊的核心框架，但將完整實作濃縮為示範與問答，適合在預算內快速建立共同語言。</p>
+
+    <div class="timeline-list">
+      <article class="timeline-item">
+        <div class="time">00:00<br>00:15</div>
+        <div>
+          <h3>私廚餐飲階段的 AI 應用案例</h3>
+          <p>以菜單、標準作業流程、食材採買、食譜翻譯與餐飲流程整理切入，讓商場與餐飲管理同仁快速產生連結。</p>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="time">00:15<br>00:30</div>
+        <div>
+          <h3>AI 第一原則：自動化、寫作與人的判斷力</h3>
+          <p>說明 AI 如何放大人的時間與精力，同時提醒企業不能把專業判斷外包給 AI。</p>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="time">00:30<br>01:00</div>
+        <div>
+          <h3>商場經理巡場 AI Agent 流程現場示範</h3>
+          <p>示範巡場時以語音描述櫃位狀況，讓 AI 協助勾選檢查項目、整理備註，並輸出每週分析報告給管理者。</p>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="time">01:00<br>01:10</div>
+        <div>
+          <h3>最有效的 AI 學習旅程：吸收、創造、擴散</h3>
+          <p>說明同仁後續如何回到自身工作情境持續練習，而不是只停留在單次講座。</p>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="time">01:10<br>01:30</div>
+        <div>
+          <h3>現場交流與匿名問答</h3>
+          <p>針對商場巡檢、餐飲管理、宣導溝通、AI 學習方式與導入疑慮即時回饋，課後整理問答行動白皮書。</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="deliverables">
+      <article class="deliverable">
+        <h3>包含交付</h3>
+        <p>課前兩次 20 分鐘線上對焦會議、事前設計商場巡場 AI Agent 示範流程、現場匿名問答、現場問卷、課後問答行動白皮書、交通與本提案範圍內延伸費用。</p>
+      </article>
+      <article class="deliverable">
+        <h3>不包含範圍</h3>
+        <p>不提供完整工作坊教材、不提供 150 人份紙本教具、不安排完整現場實作，且不屬於 3 小時工作坊。</p>
+      </article>
+    </div>
+    <div class="pgn">05</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>06｜180 分鐘流程</span>
+      <span>完整 AI 工作坊</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">06</div>
+      <div>
+        <h2>方案 B｜180 分鐘會教什麼</h2>
+      </div>
+    </div>
+
+    <p class="lead">180 分鐘版本沿用原完整提案內容，保留示範、紙本 AI Agent 流程設計練習、現場交流與匿名問答。</p>
+
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="time">00:00<br>00:30</div>
+        <div class="agenda-main">
+          <h3>精緻餐飲私廚階段的 AI 應用案例</h3>
+          <p>分享講師如何在精緻餐飲私廚工作中應用 AI，包含開立菜單、思考標準作業流程、食材採買、翻譯食譜與餐飲流程整理。</p>
+        </div>
+        <div class="agenda-side">用餐飲現場切入，讓商場與餐飲管理同仁快速產生連結。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">00:30<br>00:50</div>
+        <div class="agenda-main">
+          <h3>AI 第一原則：自動化、協作與人的判斷力</h3>
+          <p>說明 AI 如何放大人的時間與精力，同時提醒企業不能把專業判斷外包給 AI。</p>
+        </div>
+        <div class="agenda-side">建立正確期待，避免把 AI 誤解為萬能工具。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">00:50<br>01:00</div>
+        <div class="agenda-main">
+          <h3>休息</h3>
+          <p>短暫休息與現場問題收集，可同步引導同仁提交匿名提問。</p>
+        </div>
+        <div class="agenda-side">講師整理提問與現場反應。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">01:00<br>01:30</div>
+        <div class="agenda-main">
+          <h3>最有效的 AI 學習旅程：吸收、創造、擴散</h3>
+          <p>結合 nuva 企業內訓經驗，說明專案式學習與持續建構如何把「我學了什麼」轉化成「我做了什麼」。</p>
+        </div>
+        <div class="agenda-side">讓同仁知道後續如何持續練習，而不是只停留在單次講座。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">01:30<br>01:50</div>
+        <div class="agenda-main">
+          <h3>商場經理巡場 AI Agent 流程現場示範</h3>
+          <p>示範巡場時以語音描述櫃位狀況，讓 AI 協助勾選檢查項目、整理備註，並輸出每週分析報告給管理者。</p>
+        </div>
+        <div class="agenda-side">把 AI Agent 流程直接放進巡場、食安、職安與餐飲櫃位管理場景。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">01:50<br>02:00</div>
+        <div class="agenda-main">
+          <h3>休息</h3>
+          <p>整理現場示範重點，準備進入紙本流程設計。</p>
+        </div>
+        <div class="agenda-side">講師整理提問與現場反應。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">02:00<br>02:30</div>
+        <div class="agenda-main">
+          <h3>現場實作：用門市自動門理解 AI 自動化</h3>
+          <p>從觸發條件、執行動作、條件判斷出發，帶同仁拆解流程，並思考如果在流程中加入 AI，可以協助判斷、提醒、紀錄或產出什麼。</p>
+        </div>
+        <div class="agenda-side">以紙本工作流程設計表建立 AI Agent 與自動化思維。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">02:30<br>03:00</div>
+        <div class="agenda-main">
+          <h3>現場交流與匿名問答</h3>
+          <p>開放匿名提問，針對商場巡檢、餐飲管理、宣導溝通、AI 學習方式與導入疑慮即時回饋。</p>
+        </div>
+        <div class="agenda-side">課後依問題整理問答行動白皮書。</div>
+      </div>
+    </div>
+    <div class="pgn">06</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>07｜示範設計</span>
+      <span>商場經理巡場 AI Agent 流程</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">07</div>
+      <div>
+        <h2>現場示範設計</h2>
+      </div>
+    </div>
+
+    <p class="lead">現場示範會聚焦在商場經理與現場管理者最熟悉的巡場情境：檢查櫃位環境、服裝儀容、食材狀態、食安表格與職安表格，並把零散紀錄整理成每週可閱讀的管理摘要。</p>
+
+    <div class="demo-layout">
+      <div class="flow">
+        <div class="flow-node" data-step="01">
+          <h3>巡場時口述現況</h3>
+          <p>同仁以行動裝置語音描述某櫃位狀況，例如環境整潔、制服儀容、食材保存、待改善事項。</p>
+        </div>
+        <div class="flow-node" data-step="02">
+          <h3>AI 協助轉成檢查紀錄</h3>
+          <p>AI 將自然語言整理成檢查項目、勾選結果、異常備註與待追蹤事項。</p>
+        </div>
+        <div class="flow-node" data-step="03">
+          <h3>自動彙整週報</h3>
+          <p>依櫃位、問題類型、改善狀態與重複異常進行彙整，產出給管理者閱讀的週報。</p>
+        </div>
+        <div class="flow-node" data-step="04">
+          <h3>回到人的管理判斷</h3>
+          <p>AI 提供資訊整理與趨勢線索，最終判斷仍由具有現場經驗的管理者把關。</p>
+        </div>
       </div>
 
-      <div class="compare-table" role="table" aria-label="方案精簡比較表">
-        <div class="table-row table-head" role="row">
-          <div role="columnheader">比較項目</div>
-          <div role="columnheader">方案 A：90 分鐘講座</div>
-          <div role="columnheader">方案 B：3 小時工作坊</div>
-        </div>
-        <div class="table-row" role="row">
-          <div class="table-label" role="cell">費用</div>
-          <div role="cell">NT$33,000 未稅；含稅 NT$34,650</div>
-          <div role="cell">NT$32,000；稅別以正式報價單為準</div>
-        </div>
-        <div class="table-row" role="row">
-          <div class="table-label" role="cell">時數</div>
-          <div role="cell">90 分鐘</div>
-          <div role="cell">3 小時</div>
-        </div>
-        <div class="table-row" role="row">
-          <div class="table-label" role="cell">形式</div>
-          <div role="cell">講座分享</div>
-          <div role="cell">分享、示範、紙本流程設計實作</div>
-        </div>
-        <div class="table-row" role="row">
-          <div class="table-label" role="cell">教材與實作</div>
-          <div role="cell">不含完整工作坊教材與 150 人份紙本教具</div>
-          <div role="cell">含 150 人份講義與紙本流程設計表</div>
-        </div>
-        <div class="table-row" role="row">
-          <div class="table-label" role="cell">課後交付</div>
-          <div role="cell">課後問答行動白皮書</div>
-          <div role="cell">課後問答行動白皮書</div>
-        </div>
-        <div class="table-row" role="row">
-          <div class="table-label" role="cell">合作條件</div>
-          <div role="cell">條件單純，依講座範圍執行</div>
-          <div role="cell">需品牌案例合作與素材授權，範圍由雙方確認</div>
-        </div>
+      <div class="case-note">
+        <h3>示範會刻意連到真實工作痛點</h3>
+        <p>目前商場人員的作業流程尚未系統性運用 AI，許多資訊仍分散在紙本宣導、簽名回收、食安職安表格、朝會口頭宣達與通訊群組中。</p>
+        <ul class="check-list">
+          <li>巡場紀錄是否能從口述轉成可追蹤欄位？</li>
+          <li>食安與職安檢查能否降低重複輸入？</li>
+          <li>朝會之外的宣導資訊，能否更容易確認是否已送達與回收？</li>
+          <li>每週管理報告能否從人工彙整改為 AI 協助初稿？</li>
+        </ul>
       </div>
-    </section>
+    </div>
 
-    <section class="section" aria-labelledby="decision-title">
-      <div class="section-head">
-        <h2 id="decision-title">決策建議</h2>
-        <p class="section-note">以內部優先順序決定即可。</p>
+    <div class="sec">
+      <div class="sec-num">08</div>
+      <div>
+        <h2>現場實作設計</h2>
       </div>
+    </div>
 
-      <div class="decision">
-        <article class="decision-card">
-          <strong>重視預算單純、流程簡單：選方案 A</strong>
-          <p>適合以一次講座建立共同理解，快速看見商場營運中的 AI 應用。</p>
-        </article>
-        <article class="decision-card" data-decision="b">
-          <strong>願意配合素材授權、希望保留完整價值：選方案 B</strong>
-          <p>適合用品牌案例合作，取得完整工作坊、教材與現場實作深度。</p>
-        </article>
+    <p class="body">完整工作坊不安排需要電腦操作的工具教學，而是用紙本教材帶大家建立 AI 自動化的底層思維。範例會從門市自動門切入：什麼是觸發條件？什麼是執行動作？中間是否有條件判斷？如果加入 AI，又能新增哪些判斷、提醒、紀錄或生成能力？</p>
+    <div class="pgn">07</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>09｜服務內容與報價</span>
+      <span>課前、課中、課後交付項目</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">09</div>
+      <div>
+        <h2>服務內容與合作條件</h2>
       </div>
-    </section>
+    </div>
 
-    <section class="section" aria-labelledby="ui-title">
-      <div class="section-head">
-        <h2 id="ui-title">UI 動畫與互動設計說明</h2>
-        <p class="section-note">互動只服務理解，不增加閱讀負擔。</p>
+    <div class="deliverables">
+      <article class="deliverable">
+        <h3>方案 A：90 分鐘講座</h3>
+        <p>兩次 20 分鐘線上對焦會議、商場巡場 AI Agent 示範流程、現場匿名問答、現場問卷、課後問答行動白皮書、交通與本提案範圍內延伸費用。</p>
+      </article>
+      <article class="deliverable">
+        <h3>方案 B：3 小時工作坊</h3>
+        <p>兩次 30 分鐘線上對焦會議、150 人份講義與紙本流程設計表、商場經理巡場 AI Agent 流程示範、3 小時工作坊執行、匿名問答、課後問答行動白皮書、交通與本提案範圍內延伸費用。</p>
+      </article>
+      <article class="deliverable">
+        <h3>方案 B 專案價成立條件</h3>
+        <p>此專案價建立在品牌案例合作與素材授權基礎上，需配合活動影像紀錄、課程當天側錄與現場花絮、2 位參與者分享課前期待與課後收穫。</p>
+      </article>
+      <article class="deliverable">
+        <h3>素材使用範圍</h3>
+        <p>授權 nuva 使用活動影像、訪談與統一超商／7-ELEVEN 相關品牌識別於 IG 短影音或案例分享素材。實際使用範圍以雙方確認版本為準。</p>
+      </article>
+    </div>
+
+    <div class="compare-table" role="table" aria-label="報價摘要">
+      <div class="table-row table-head" role="row">
+        <div role="columnheader">項目</div>
+        <div role="columnheader">方案 A</div>
+        <div role="columnheader">方案 B</div>
       </div>
-
-      <div class="ui-notes">
-        <article class="ui-note">
-          <span class="chip">UI Skill 1</span>
-          <h3>比較卡片</h3>
-          <p>兩張並排卡片保留價格、時數、適合情境、核心交付與限制條件，供第一眼判斷。</p>
-        </article>
-        <article class="ui-note">
-          <span class="chip">UI Skill 2</span>
-          <h3>動畫式選擇路徑</h3>
-          <p>兩條路徑以線段推進與節點提示呈現，說明差異來自合作模式，而非單純價格。</p>
-        </article>
-        <article class="ui-note">
-          <span class="chip">UI Skill 3</span>
-          <h3>互動式細節展開</h3>
-          <p>費用、內容、交付與合作條件採分頁切換，預設只顯示摘要，避免資訊一次攤開。</p>
-        </article>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">報價</div>
+        <div role="cell">NT$33,000 未稅；含稅 NT$34,650。</div>
+        <div role="cell">NT$32,000；稅別以正式報價單為準。</div>
       </div>
-    </section>
-  </main>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">原始價值</div>
+        <div role="cell">以 NT$22,000／小時計算，90 分鐘為 NT$33,000 未稅。</div>
+        <div role="cell">原完整 3 小時工作坊含稅總金額為 NT$72,450。</div>
+      </div>
+      <div class="table-row" role="row">
+        <div class="table-label" role="cell">下一步</div>
+        <div role="cell">確認講座版本後，進行正式報價單與合約流程。</div>
+        <div role="cell">確認品牌案例合作範圍後，進行正式報價單與合約流程。</div>
+      </div>
+    </div>
 
-  <script>
-    (() => {
-      const tabs = [...document.querySelectorAll('[data-tab]')];
-      const panels = new Map(
-        [...document.querySelectorAll('.detail-panel')].map((panel) => [panel.id.replace('panel-', ''), panel])
-      );
+    <div class="quote-box">
+      <strong>建議下一步：先確認合作模式，再進行正式報價單與合約簽署。</strong>
+      <p>若統一超商股份有限公司商場事業部確認有意願推進，nuva 可依所選方案開立正式報價單與合約供簽署；簽署完成後，開始設計當天可示範的 AI Agent 流程，並補齊詳細課程資訊、示範腳本與教材內容。</p>
+    </div>
+    <div class="pgn">08</div>
+  </section>
 
-      function activate(target) {
-        tabs.forEach((tab) => {
-          const isActive = tab.dataset.tab === target;
-          tab.classList.toggle('is-active', isActive);
-          tab.setAttribute('aria-selected', String(isActive));
-        });
-
-        panels.forEach((panel, key) => {
-          panel.hidden = key !== target;
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => activate(tab.dataset.tab));
-      });
-    })();
-  </script>
   <script src="../assets/report-reader.js" defer></script>
   <script src="../assets/report-actions.js" defer></script>
 </body>
