@@ -281,11 +281,14 @@
         --reader-ink: var(--report-ink, var(--ink, #162024));
         --reader-blue: var(--report-blue, var(--blue, #1d4ed8));
         --reader-paper: var(--report-paper, var(--paper, #fff));
+        --reader-width: 238px;
+        --reader-gap: 24px;
+        --reader-edge: 18px;
         position: fixed;
-        left: max(18px, calc((100vw - 1180px) / 2 - 138px));
+        left: max(var(--reader-edge), calc((100vw - min(210mm, calc(100vw - 28px))) / 2 - var(--reader-width) - var(--reader-gap)));
         top: 18px;
         z-index: 900;
-        width: 238px;
+        width: var(--reader-width);
         overflow: visible;
         color: var(--reader-ink);
         font-family: "Noto Sans TC", sans-serif;
@@ -1119,6 +1122,34 @@
         }
       }
 
+      .report-reader.is-reader-compact {
+        top: calc(10px + env(safe-area-inset-top, 0px)) !important;
+        right: auto !important;
+        left: 8px !important;
+        width: auto !important;
+      }
+
+      .report-reader.is-reader-compact .reader-button {
+        width: 44px !important;
+        min-height: 44px !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        border: 1px solid color-mix(in srgb, var(--reader-ink) 12%, transparent) !important;
+        border-radius: 10px !important;
+        background: color-mix(in srgb, var(--reader-paper) 94%, transparent) !important;
+        box-shadow: 0 8px 22px rgba(22, 32, 36, .12) !important;
+      }
+
+      .report-reader.is-reader-compact .reader-button span,
+      .report-reader.is-reader-compact .reader-list,
+      .report-reader.is-reader-compact .reader-section-label {
+        display: none !important;
+      }
+
+      .report-reader.is-reader-hidden {
+        display: none !important;
+      }
+
       @media print {
         .report-reader,
         .reader-search-popover,
@@ -1240,6 +1271,41 @@
   let resultCount = null;
   let currentResults = [];
   let activeResultIndex = 0;
+  let readerLayoutFrame = 0;
+  const readerCompactClass = 'is-reader-compact';
+  const readerHiddenClass = 'is-reader-hidden';
+
+  function rectsOverlap(a, b) {
+    return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  }
+
+  function readerOverlapsPage(nav) {
+    const readerRect = nav.getBoundingClientRect();
+    if (!readerRect.width || !readerRect.height) return false;
+    return [...document.querySelectorAll('.page')]
+      .some((page) => rectsOverlap(readerRect, page.getBoundingClientRect()));
+  }
+
+  function updateReaderCollisionMode() {
+    const nav = document.getElementById(tocId);
+    if (!nav) return;
+
+    nav.classList.remove(readerCompactClass, readerHiddenClass);
+    if (!readerOverlapsPage(nav)) return;
+
+    nav.classList.add(readerCompactClass);
+    if (readerOverlapsPage(nav)) {
+      nav.classList.add(readerHiddenClass);
+    }
+  }
+
+  function scheduleReaderCollisionCheck() {
+    if (readerLayoutFrame) cancelAnimationFrame(readerLayoutFrame);
+    readerLayoutFrame = requestAnimationFrame(() => {
+      readerLayoutFrame = 0;
+      updateReaderCollisionMode();
+    });
+  }
 
   function createSidebar() {
     if (document.getElementById(tocId) || !items.length) return;
@@ -1280,6 +1346,7 @@
     });
 
     document.body.appendChild(nav);
+    scheduleReaderCollisionCheck();
   }
 
   function createProgress() {
@@ -1481,6 +1548,9 @@
     createSearch();
     observeActiveSection();
     bindKeyboardShortcuts();
+    window.addEventListener('resize', scheduleReaderCollisionCheck, { passive: true });
+    window.addEventListener('orientationchange', scheduleReaderCollisionCheck, { passive: true });
+    window.addEventListener('load', scheduleReaderCollisionCheck, { once: true });
   }
 
   if (document.readyState === 'loading') {
