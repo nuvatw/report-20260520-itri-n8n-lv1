@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<!-- report-meta
+{
+  "title": "MOVA AI 三個月陪跑課程提案（v1）",
+  "subtitle": "以 nuvaClub 建立品牌、客服、數據、趨勢與營運自動化的內部 AI 作品機制",
+  "date": "2026-05-27",
+  "period": "2026/08/01-2026/10/31",
+  "category": "課程提案",
+  "client": "MOVA",
+  "clientGroup": "設計商品、跨境電商與品牌零售",
+  "timeline": "2026 八月至十月",
+  "tags": ["v1", "nuvaClub", "AI 陪跑", "品牌 AI 說明書", "客服 AI", "數據分析", "趨勢分析", "流程自動化"],
+  "thumbnail": "",
+  "visibility": "private"
+}
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOVA AI 三個月陪跑課程提案（v1）</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --desk: #f7faff;
+      --ink: #13213f;
+      --muted: #4f5f7d;
+      --faint: #8d9ab6;
+      --line: rgba(31, 80, 168, .16);
+      --line-strong: rgba(21, 51, 112, .42);
+      --navy: #102a5f;
+      --teal: #2563eb;
+      --teal-deep: #123f95;
+      --gold: #3b82f6;
+      --gold-soft: #dbeafe;
+      --clay: #1d4ed8;
+      --shell: #eef5ff;
+      --blue-glow: #60a5fa;
+      --blue-soft: #eaf2ff;
+      --shadow: rgba(23, 63, 148, .17);
+      --report-bg-base: #f8fbff;
+      --report-bg-line: rgba(37, 99, 235, .035);
+      --report-bg-line-strong: rgba(96, 165, 250, .06);
+      --report-bg-size: 42px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(96, 165, 250, .18), transparent 28%),
+        radial-gradient(circle at 88% 30%, rgba(29, 78, 216, .12), transparent 30%),
+        linear-gradient(90deg, var(--report-bg-line-strong) 1px, transparent 1px),
+        linear-gradient(0deg, var(--report-bg-line) 1px, transparent 1px),
+        var(--report-bg-base);
+      background-size: var(--report-bg-size) var(--report-bg-size);
+      color: var(--ink);
+      font-family: "Noto Sans TC", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 34px 0;
+    }
+
+    .page {
+      position: relative;
+      width: min(210mm, calc(100vw - 28px));
+      min-height: 297mm;
+      margin: 0 auto 30px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 10px 36px var(--shadow);
+      padding: 21mm 19mm 16mm;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 23mm, rgba(37, 99, 235, .12) 23mm, rgba(37, 99, 235, .12) calc(23mm + 1px), transparent calc(23mm + 1px));
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 85% 11%, rgba(96, 165, 250, .13), transparent 25%),
+        linear-gradient(135deg, rgba(239, 246, 255, .62), transparent 35%);
+      opacity: .82;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rh,
+    .kicker,
+    .meta,
+    .stat-k,
+    .pgn,
+    .eyebrow,
+    .tag,
+    .time,
+    .mini-label,
+    .source-label {
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .rh {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--ink);
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .pgn {
+      position: absolute;
+      right: 19mm;
+      bottom: 13mm;
+      color: var(--ink);
+      font-size: 11px;
+    }
+
+    .page.cover {
+      min-height: 297mm;
+    }
+
+    .cover {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+      min-height: 252mm;
+    }
+
+    .cover-main {
+      display: grid;
+      align-content: start;
+      padding-top: 10mm;
+    }
+
+    .kicker {
+      color: var(--teal);
+      font-size: 12px;
+    }
+
+    h1 {
+      max-width: 156mm;
+      margin-top: 14px;
+      font-size: 55px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: .01em;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .subtitle {
+      max-width: 145mm;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+
+    .tagline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(180deg, #fff, var(--blue-soft));
+      color: var(--ink);
+      font-size: 10px;
+      padding: 6px 9px;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-1px);
+      border-color: rgba(37, 99, 235, .72);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, .13);
+    }
+
+    .phase-ribbon {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+      max-width: 146mm;
+    }
+
+    .phase-ribbon > div {
+      position: relative;
+      min-height: 70px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, .13), rgba(96, 165, 250, .05)),
+        #fff;
+      padding: 12px 13px;
+    }
+
+    .phase-ribbon > div::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      top: -18px;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(37, 99, 235, .35);
+      border-radius: 50%;
+    }
+
+    .phase-ribbon span {
+      display: block;
+      color: var(--teal);
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .phase-ribbon strong,
+    .phase-ribbon small {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phase-ribbon strong {
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .phase-ribbon small {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .cover-board {
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .signal {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: start;
+      border-top: 2px solid var(--ink);
+      padding-top: 14px;
+    }
+
+    .signal + .signal {
+      margin-top: 18px;
+    }
+
+    .signal-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      background: var(--teal-deep);
+      color: #fff;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .signal h3,
+    .flow-node h3,
+    .role h3,
+    .deliverable h3,
+    .source-card h3,
+    .work-card h3 {
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .signal p,
+    .flow-node p,
+    .role p,
+    .deliverable p,
+    .source-card p,
+    .work-card p,
+    .body,
+    .quote-note {
+      color: var(--muted);
+      font-size: 12.7px;
+      line-height: 1.9;
+    }
+
+    .orbit-map {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 9px;
+      border: 2px solid var(--ink);
+      background: #fff;
+      padding: 12px;
+      box-shadow: 8px 8px 0 rgba(37, 99, 235, .12);
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .map-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .map-dot {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      background: var(--shell);
+      color: var(--teal-deep);
+      font-size: 11px;
+      font-weight: 900;
+      border: 1px solid var(--line-strong);
+    }
+
+    .map-row strong {
+      display: block;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .map-row span {
+      display: block;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+
+    .cover-grid,
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .cover-grid > div,
+    .stats > div {
+      min-height: 29mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px 16px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .cover-grid > div:last-child,
+    .stats > div:last-child {
+      border-right: 0;
+    }
+
+    .meta {
+      margin-bottom: 8px;
+      color: var(--clay);
+      font-size: 9px;
+    }
+
+    .value {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .sec {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      margin: 44px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .sec:first-of-type {
+      margin-top: 34px;
+    }
+
+    .sec-num {
+      color: var(--clay);
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      line-height: .9;
+    }
+
+    h2 {
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 154mm;
+      border-left: 4px solid var(--teal);
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.9;
+      text-wrap: pretty;
+    }
+
+    .body {
+      margin-top: 16px;
+    }
+
+    .stats {
+      margin: 20px 0 18px;
+    }
+
+    .stat-k {
+      color: var(--teal);
+      font-size: 10px;
+    }
+
+    .stat-v {
+      margin-top: 6px;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .stat-s {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .roles,
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .role,
+    .deliverable,
+    .principle,
+    .case-note,
+    .quote-box,
+    .source-card,
+    .work-card,
+    .module-card {
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      padding: 16px;
+    }
+
+    .role h3 {
+      min-height: 44px;
+    }
+
+    .role p,
+    .deliverable p,
+    .source-card p,
+    .work-card p,
+    .module-card p {
+      margin-top: 8px;
+    }
+
+    .source-card {
+      border-top: 5px solid var(--teal);
+    }
+
+    .source-card:nth-child(2),
+    .source-card:nth-child(5) {
+      border-top-color: var(--gold);
+    }
+
+    .source-card:nth-child(3),
+    .source-card:nth-child(6) {
+      border-top-color: var(--clay);
+    }
+
+    .source-label,
+    .mini-label {
+      display: inline-block;
+      color: var(--teal);
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .principle {
+      border-top: 6px solid var(--teal);
+    }
+
+    .principle.alt {
+      border-top-color: var(--gold);
+    }
+
+    .principle h3 {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .principle p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .quote-strip {
+      margin-top: 18px;
+      border: 2px solid var(--ink);
+      background:
+        linear-gradient(115deg, rgba(29, 78, 216, .18), rgba(96, 165, 250, .07) 42%, transparent 72%),
+        #fff;
+      padding: 18px 20px;
+    }
+
+    .quote-strip strong {
+      display: block;
+      color: var(--clay);
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .quote-strip p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.9;
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 20px;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .journey-step {
+      min-height: 118px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .journey-step:last-child {
+      border-right: 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    .journey-step h3 {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .journey-step p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.75;
+    }
+
+    .agenda {
+      margin-top: 16px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .agenda-row {
+      display: grid;
+      grid-template-columns: 34mm 1fr 42mm;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .time {
+      color: var(--teal);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .agenda-main h3 {
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .agenda-main p,
+    .agenda-side {
+      color: var(--muted);
+      font-size: 12.1px;
+      line-height: 1.75;
+    }
+
+    .agenda-main p {
+      margin-top: 5px;
+    }
+
+    .agenda-side {
+      border-left: 3px solid var(--gold-soft);
+      padding-left: 10px;
+    }
+
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+      align-items: start;
+    }
+
+    .flow {
+      border: 2px solid var(--ink);
+      background: #fff;
+      padding: 14px;
+    }
+
+    .flow-node {
+      position: relative;
+      padding: 13px 13px 13px 48px;
+      border-bottom: 1px solid var(--line);
+      min-height: 68px;
+    }
+
+    .flow-node:last-child {
+      border-bottom: 0;
+    }
+
+    .flow-node::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0;
+      top: 14px;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      background: var(--teal-deep);
+      color: #fff;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .case-note {
+      border-left: 6px solid var(--clay);
+    }
+
+    .case-note h3 {
+      color: var(--clay);
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .case-note p,
+    .case-note li {
+      color: var(--muted);
+      font-size: 12.7px;
+      line-height: 1.85;
+    }
+
+    .case-note p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .check-list {
+      margin-top: 12px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 7px;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 8px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    .canvas {
+      margin-top: 18px;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .canvas-head {
+      display: grid;
+      grid-template-columns: 31mm 1fr;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .canvas-head > div {
+      padding: 12px 14px;
+    }
+
+    .canvas-head > div:first-child {
+      background: var(--teal-deep);
+      color: #fff;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .canvas-cell {
+      min-height: 95px;
+      padding: 14px;
+      border-right: 1px solid var(--line);
+    }
+
+    .canvas-cell:last-child {
+      border-right: 0;
+    }
+
+    .canvas-cell h3 {
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .canvas-cell p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .deliverables,
+    .work-grid,
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .deliverable,
+    .work-card,
+    .module-card {
+      min-height: 126px;
+      border-top: 5px solid var(--teal);
+    }
+
+    .deliverable:nth-child(2),
+    .deliverable:nth-child(5),
+    .work-card:nth-child(2),
+    .work-card:nth-child(5),
+    .module-card:nth-child(2),
+    .module-card:nth-child(5) {
+      border-top-color: var(--gold);
+    }
+
+    .deliverable:nth-child(3),
+    .deliverable:nth-child(6),
+    .work-card:nth-child(3),
+    .work-card:nth-child(6),
+    .module-card:nth-child(3),
+    .module-card:nth-child(6) {
+      border-top-color: var(--clay);
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+      align-items: stretch;
+    }
+
+    .quote-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 150px;
+      border: 2px solid var(--ink);
+    }
+
+    .quote-label {
+      color: var(--teal);
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .quote-number {
+      margin-top: 8px;
+      font-family: "Archivo", "Noto Sans TC", sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .quote-number span {
+      display: block;
+    }
+
+    .calc-table {
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr 38mm;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+    }
+
+    .calc-row:last-child {
+      border-bottom: 0;
+    }
+
+    .calc-row strong {
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .calc-row span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .calc-row.total {
+      background: var(--teal-deep);
+      color: #fff;
+    }
+
+    .calc-row.total span {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .terms {
+      margin-top: 18px;
+      border-top: 2px solid var(--ink);
+      padding-top: 16px;
+    }
+
+    .terms li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.85;
+      margin-top: 6px;
+      text-wrap: pretty;
+    }
+
+    .terms li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .8em;
+      width: 10px;
+      height: 2px;
+      background: var(--clay);
+    }
+
+    .closing {
+      margin-top: 22px;
+      border: 2px solid var(--ink);
+      background:
+        linear-gradient(115deg, rgba(37, 99, 235, .13), rgba(96, 165, 250, .06) 48%, transparent 70%),
+        #fff;
+      padding: 18px 20px;
+    }
+
+    .closing strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .closing p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.85;
+      text-wrap: pretty;
+    }
+
+    .source-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .source-links a {
+      display: block;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.6;
+      padding: 12px 14px;
+      text-decoration: none;
+      background: linear-gradient(180deg, #fff, rgba(239, 246, 255, .72));
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .source-links a:hover,
+    .source-links a:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(37, 99, 235, .72);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, .12);
+      outline: none;
+    }
+
+    .proposal-timeline {
+      margin-top: 18px;
+      border: 2px solid var(--ink);
+      background:
+        radial-gradient(circle at 8% 20%, rgba(96, 165, 250, .18), transparent 24%),
+        linear-gradient(135deg, rgba(239, 246, 255, .78), #fff 52%);
+      padding: 14px;
+    }
+
+    .timeline-tabs,
+    .module-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeline-tab,
+    .module-tab {
+      min-height: 34px;
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 8px 10px;
+      transition: transform .22s ease, background .22s ease, color .22s ease, box-shadow .22s ease;
+    }
+
+    .timeline-tab:hover,
+    .module-tab:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, .13);
+    }
+
+    .timeline-tab:focus-visible,
+    .module-tab:focus-visible {
+      outline: 3px solid rgba(96, 165, 250, .36);
+      outline-offset: 2px;
+    }
+
+    .timeline-tab.is-active,
+    .module-tab.is-active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--teal-deep), var(--teal) 58%, var(--blue-glow));
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, .22);
+    }
+
+    .timeline-rail {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 18px;
+    }
+
+    .timeline-rail::before {
+      content: "";
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      top: 9px;
+      height: 4px;
+      background: linear-gradient(90deg, #bfdbfe, #2563eb, #60a5fa);
+    }
+
+    .milestone {
+      position: relative;
+      min-height: 70px;
+      border: 1px solid rgba(37, 99, 235, .26);
+      background: rgba(255, 255, 255, .82);
+      padding: 11px 9px 10px;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .milestone::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: -16px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, .16);
+    }
+
+    .milestone.is-active {
+      transform: translateY(-3px);
+      border-color: rgba(37, 99, 235, .8);
+      background: linear-gradient(180deg, #fff, #eff6ff);
+    }
+
+    .milestone span,
+    .month-panel span,
+    .module-story span {
+      display: block;
+      color: var(--teal);
+      font-family: "Space Mono", "Noto Sans TC", sans-serif;
+      font-size: 9px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .milestone strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .month-panels {
+      margin-top: 12px;
+      min-height: 118px;
+    }
+
+    .month-panel {
+      display: none;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .month-panel.is-active {
+      display: grid;
+      animation: panelIn .26s ease both;
+    }
+
+    .month-panel h3 {
+      margin-top: 5px;
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .month-panel p,
+    .month-panel li,
+    .module-story p {
+      color: var(--muted);
+      font-size: 12.4px;
+      line-height: 1.75;
+    }
+
+    .month-panel ul {
+      border-left: 3px solid var(--gold-soft);
+      padding-left: 12px;
+    }
+
+    .module-visualizer {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 12px;
+      margin-top: 16px;
+      align-items: stretch;
+    }
+
+    .module-story {
+      border: 1px solid var(--line-strong);
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, .12), rgba(239, 246, 255, .8)),
+        #fff;
+      padding: 13px 14px;
+    }
+
+    .module-story h3 {
+      margin-top: 5px;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .module-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .module-card {
+      min-height: 118px;
+      transition: transform .22s ease, border-color .22s ease, opacity .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+
+    .module-card.is-featured {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, .75);
+      background: linear-gradient(180deg, #fff, #eff6ff);
+      box-shadow: 0 12px 24px rgba(37, 99, 235, .13);
+    }
+
+    .module-card.is-dimmed {
+      opacity: .52;
+    }
+
+    @keyframes panelIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media print {
+      .timeline-tab,
+      .module-tab {
+        box-shadow: none;
+      }
+
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        break-after: page;
+      }
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 12px 0;
+      }
+
+      .page {
+        width: calc(100vw - 18px);
+        min-height: auto;
+        padding: 30px 22px 42px;
+        margin-bottom: 14px;
+      }
+
+      .pgn {
+        right: 22px;
+        bottom: 18px;
+      }
+
+      .cover,
+      .page.cover {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .cover-board,
+      .demo-layout,
+      .quote-grid,
+      .phase-ribbon,
+      .module-visualizer,
+      .principles,
+      .deliverables,
+      .roles,
+      .stats,
+      .cover-grid,
+      .journey,
+      .timeline-rail,
+      .month-panel,
+      .source-grid,
+      .work-grid,
+      .module-grid,
+      .source-links {
+        grid-template-columns: 1fr;
+      }
+
+      .cover-grid > div,
+      .stats > div,
+      .journey-step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cover-grid > div:last-child,
+      .stats > div:last-child,
+      .journey-step:last-child {
+        border-bottom: 0;
+      }
+
+      .sec {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .agenda-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .timeline-rail {
+        gap: 10px;
+        padding-top: 0;
+      }
+
+      .timeline-rail::before {
+        display: none;
+      }
+
+      .milestone::before {
+        top: 11px;
+        right: 10px;
+        left: auto;
+      }
+
+      .month-panels {
+        min-height: auto;
+      }
+
+      .agenda-side {
+        border-left: 0;
+        border-top: 3px solid var(--gold-soft);
+        padding: 8px 0 0;
+      }
+
+      .canvas-head,
+      .canvas-grid,
+      .calc-row {
+        grid-template-columns: 1fr;
+      }
+
+      .canvas-cell {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .canvas-cell:last-child {
+        border-bottom: 0;
+      }
+
+      .calc-row span {
+        text-align: left;
+      }
+    }
+  </style>
+  <script src="../assets/report-theme.js"></script>
+</head>
+
+<body>
+  <section class="page cover">
+    <div class="rh">
+      <span>nuvaClub AI 陪跑提案</span>
+      <span>MOVA｜2026-05-27</span>
+    </div>
+
+    <div class="cover-main">
+      <div>
+        <div class="kicker">2026 三個月課程提案</div>
+        <h1><span>MOVA AI</span><span>三個月陪跑課程提案</span></h1>
+        <p class="subtitle">以 nuvaClub 線上課程、論壇作品繳交、Line 群組陪跑與期末交流活動，協助 MOVA 同仁把 AI 應用到品牌、客服、數據、趨勢與營運流程。</p>
+        <div class="tagline">
+          <span class="tag">8/1-10/31 三個月陪跑</span>
+          <span class="tag">每月底作品檢核</span>
+          <span class="tag">月中 30 分鐘線上 Q&A</span>
+          <span class="tag">10 月底 3 小時成果交流</span>
+        </div>
+
+        <div class="phase-ribbon" aria-label="三個月陪跑節奏">
+          <div>
+            <span>08</span>
+            <strong>吸收與第一次小作品</strong>
+            <small>課程開放、月中 Q&A、月底作品牆</small>
+          </div>
+          <div>
+            <span>09</span>
+            <strong>流程化與第二次小作品</strong>
+            <small>回饋修正、補上資料與檢核點</small>
+          </div>
+          <div>
+            <span>10</span>
+            <strong>大作品驗收與導入討論</strong>
+            <small>期末交流、主管回饋、後續清單</small>
+          </div>
+        </div>
+
+        <div class="cover-board">
+          <div>
+            <div class="signal">
+              <div class="signal-mark">01</div>
+              <div>
+                <h3>從 MOVA 的真實需求出發</h3>
+                <p>課程不把 AI 當成泛用工具展示，而是回到品牌說明書、客服回覆、銷售數據、趨勢分析、素材成本與作業流程自動化。</p>
+              </div>
+            </div>
+            <div class="signal">
+              <div class="signal-mark">02</div>
+              <div>
+                <h3>用作品建立內部 AI 應用資產</h3>
+                <p>8 月與 9 月各交出一個小作品，10 月帶著大作品進行交流驗收，讓學習成果可以被 HR 與主管檢核，也能被團隊複製延伸。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="orbit-map" aria-label="MOVA AI 應用地圖">
+            <div class="map-row">
+              <div class="map-dot">牌</div>
+              <div><strong>品牌核心說明書</strong><span>讓 AI 理解 MOVA 的語氣、質感與決策原則</span></div>
+            </div>
+            <div class="map-row">
+              <div class="map-dot">客</div>
+              <div><strong>客服 AI 回覆與事件彙整</strong><span>整合官網、平台與常見問題，降低重複回覆成本</span></div>
+            </div>
+            <div class="map-row">
+              <div class="map-dot">析</div>
+              <div><strong>銷售數據與趨勢雷達</strong><span>把日維度數據與外部趨勢轉為可行動建議</span></div>
+            </div>
+            <div class="map-row">
+              <div class="map-dot">流</div>
+              <div><strong>訂單、出貨與文件自動化</strong><span>將重複流程轉成可被檢核的 AI 工作流</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-grid">
+      <div>
+        <div class="meta">提案對象</div>
+        <div class="value">MOVA<br>品牌、電商、客服、營運團隊</div>
+      </div>
+      <div>
+        <div class="meta">計畫期間</div>
+        <div class="value">2026/08/01<br>至 2026/10/31</div>
+      </div>
+      <div>
+        <div class="meta">課程形式</div>
+        <div class="value">nuvaClub 線上課程<br>論壇作品 + Line 陪跑</div>
+      </div>
+    </div>
+    <div class="pgn">01</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>提案背景</span>
+      <span>品牌、電商與營運 AI 化</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">01</div>
+      <div>
+        <h2>課程背景與提案目標</h2>
+      </div>
+    </div>
+
+    <p class="lead">MOVA 的產品同時具備設計感、科技感、收藏感與禮贈情境。這類品牌導入 AI 時，最重要的不是讓同仁學會更多工具，而是讓 AI 能理解 MOVA 的質感、銷售場景與內部流程。</p>
+
+    <div class="stats">
+      <div>
+        <div class="stat-k">計畫長度</div>
+        <div class="stat-v">3 個月</div>
+        <div class="stat-s">8/1 至 10/31，採線上課程與陪跑機制</div>
+      </div>
+      <div>
+        <div class="stat-k">作品節點</div>
+        <div class="stat-v">3 次</div>
+        <div class="stat-s">8 月底、9 月底小作品，10 月底大作品驗收</div>
+      </div>
+      <div>
+        <div class="stat-k">陪跑支援</div>
+        <div class="stat-v">Line + Q&A</div>
+        <div class="stat-s">三個月 Line 群組，8、9、10 月中各 30 分鐘線上 Q&A</div>
+      </div>
+    </div>
+
+    <p class="body">本提案將 nuvaClub 作為主要學習平台：同仁可先吸收線上課程，再把自己的工作問題轉成作品，於論壇發布並接受 HR、主管與同儕檢核。課程成果會沉澱為 MOVA 內部可共用的 AI 工作模板，而不是停留在一次性的工具教學。</p>
+
+    <div class="roles">
+      <div class="role">
+        <h3>品牌、社群與行銷角色</h3>
+        <p>聚焦品牌核心說明書、趨勢雷達、行銷曝光題材、AI 素材規範與 MOVA AI 人物 IP 初稿。</p>
+      </div>
+      <div class="role">
+        <h3>電商、客服與營運角色</h3>
+        <p>聚焦客服回覆、平台問題彙整、銷售資料分析、訂單與出貨文件等高重複工作。</p>
+      </div>
+      <div class="role">
+        <h3>HR 與主管檢核角色</h3>
+        <p>透過每月底作品牆掌握學習進度，判斷哪些作品值得被標準化、擴散或進一步導入。</p>
+      </div>
+    </div>
+
+    <div class="quote-strip">
+      <strong>三個月的目標，是讓 MOVA 同仁做出能被公司檢核、複製、延伸的 AI 工作成果。</strong>
+      <p>課程會引導同仁把品牌資料、客服內容、銷售數據、趨勢資料與營運文件整理成 AI 能使用的輸入，並建立人仍能把關的流程。</p>
+    </div>
+
+    <div class="pgn">02</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>網站觀察</span>
+      <span>MOVA 品牌與 AI 應用切入點</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">02</div>
+      <div>
+        <h2>MOVA 官網觀察與 AI 機會</h2>
+      </div>
+    </div>
+
+    <p class="lead">從 MOVA 官網可看見，品牌不是單純販售地球儀，而是在販售一種「自然光驅動、安靜旋轉、具科技感與禮贈價值」的桌面收藏品。這也代表 AI 導入必須同時照顧質感、準確度與轉換場景。</p>
+
+    <div class="source-grid">
+      <div class="source-card">
+        <span class="source-label">品牌核心</span>
+        <h3>科技與美感並行</h3>
+        <p>官網強調產品以環境光與磁力驅動旋轉，不需電池或電線。這是建立品牌 AI 說明書時最重要的底層敘事。</p>
+      </div>
+      <div class="source-card">
+        <span class="source-label">產品特性</span>
+        <h3>透明外殼與反光質感</h3>
+        <p>產品外殼、球體材質與光影反射會影響 AI 生成素材的真實度，因此素材課題應先建立審核標準，而不是直接大量生成。</p>
+      </div>
+      <div class="source-card">
+        <span class="source-label">銷售情境</span>
+        <h3>禮贈、收藏與企業客製</h3>
+        <p>官網有 gifting 與客製化情境，適合用 AI 協助發想節慶行銷、企業採購話術、客製化提案與售前客服回覆。</p>
+      </div>
+      <div class="source-card">
+        <span class="source-label">電商營運</span>
+        <h3>多產品線與跨平台資料</h3>
+        <p>產品系列、尺寸、價格與平台資料需要被整理成一致資訊源，後續才能支援客服 AI、銷售分析與推薦內容。</p>
+      </div>
+      <div class="source-card">
+        <span class="source-label">內容機會</span>
+        <h3>時事與文化題材可被放大</h3>
+        <p>地球、太空、藝術、城市、收藏與送禮節慶都能成為趨勢分析題材，AI 可以每週協助整理曝光機會。</p>
+      </div>
+      <div class="source-card">
+        <span class="source-label">流程機會</span>
+        <h3>從客服到文件可逐步自動化</h3>
+        <p>FAQ、訂單、出貨文件、客服事件與週報都是可先從半自動化開始的流程，適合三個月內做出原型。</p>
+      </div>
+    </div>
+
+    <div class="source-links">
+      <a href="https://movaglobes.store/" target="_blank" rel="noreferrer">MOVA 官網首頁</a>
+      <a href="https://movaglobes.store/pages/about-us" target="_blank" rel="noreferrer">品牌與產品背景</a>
+      <a href="https://movaglobes.store/pages/how-it-works" target="_blank" rel="noreferrer">產品運作原理</a>
+      <a href="https://movaglobes.store/pages/gifting" target="_blank" rel="noreferrer">禮贈與客製化情境</a>
+    </div>
+
+    <div class="pgn">03</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>學習設計</span>
+      <span>吸收、創造、檢核、擴散</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">03</div>
+      <div>
+        <h2>三個月陪跑的核心設計</h2>
+      </div>
+    </div>
+
+    <p class="lead">本計畫採取「平台吸收、論壇創造、月中解惑、月底檢核、期末交流」的學習節奏，讓 MOVA 同仁在工作中練習 AI，而不是等到課程結束才想如何應用。</p>
+
+    <div class="journey">
+      <div class="journey-step">
+        <span class="eyebrow">一｜吸收</span>
+        <h3>nuvaClub 線上學習</h3>
+        <p>8/1 開放課程，讓同仁先掌握 AI 在品牌、客服、數據、趨勢與流程中的基本用法。</p>
+      </div>
+      <div class="journey-step">
+        <span class="eyebrow">二｜創造</span>
+        <h3>每月底交出作品</h3>
+        <p>8 月底與 9 月底各交一個小作品，10 月底帶著大作品進行展示與驗收。</p>
+      </div>
+      <div class="journey-step">
+        <span class="eyebrow">三｜擴散</span>
+        <h3>論壇沉澱與 HR 檢核</h3>
+        <p>作品發布在論壇，讓 HR、主管與同仁可以看見成果，也能挑出適合標準化的模板。</p>
+      </div>
+    </div>
+
+    <div class="principles">
+      <div class="principle">
+        <h3>每個作品都要回到 MOVA 的真實工作</h3>
+        <p>作品不以「有沒有用到最新工具」為標準，而是以是否能改善品牌溝通、客服效率、分析品質、行銷判斷或營運流程為標準。</p>
+      </div>
+      <div class="principle alt">
+        <h3>每個流程都保留人的判斷與把關</h3>
+        <p>AI 可以協助摘要、分類、生成、比對與提出建議，但品牌語氣、客服承諾、預算分配與正式文件仍須由 MOVA 團隊決策。</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <strong>這不是工具課，而是一套讓內部產生 AI 工作作品的陪跑機制。</strong>
+      <p>三個月結束後，MOVA 不只會得到一批學習完成紀錄，也會得到一批可討論、可修正、可導入的 AI 工作流雛形。</p>
+    </div>
+
+    <div class="pgn">04</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>時程規劃</span>
+      <span>2026/08/01-2026/10/31</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">04</div>
+      <div>
+        <h2>三個月執行時程</h2>
+      </div>
+    </div>
+
+    <p class="lead">時程設計以每月一個明確節點推進：月初吸收與實作、月中 Q&A、月底作品繳交。10 月底則以 3 小時交流活動完成大作品驗收。</p>
+
+    <div class="proposal-timeline" data-timeline>
+      <div class="timeline-tabs" role="tablist" aria-label="三個月月份切換">
+        <button class="timeline-tab is-active" type="button" role="tab" aria-selected="true" data-phase-target="aug">8 月｜吸收</button>
+        <button class="timeline-tab" type="button" role="tab" aria-selected="false" data-phase-target="sep">9 月｜流程化</button>
+        <button class="timeline-tab" type="button" role="tab" aria-selected="false" data-phase-target="oct">10 月｜驗收</button>
+      </div>
+
+      <div class="timeline-rail" aria-label="三個月關鍵節點">
+        <div class="milestone is-active" data-phase="aug"><span>8/1</span><strong>平台課程開放</strong></div>
+        <div class="milestone is-active" data-phase="aug"><span>8 月中</span><strong>第一次線上 Q&A</strong></div>
+        <div class="milestone is-active" data-phase="aug"><span>8 月底</span><strong>第一次小作品</strong></div>
+        <div class="milestone" data-phase="sep"><span>9 月中</span><strong>第二次線上 Q&A</strong></div>
+        <div class="milestone" data-phase="sep"><span>9 月底</span><strong>第二次小作品</strong></div>
+        <div class="milestone" data-phase="oct"><span>10 月中</span><strong>期末作品收斂</strong></div>
+        <div class="milestone" data-phase="oct"><span>10 月底</span><strong>3 小時成果交流</strong></div>
+      </div>
+
+      <div class="month-panels">
+        <article class="month-panel is-active" data-phase-panel="aug">
+          <div>
+            <span>August Focus</span>
+            <h3>先吸收，再做出第一個能被看見的小作品</h3>
+            <p>8/1 開放課程 1、2、3、4、6，讓同仁先理解 MOVA 能如何應用 AI，再於月底把第一個作品發布到論壇。</p>
+          </div>
+          <ul>
+            <li>月中 Q&A 協助確認選題與資料準備。</li>
+            <li>月底作品重點是把真實工作問題清楚說出來。</li>
+          </ul>
+        </article>
+
+        <article class="month-panel" data-phase-panel="sep">
+          <div>
+            <span>September Focus</span>
+            <h3>把單次作品整理成可交接的工作流程</h3>
+            <p>第二個月會把第一次作品的回饋補進流程，要求作品包含輸入資料、AI 指令、輸出格式與人工檢核方式。</p>
+          </div>
+          <ul>
+            <li>月中 Q&A 聚焦模板化與檢核點。</li>
+            <li>月底作品需更接近其他同仁可複製使用的版本。</li>
+          </ul>
+        </article>
+
+        <article class="month-panel" data-phase-panel="oct">
+          <div>
+            <span>October Focus</span>
+            <h3>用大作品判斷哪些 AI 流程值得導入</h3>
+            <p>10 月中協助收斂大作品，10 月底以 3 小時交流活動完成展示、主管回饋與後續導入討論。</p>
+          </div>
+          <ul>
+            <li>大作品需說明解決問題、使用方式與導入條件。</li>
+            <li>期末整理出可標準化的模板、SOP 或系統需求。</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="pgn">05</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>課程內容</span>
+      <span>8/1 平台課程模組</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">05</div>
+      <div>
+        <h2>nuvaClub 線上課程模組</h2>
+      </div>
+    </div>
+
+    <p class="lead">8/1 起，MOVA 同仁可在 nuvaClub 進入 1、2、3、4、6 五個主題課程。每個模組都會對應到一種可被繳交的作品類型，讓學習與產出同步發生。</p>
+
+    <div class="module-visualizer" data-module-filter>
+      <div class="module-tabs" role="tablist" aria-label="課程模組切換">
+        <button class="module-tab is-active" type="button" data-module-target="all" aria-selected="true">全部</button>
+        <button class="module-tab" type="button" data-module-target="brand" aria-selected="false">品牌</button>
+        <button class="module-tab" type="button" data-module-target="service" aria-selected="false">客服</button>
+        <button class="module-tab" type="button" data-module-target="data" aria-selected="false">數據</button>
+        <button class="module-tab" type="button" data-module-target="trend" aria-selected="false">趨勢</button>
+        <button class="module-tab" type="button" data-module-target="creative" aria-selected="false">素材</button>
+        <button class="module-tab" type="button" data-module-target="workflow" aria-selected="false">流程</button>
+      </div>
+      <div class="module-story" aria-live="polite">
+        <span>Module Map</span>
+        <h3 id="module-story-title">從課程模組到月底作品</h3>
+        <p id="module-story-copy">點選任一模組，可以快速看見該主題對應 MOVA 哪一類工作成果；全部模式則呈現完整的 AI 應用地圖。</p>
+      </div>
+    </div>
+
+    <div class="module-grid">
+      <div class="module-card" data-module-card="brand">
+        <span class="mini-label">課程 1</span>
+        <h3>品牌核心概念建立</h3>
+        <p>建立 MOVA 品牌 AI 說明書，包含品牌語氣、產品特色、顧客情境、禁忌說法、品質判斷與決策原則。</p>
+      </div>
+      <div class="module-card" data-module-card="service">
+        <span class="mini-label">課程 2</span>
+        <h3>客服 AI 回覆</h3>
+        <p>整理官網、FAQ、平台客服與常見問題，建立客服回覆草稿、分類標籤、升級判斷與週期性事件彙整。</p>
+      </div>
+      <div class="module-card" data-module-card="data">
+        <span class="mini-label">課程 3</span>
+        <h3>數據整理及分析</h3>
+        <p>以日為維度整理全平台銷售資料，讓 AI 協助比對不同平台差異、整理異常、提出行銷與廣告預算建議。</p>
+      </div>
+      <div class="module-card" data-module-card="trend">
+        <span class="mini-label">課程 4</span>
+        <h3>趨勢分析</h3>
+        <p>建立每週趨勢雷達，追蹤全球時事、節慶、禮贈、設計家飾、太空與文化題材，轉化為行銷曝光機會。</p>
+      </div>
+      <div class="module-card" data-module-card="creative">
+        <span class="mini-label">專題延伸</span>
+        <h3>降低素材成本</h3>
+        <p>針對 MOVA 產品反光、透明外殼與高級感，建立 AI 圖像生成限制、審核清單與人物 IP 初步設定。</p>
+      </div>
+      <div class="module-card" data-module-card="workflow">
+        <span class="mini-label">課程 6</span>
+        <h3>作業流程自動化</h3>
+        <p>將訂單、出貨文件、週報、通知與重複性行政流程拆解為觸發條件、資料輸入、AI 產出與人工確認。</p>
+      </div>
+    </div>
+
+    <div class="quote-strip">
+      <strong>第 5 項素材成本議題建議作為專題作品池，而不是單純放進基礎工具課。</strong>
+      <p>MOVA 產品的反光外殼與高質感呈現需要較高審美與檢核標準，因此更適合讓行銷、設計或社群同仁在作品階段建立規範、範例與審核流程。</p>
+    </div>
+
+    <div class="pgn">06</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>作品機制</span>
+      <span>論壇發表與 HR 檢核</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">06</div>
+      <div>
+        <h2>每月底作品繳交設計</h2>
+      </div>
+    </div>
+
+    <p class="lead">作品是本計畫的核心。每位同仁不只要完成課程，也要把自己的工作問題轉成可被討論的小作品。HR 與主管可透過論壇作品掌握學習進度與導入潛力。</p>
+
+    <div class="demo-layout">
+      <div class="flow">
+        <div class="flow-node" data-step="01">
+          <h3>選擇工作場景</h3>
+          <p>從品牌、客服、數據、趨勢、素材或營運流程中選一個自己最常接觸的問題。</p>
+        </div>
+        <div class="flow-node" data-step="02">
+          <h3>整理可用資料</h3>
+          <p>收集官網內容、客服紀錄、銷售表格、平台資料、既有 SOP 或常用文件。</p>
+        </div>
+        <div class="flow-node" data-step="03">
+          <h3>設計 AI 工作流</h3>
+          <p>寫出輸入資料、AI 指令、輸出格式、人工檢核點與適用限制。</p>
+        </div>
+        <div class="flow-node" data-step="04">
+          <h3>論壇發布與回饋</h3>
+          <p>將作品發布至 nuvaClub 論壇，讓 HR、主管與同仁進行檢核、提問與延伸。</p>
+        </div>
+      </div>
+
+      <div class="case-note">
+        <h3>建議檢核標準</h3>
+        <p>作品不需要一開始就做到系統導入程度，但必須能清楚說明它解決什麼問題、如何使用、誰需要檢查，以及後續如何變成公司模板。</p>
+        <ul class="check-list">
+          <li>是否對應 MOVA 的真實工作需求？</li>
+          <li>是否保留品牌語氣、客服承諾與人工審核？</li>
+          <li>是否能讓其他同仁照著使用？</li>
+          <li>是否清楚標示資料來源、限制與下一步？</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="canvas">
+      <div class="canvas-head">
+        <div>繳交格式</div>
+        <div><strong>每個小作品建議包含的六個欄位</strong></div>
+      </div>
+      <div class="canvas-grid">
+        <div class="canvas-cell">
+          <h3>問題描述</h3>
+          <p>目前工作中哪一段重複、耗時或容易不一致？</p>
+        </div>
+        <div class="canvas-cell">
+          <h3>使用資料</h3>
+          <p>AI 需要讀取哪些資料、文件、表格或品牌內容？</p>
+        </div>
+        <div class="canvas-cell">
+          <h3>AI 指令</h3>
+          <p>同仁實際使用的 Prompt、流程或自動化步驟。</p>
+        </div>
+        <div class="canvas-cell">
+          <h3>檢核方式</h3>
+          <p>人應該在哪裡判斷、修正、確認與批准？</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pgn">07</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>作品題庫</span>
+      <span>小作品與期末大作品方向</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">07</div>
+      <div>
+        <h2>建議作品題庫</h2>
+      </div>
+    </div>
+
+    <p class="lead">以下題庫可作為同仁選題參考。8 月底的小作品可先做出單一可用成果，9 月底則需補上流程與檢核方式，10 月大作品則要能呈現可被團隊採用的完整版本。</p>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <span class="mini-label">品牌核心</span>
+        <h3>MOVA 品牌 AI 說明書</h3>
+        <p>建立一份可貼到 ChatGPT、Claude 或其他 AI 工具中的品牌手冊，讓輸出維持品牌語氣、產品事實與質感判斷。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">客服應用</span>
+        <h3>客服回覆與事件週報</h3>
+        <p>整理常見問題、回覆模板、升級判斷與每週客服事件摘要，協助團隊看見重複問題與改善方向。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">數據分析</span>
+        <h3>全平台銷售日報分析</h3>
+        <p>建立銷售資料格式、每日摘要、平台差異比對、異常提醒與行銷預算建議的 AI 分析流程。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">趨勢分析</span>
+        <h3>每週 MOVA 趨勢雷達</h3>
+        <p>追蹤節慶、設計、收藏、太空、科技與企業禮贈相關時事，轉化為社群與廣告曝光建議。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">素材成本</span>
+        <h3>AI 素材生成與審核規範</h3>
+        <p>針對透明外殼、反光、球體圖案與高級感建立提示詞、負面清單、成品審核表與可用場景。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">人物 IP</span>
+        <h3>MOVA AI 人物 IP 初版</h3>
+        <p>建立品牌角色設定、語氣、視覺方向、社群內容模板與適用限制，支援後續社群內容延伸。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">流程自動化</span>
+        <h3>訂單與出貨文件半自動化</h3>
+        <p>將訂單資訊、出貨文件、通知內容與內部紀錄整理成半自動工作流，降低重複輸入與格式錯誤。</p>
+      </div>
+      <div class="work-card">
+        <span class="mini-label">內部知識</span>
+        <h3>MOVA AI 工作模板庫</h3>
+        <p>彙整同仁作品中可重複使用的 Prompt、表格、範本與 SOP，作為後續內部訓練與導入素材。</p>
+      </div>
+    </div>
+
+    <div class="pgn">08</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>陪跑支援</span>
+      <span>Line 群組、Q&A 與交流活動</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">08</div>
+      <div>
+        <h2>陪跑與期末交流設計</h2>
+      </div>
+    </div>
+
+    <p class="lead">三個月期間，nuva 會以 Line 群組、月中 Q&A 與論壇回饋支援同仁持續推進作品。10 月底則舉辦 3 小時交流活動，讓大家帶著大作品完成驗收。</p>
+
+    <div class="deliverables">
+      <div class="deliverable">
+        <span class="mini-label">Line 群組</span>
+        <h3>三個月提問與提醒</h3>
+        <p>提供課程期間的問題回覆、作品提醒、範例補充與常見卡關說明，讓同仁在實作時有人可以詢問。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">月中 Q&A</span>
+        <h3>每月 30 分鐘線上交流</h3>
+        <p>8、9、10 月中各一次，協助同仁校準作品方向、釐清工具使用與改善作品品質。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">論壇回饋</span>
+        <h3>作品牆與同儕學習</h3>
+        <p>每個作品都發布在 nuvaClub 論壇，方便 HR、主管與同仁查看、留言與收藏可用範本。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">期末交流</span>
+        <h3>3 小時大作品驗收</h3>
+        <p>同仁展示大作品，討論哪些成果可轉為 MOVA 內部模板、SOP、資料規格或後續系統導入需求。</p>
+      </div>
+    </div>
+
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="time">00:00<br>00:15</div>
+        <div class="agenda-main">
+          <h3>開場與三個月成果回顧</h3>
+          <p>回顧課程完成狀況、作品數量、主要主題與團隊學習觀察。</p>
+        </div>
+        <div class="agenda-side">建立共同語境。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">00:15<br>01:30</div>
+        <div class="agenda-main">
+          <h3>大作品展示</h3>
+          <p>由同仁或小組展示 AI 工作流，說明解決的問題、使用方法、輸出成果與人工檢核點。</p>
+        </div>
+        <div class="agenda-side">讓作品被看見。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">01:30<br>02:10</div>
+        <div class="agenda-main">
+          <h3>分組交流與導入討論</h3>
+          <p>討論哪些作品最值得被標準化，哪些需要資料、權限、流程或系統串接。</p>
+        </div>
+        <div class="agenda-side">從展示轉向導入。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">02:10<br>02:40</div>
+        <div class="agenda-main">
+          <h3>HR 與主管回饋</h3>
+          <p>依完成度、實用性、品牌一致性、可複製性與導入價值進行回饋。</p>
+        </div>
+        <div class="agenda-side">形成組織判斷。</div>
+      </div>
+      <div class="agenda-row">
+        <div class="time">02:40<br>03:00</div>
+        <div class="agenda-main">
+          <h3>下一階段 AI 導入建議</h3>
+          <p>收斂優先項目，整理下一步需要的資料、負責人與可行導入方向。</p>
+        </div>
+        <div class="agenda-side">讓成果接得下去。</div>
+      </div>
+    </div>
+
+    <div class="pgn">09</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>服務內容</span>
+      <span>交付項目與預期成果</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">09</div>
+      <div>
+        <h2>本次服務內容與交付成果</h2>
+      </div>
+    </div>
+
+    <p class="lead">本提案採「三個月陪跑」規格規劃。nuva 提供平台內容、作品機制、線上問答、Line 陪跑與期末交流活動設計，MOVA 內部則透過 HR 與主管共同檢核學習成果。</p>
+
+    <div class="deliverables">
+      <div class="deliverable">
+        <span class="mini-label">平台課程</span>
+        <h3>nuvaClub 線上課程權限</h3>
+        <p>8/1 開放指定課程模組，支援同仁自主學習與作品準備。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">作品機制</span>
+        <h3>論壇作品繳交與作品牆</h3>
+        <p>8 月底、9 月底與 10 月底皆有明確作品節點，方便 HR 與主管追蹤。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">陪跑支援</span>
+        <h3>Line 群組與三次線上 Q&A</h3>
+        <p>三個月期間提供提問管道，並於每月中安排 30 分鐘線上 Q&A。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">期末活動</span>
+        <h3>3 小時成果交流與驗收</h3>
+        <p>10 月底安排大作品展示、交流、主管回饋與後續導入討論。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">成果沉澱</span>
+        <h3>AI 工作作品庫雛形</h3>
+        <p>累積品牌、客服、數據、趨勢、素材與流程自動化等可複製作品。</p>
+      </div>
+      <div class="deliverable">
+        <span class="mini-label">後續導入</span>
+        <h3>優先導入項目建議</h3>
+        <p>依期末成果判斷哪些作品適合進一步標準化、系統化或成為內部 SOP。</p>
+      </div>
+    </div>
+
+    <div class="quote-grid">
+      <div class="quote-box">
+        <div>
+          <div class="quote-label">學習成果</div>
+          <div class="quote-number"><span>2 個小作品</span><span>1 個大作品</span></div>
+        </div>
+        <p class="quote-note">每位同仁至少累積兩次練習與一次成果驗收。</p>
+      </div>
+      <div class="quote-box">
+        <div>
+          <div class="quote-label">組織成果</div>
+          <div class="quote-number"><span>AI 工作模板</span><span>導入候選清單</span></div>
+        </div>
+        <p class="quote-note">讓 HR 與主管能從作品中挑出可複製的內部資產。</p>
+      </div>
+    </div>
+
+    <div class="pgn">10</div>
+  </section>
+
+  <section class="page">
+    <div class="rh">
+      <span>下一步</span>
+      <span>確認範圍與啟動準備</span>
+    </div>
+
+    <div class="sec">
+      <div class="sec-num">10</div>
+      <div>
+        <h2>建議下一步</h2>
+      </div>
+    </div>
+
+    <p class="lead">若 MOVA 確認推進本計畫，建議先完成參與名單、HR 檢核方式、論壇繳交規則與期末成果活動形式確認，讓 8/1 課程開放後可以順利啟動。</p>
+
+    <div class="quote-grid">
+      <div class="calc-table">
+        <div class="calc-row">
+          <strong>第一步</strong>
+          <span>確認參與對象與人數</span>
+        </div>
+        <div class="calc-row">
+          <strong>第二步</strong>
+          <span>確認 HR / 主管檢核方式</span>
+        </div>
+        <div class="calc-row">
+          <strong>第三步</strong>
+          <span>建立 Line 群組與平台名單</span>
+        </div>
+        <div class="calc-row">
+          <strong>第四步</strong>
+          <span>確認 8、9、10 月中 Q&A 時間</span>
+        </div>
+        <div class="calc-row total">
+          <strong>啟動節點</strong>
+          <span>2026/08/01</span>
+        </div>
+      </div>
+
+      <div class="case-note">
+        <h3>啟動前建議由 MOVA 準備的資料</h3>
+        <p>若能在課程啟動前先整理以下資料，作品品質會更容易貼近實務，也更容易在期末判斷導入價值。</p>
+        <ul class="check-list">
+          <li>品牌介紹、產品說明、常用行銷語句與禁忌說法。</li>
+          <li>客服 FAQ、常見平台問題、退換貨與保固說明。</li>
+          <li>銷售資料欄位範例、平台名稱、日報或月報格式。</li>
+          <li>訂單、出貨、文件產出與內部通知流程範例。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="closing">
+      <strong>這份提案的核心，是協助 MOVA 在三個月內建立「能持續長出作品」的 AI 學習場域。</strong>
+      <p>nuvaClub 負責提供課程、作品機制與陪跑支援；MOVA 內部則透過真實工作場景、HR 檢核與主管回饋，將學習成果轉成可被公司使用的 AI 應用資產。</p>
+    </div>
+
+    <div class="pgn">11</div>
+  </section>
+  <script>
+    const timeline = document.querySelector("[data-timeline]");
+    if (timeline) {
+      const tabs = [...timeline.querySelectorAll("[data-phase-target]")];
+      const panels = [...timeline.querySelectorAll("[data-phase-panel]")];
+      const milestones = [...timeline.querySelectorAll("[data-phase]")];
+
+      const activatePhase = (phase) => {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.phaseTarget === phase;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("is-active", panel.dataset.phasePanel === phase);
+        });
+        milestones.forEach((milestone) => {
+          milestone.classList.toggle("is-active", milestone.dataset.phase === phase);
+        });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activatePhase(tab.dataset.phaseTarget));
+      });
+    }
+
+    const moduleCopy = {
+      all: ["從課程模組到月底作品", "點選任一模組，可以快速看見該主題對應 MOVA 哪一類工作成果；全部模式則呈現完整的 AI 應用地圖。"],
+      brand: ["品牌 AI 說明書", "把 MOVA 的語氣、產品事實、質感判斷與禁忌說法整理成 AI 可套用的品牌底稿。"],
+      service: ["客服回覆與事件彙整", "將官網、平台問題與 FAQ 轉成回覆草稿、分類標籤、升級判斷與週期性客服事件摘要。"],
+      data: ["銷售數據分析流程", "把日維度銷售資料整理為跨平台差異、異常提醒與行銷預算分配建議。"],
+      trend: ["每週趨勢雷達", "追蹤節慶、設計、收藏、太空與企業禮贈相關時事，轉化為曝光題材。"],
+      creative: ["AI 素材與人物 IP", "針對反光外殼、高級感與人物 IP 建立生成提示、負面清單與審核標準。"],
+      workflow: ["訂單與出貨自動化", "把訂單、出貨文件、通知與週報拆成觸發條件、資料輸入、AI 產出與人工確認。"]
+    };
+
+    const moduleFilter = document.querySelector("[data-module-filter]");
+    if (moduleFilter) {
+      const controls = [...moduleFilter.querySelectorAll("[data-module-target]")];
+      const cards = [...document.querySelectorAll("[data-module-card]")];
+      const storyTitle = document.getElementById("module-story-title");
+      const storyCopy = document.getElementById("module-story-copy");
+
+      const activateModule = (target) => {
+        controls.forEach((control) => {
+          const active = control.dataset.moduleTarget === target;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-selected", String(active));
+        });
+
+        cards.forEach((card) => {
+          const active = target === "all" || card.dataset.moduleCard === target;
+          card.classList.toggle("is-featured", target !== "all" && active);
+          card.classList.toggle("is-dimmed", !active);
+        });
+
+        const copy = moduleCopy[target] || moduleCopy.all;
+        storyTitle.textContent = copy[0];
+        storyCopy.textContent = copy[1];
+      };
+
+      controls.forEach((control) => {
+        control.addEventListener("click", () => activateModule(control.dataset.moduleTarget));
+      });
+    }
+  </script>
+  <script src="../assets/report-reader.js?v=20260527-mobile-tables" defer></script>
+  <script src="../assets/report-actions.js" defer></script>
+</body>
+
+</html>

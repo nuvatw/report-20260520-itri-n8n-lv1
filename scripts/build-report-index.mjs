@@ -109,6 +109,12 @@ function buildSearchText(report) {
     .toLowerCase();
 }
 
+function countReportPages(html) {
+  return [...html.matchAll(/<[^>]+\bclass=["']([^"']*)["'][^>]*>/gi)]
+    .filter(([, className]) => className.split(/\s+/).includes('page'))
+    .length;
+}
+
 function hasReportActionsScript(html) {
   return /<script\b[^>]+\bsrc=["'][^"']*assets\/report-actions\.js[^"']*["'][^>]*>/i.test(html);
 }
@@ -158,7 +164,7 @@ async function buildReport(root, fileName) {
   const subtitle = meta.subtitle || extractFirstClassText(html, 'csub') || titleTag;
   const date = normalizeDate(meta.date, dateFromFileName(fileName));
   const category = meta.category || fallbackCategory(fileName, title);
-  const pages = (html.match(/class=["'][^"']*\bpage\b[^"']*["']/gi) || []).length;
+  const pages = countReportPages(html);
 
   const report = {
     id: fileName.replace(/\.html$/i, ''),

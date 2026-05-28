@@ -1,6 +1,6 @@
 window.REPORT_TIMELINE = {
-  "generatedAt": "2026-05-28T10:05:24.854Z",
-  "count": 8,
+  "generatedAt": "2026-05-28T10:13:51.135Z",
+  "count": 9,
   "reports": [
     {
       "id": "2026-05-28-n8n-deployment-complete-guide",
@@ -152,10 +152,10 @@ window.REPORT_TIMELINE = {
       "search": "數位時代 ai taiwan 兩小時課程提案 從工作流拆解、精準協作到一人公司產能放大 課程提案 數位時代 ai taiwan 媒體、科技論壇與職場學習 2026/06/24（三）10:00-12:00｜花博爭艷館 學習講堂 2026 六月 ai taiwan ai 協作 ai 自動化 工作流拆解 一人公司 專案式學習 ai agent reports/2026-05-27-business-next-ai-taiwan-proposal.html"
     },
     {
-      "id": "2026-05-27-mova-ai-three-month-proposal",
-      "file": "reports/2026-05-27-mova-ai-three-month-proposal.html",
-      "title": "MOVA AI Keep Building",
-      "subtitle": "2026/08/01-2026/10/31，三個月 AI 陪跑提案",
+      "id": "2026-05-27-mova-ai-three-month-proposal-v1",
+      "file": "reports/2026-05-27-mova-ai-three-month-proposal-v1.html",
+      "title": "MOVA AI 三個月陪跑課程提案（v1）",
+      "subtitle": "以 nuvaClub 建立品牌、客服、數據、趨勢與營運自動化的內部 AI 作品機制",
       "date": "2026-05-27",
       "month": "2026.05",
       "period": "2026/08/01-2026/10/31",
@@ -164,6 +164,7 @@ window.REPORT_TIMELINE = {
       "clientGroup": "設計商品、跨境電商與品牌零售",
       "timeline": "2026 八月至十月",
       "tags": [
+        "v1",
         "nuvaClub",
         "AI 陪跑",
         "品牌 AI 說明書",
@@ -176,10 +177,41 @@ window.REPORT_TIMELINE = {
       "pdf": "",
       "visibility": "private",
       "guestPin": "",
-      "pages": 14,
-      "updatedAt": "2026-05-28T10:05:17.451Z",
+      "pages": 11,
+      "updatedAt": "2026-05-28T10:12:04.862Z",
+      "sizeKb": 64,
+      "search": "mova ai 三個月陪跑課程提案（v1） 以 nuvaclub 建立品牌、客服、數據、趨勢與營運自動化的內部 ai 作品機制 課程提案 mova 設計商品、跨境電商與品牌零售 2026/08/01-2026/10/31 2026 八月至十月 v1 nuvaclub ai 陪跑 品牌 ai 說明書 客服 ai 數據分析 趨勢分析 流程自動化 reports/2026-05-27-mova-ai-three-month-proposal-v1.html"
+    },
+    {
+      "id": "2026-05-27-mova-ai-three-month-proposal",
+      "file": "reports/2026-05-27-mova-ai-three-month-proposal.html",
+      "title": "MOVA AI Keep Building（v2）",
+      "subtitle": "2026/08/01-2026/10/31，三個月 AI 陪跑提案",
+      "date": "2026-05-27",
+      "month": "2026.05",
+      "period": "2026/08/01-2026/10/31",
+      "category": "課程提案",
+      "client": "MOVA",
+      "clientGroup": "設計商品、跨境電商與品牌零售",
+      "timeline": "2026 八月至十月",
+      "tags": [
+        "v2",
+        "nuvaClub",
+        "AI 陪跑",
+        "品牌 AI 說明書",
+        "客服 AI",
+        "數據分析",
+        "趨勢分析",
+        "流程自動化"
+      ],
+      "thumbnail": "",
+      "pdf": "",
+      "visibility": "private",
+      "guestPin": "",
+      "pages": 8,
+      "updatedAt": "2026-05-28T10:12:04.862Z",
       "sizeKb": 90,
-      "search": "mova ai keep building 2026/08/01-2026/10/31，三個月 ai 陪跑提案 課程提案 mova 設計商品、跨境電商與品牌零售 2026/08/01-2026/10/31 2026 八月至十月 nuvaclub ai 陪跑 品牌 ai 說明書 客服 ai 數據分析 趨勢分析 流程自動化 reports/2026-05-27-mova-ai-three-month-proposal.html"
+      "search": "mova ai keep building（v2） 2026/08/01-2026/10/31，三個月 ai 陪跑提案 課程提案 mova 設計商品、跨境電商與品牌零售 2026/08/01-2026/10/31 2026 八月至十月 v2 nuvaclub ai 陪跑 品牌 ai 說明書 客服 ai 數據分析 趨勢分析 流程自動化 reports/2026-05-27-mova-ai-three-month-proposal.html"
     },
     {
       "id": "2026-05-22-itri-n8n-lv1",
