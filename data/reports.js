@@ -1,5 +1,5 @@
 window.REPORT_TIMELINE = {
-  "generatedAt": "2026-05-28T10:29:00.178Z",
+  "generatedAt": "2026-05-28T12:26:39.073Z",
   "count": 9,
   "reports": [
     {
@@ -58,7 +58,7 @@ window.REPORT_TIMELINE = {
       "visibility": "private",
       "guestPin": "",
       "pages": 8,
-      "updatedAt": "2026-05-28T10:27:55.448Z",
+      "updatedAt": "2026-05-28T11:48:54.518Z",
       "sizeKb": 44,
       "search": "統一超商商場事業部 ai 課程兩方案比較 90 分鐘純講座與 180 分鐘工作坊＋短影片合作比較 課程提案 統一超商股份有限公司 零售、商場與餐飲營運 2026/09/09 下午 2026 九月 ai 講座 ai 工作坊 短影片合作 商場營運 方案比較 reports/2026-05-28-uni-president-ai-options-comparison.html"
     },
@@ -209,8 +209,8 @@ window.REPORT_TIMELINE = {
       "visibility": "private",
       "guestPin": "",
       "pages": 8,
-      "updatedAt": "2026-05-28T10:12:04.862Z",
-      "sizeKb": 90,
+      "updatedAt": "2026-05-28T11:10:07.004Z",
+      "sizeKb": 93,
       "search": "mova ai keep building（v2） 2026/08/01-2026/10/31，三個月 ai 陪跑提案 課程提案 mova 設計商品、跨境電商與品牌零售 2026/08/01-2026/10/31 2026 八月至十月 v2 nuvaclub ai 陪跑 品牌 ai 說明書 客服 ai 數據分析 趨勢分析 流程自動化 reports/2026-05-27-mova-ai-three-month-proposal.html"
     },
     {

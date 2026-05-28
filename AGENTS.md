@@ -16,4 +16,8 @@ The left-side reader must never overlap, cover, or press into any A4 report page
 
 Do not include sections that explain UI, animation, interaction, or visual design decisions inside client-facing reports or proposals unless the user explicitly asks for that content.
 
+For any new report, proposal, report-generation workflow, or substantial report revision, follow `docs/report-agent-workflow.md` before producing the final artifact. Use `docs/report-intake-template.md` to collect missing inputs, and treat `.claude/skills/nuva-report-production/SKILL.md` plus the role cards in `.claude/agents/` as the project-level agent team contract even when the current tool does not auto-load Claude-specific files.
+
+The default orchestration model is manager-led: one main report agent owns the user conversation, source-of-truth decisions, final synthesis, verification, commit, and push. Specialist subagents may research, structure, build, or verify bounded slices, but they must have clear ownership and must not overwrite each other or revert unrelated work.
+
 After completing any file or content update in this repository, commit the changes and push the current branch to the remote immediately, unless the user explicitly says not to push.

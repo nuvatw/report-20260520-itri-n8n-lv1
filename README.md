@@ -8,7 +8,9 @@
 2. 檔名建議使用 `YYYY-MM-DD-project-name.html`，例如 `2026-06-01-client-workshop.html`。
 3. 執行 `npm run build` 重新產生首頁資料。
 4. 開發或預覽時執行 `npm run dev`，再到終端顯示的網址查看。
-5. 交付前執行 `npm run release:check`，確認 build、連結、首頁瀏覽、行動版視覺與維運稽核都通過。
+5. 一般 report 交付前執行 `npm run release:reports`，確認 build、連結、首頁瀏覽、reader collision、行動版視覺與維運稽核都通過。
+
+一般 report 或 proposal 交付可先跑 `npm run verify:reports` 或 `npm run release:reports`。`npm run release:check` 仍保留給完整 week-20 / n8n 驗收，可能需要 Docker 與本機 n8n runtime。
 
 ## 報告 metadata
 
