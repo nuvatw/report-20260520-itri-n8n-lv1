@@ -1,5 +1,5 @@
 window.REPORT_TIMELINE = {
-  "generatedAt": "2026-05-28T09:14:00.561Z",
+  "generatedAt": "2026-05-28T09:27:31.181Z",
   "count": 8,
   "reports": [
     {
@@ -38,7 +38,7 @@ window.REPORT_TIMELINE = {
       "id": "2026-05-28-uni-president-ai-options-comparison",
       "file": "reports/2026-05-28-uni-president-ai-options-comparison.html",
       "title": "統一超商商場事業部 AI 課程兩方案比較",
-      "subtitle": "延續完整工作坊框架，補充 90 分鐘講座與 180 分鐘工作坊比較",
+      "subtitle": "90 分鐘講座與 180 分鐘工作坊的完整合作方案比較",
       "date": "2026-05-28",
       "month": "2026.05",
       "period": "2026/09/09 下午",
@@ -58,9 +58,9 @@ window.REPORT_TIMELINE = {
       "visibility": "private",
       "guestPin": "",
       "pages": 8,
-      "updatedAt": "2026-05-28T09:13:10.156Z",
+      "updatedAt": "2026-05-28T09:24:40.085Z",
       "sizeKb": 40,
-      "search": "統一超商商場事業部 ai 課程兩方案比較 延續完整工作坊框架，補充 90 分鐘講座與 180 分鐘工作坊比較 課程提案 統一超商股份有限公司 零售、商場與餐飲營運 2026/09/09 下午 2026 九月 ai 講座 ai 工作坊 品牌案例合作 商場營運 方案比較 reports/2026-05-28-uni-president-ai-options-comparison.html"
+      "search": "統一超商商場事業部 ai 課程兩方案比較 90 分鐘講座與 180 分鐘工作坊的完整合作方案比較 課程提案 統一超商股份有限公司 零售、商場與餐飲營運 2026/09/09 下午 2026 九月 ai 講座 ai 工作坊 品牌案例合作 商場營運 方案比較 reports/2026-05-28-uni-president-ai-options-comparison.html"
     },
     {
       "id": "2026-05-27-ai-experience-sharing",
