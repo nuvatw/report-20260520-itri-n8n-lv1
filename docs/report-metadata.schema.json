@@ -69,6 +69,11 @@
       "type": "string",
       "enum": ["public", "internal", "private"],
       "description": "選填可見性標籤。純靜態部署不提供真正權限控管。"
+    },
+    "guestPin": {
+      "type": "string",
+      "pattern": "^[0-9]{4}$",
+      "description": "選填四位數訪客密碼。只會在 visibility 非 public 時觸發靜態訪客提示。"
     }
   }
 }
