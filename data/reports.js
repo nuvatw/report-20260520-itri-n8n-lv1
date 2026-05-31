@@ -1,7 +1,37 @@
 window.REPORT_TIMELINE = {
-  "generatedAt": "2026-05-31T06:31:15.751Z",
+  "generatedAt": "2026-05-31T06:35:42.109Z",
   "count": 11,
   "reports": [
+    {
+      "id": "2026-05-29-hengstyle-ai-creative-workshop-proposal",
+      "file": "reports/2026-05-29-hengstyle-ai-creative-workshop-proposal.html",
+      "title": "恆隆行 AI 圖文影音工作坊提案",
+      "subtitle": "從展品照到 20 秒產品介紹影片的兩小時實作課",
+      "date": "2026-05-31",
+      "month": "2026.05",
+      "period": "2 小時工作坊｜日期待定",
+      "category": "課程提案",
+      "client": "恆隆行",
+      "clientGroup": "企業品牌與商品行銷",
+      "timeline": "2026 五月",
+      "tags": [
+        "AI 圖文影音",
+        "產品介紹影片",
+        "PM 內訓",
+        "社群素材",
+        "廣告文案",
+        "Google Flow",
+        "ChatGPT"
+      ],
+      "thumbnail": "",
+      "pdf": "",
+      "visibility": "private",
+      "guestPin": "1234",
+      "pages": 9,
+      "updatedAt": "2026-05-31T06:34:11.674Z",
+      "sizeKb": 49,
+      "search": "恆隆行 ai 圖文影音工作坊提案 從展品照到 20 秒產品介紹影片的兩小時實作課 課程提案 恆隆行 企業品牌與商品行銷 2 小時工作坊｜日期待定 2026 五月 ai 圖文影音 產品介紹影片 pm 內訓 社群素材 廣告文案 google flow chatgpt reports/2026-05-29-hengstyle-ai-creative-workshop-proposal.html"
+    },
     {
       "id": "2026-05-30-line-liff-attendance-playbook",
       "file": "reports/2026-05-30-line-liff-attendance-playbook.html",
@@ -31,36 +61,6 @@ window.REPORT_TIMELINE = {
       "updatedAt": "2026-05-30T12:35:31.725Z",
       "sizeKb": 147,
       "search": "line liff 打卡系統 playbook 從 mvp 到生產化的 a4 視覺工程手冊 研究摘要 nuva 內部技術整理 企業與研究機構 2026/05/30 2026 五月 line liff 打卡系統 messaging api rich menu flex message webhook 工程手冊 reports/2026-05-30-line-liff-attendance-playbook.html"
-    },
-    {
-      "id": "2026-05-29-hengstyle-ai-creative-workshop-proposal",
-      "file": "reports/2026-05-29-hengstyle-ai-creative-workshop-proposal.html",
-      "title": "恆隆行 AI 圖文影音工作坊提案",
-      "subtitle": "從展品照到 20 秒產品介紹影片的兩小時實作課",
-      "date": "2026-05-29",
-      "month": "2026.05",
-      "period": "2 小時工作坊｜日期待定",
-      "category": "課程提案",
-      "client": "恆隆行",
-      "clientGroup": "企業品牌與商品行銷",
-      "timeline": "2026 五月",
-      "tags": [
-        "AI 圖文影音",
-        "產品介紹影片",
-        "PM 內訓",
-        "社群素材",
-        "廣告文案",
-        "Google Flow",
-        "ChatGPT"
-      ],
-      "thumbnail": "",
-      "pdf": "",
-      "visibility": "private",
-      "guestPin": "1234",
-      "pages": 9,
-      "updatedAt": "2026-05-31T06:28:48.291Z",
-      "sizeKb": 49,
-      "search": "恆隆行 ai 圖文影音工作坊提案 從展品照到 20 秒產品介紹影片的兩小時實作課 課程提案 恆隆行 企業品牌與商品行銷 2 小時工作坊｜日期待定 2026 五月 ai 圖文影音 產品介紹影片 pm 內訓 社群素材 廣告文案 google flow chatgpt reports/2026-05-29-hengstyle-ai-creative-workshop-proposal.html"
     },
     {
       "id": "2026-05-28-n8n-deployment-complete-guide",
