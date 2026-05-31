@@ -1,0 +1,1900 @@
+{
+  "name": "nuvaO - FIN 消費分析小雲寶",
+  "nodes": [
+    {
+      "id": "78b39e6b-d07f-48b1-afa1-8f56df0946da",
+      "name": "Webhook - LINE FIN",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -3200,
+        260
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nuvao-fin-consumption",
+        "options": {}
+      }
+    },
+    {
+      "id": "f964c79c-6378-4346-92b5-f3560a0b35be",
+      "name": "line_loading_animation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -2960,
+        260
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/chat/loading/start",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LINE_CHANNEL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"chatId\": \"{{ $('Webhook - LINE FIN').item.json.body.events[0].source.userId }}\",\n  \"loadingSeconds\": 10\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "0ea50ecc-e74a-4495-b20d-d4f72d14ea2a",
+      "name": "Normalize LINE Event",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2720,
+        260
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5fb4248c-8ddb-43ab-a5d8-1fbf9df195fa",
+              "name": "line_user_id",
+              "value": "={{ $('Webhook - LINE FIN').item.json.body.events[0].source.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "782826ee-da54-4424-982b-6d46e81a7b0b",
+              "name": "reply_token",
+              "value": "={{ $('Webhook - LINE FIN').item.json.body.events[0].replyToken }}",
+              "type": "string"
+            },
+            {
+              "id": "51223a85-c4f7-4d01-8709-c4a45b92fb29",
+              "name": "message_type",
+              "value": "={{ $('Webhook - LINE FIN').item.json.body.events[0].message.type }}",
+              "type": "string"
+            },
+            {
+              "id": "b79cbb03-5507-4e8c-aff6-149fe728e8a4",
+              "name": "image_message_id",
+              "value": "={{ $('Webhook - LINE FIN').item.json.body.events[0].message.type === 'image' ? $('Webhook - LINE FIN').item.json.body.events[0].message.id : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "d22873ec-925e-4556-b3f4-6ef1f4c8e295",
+              "name": "line_text",
+              "value": "={{ $('Webhook - LINE FIN').item.json.body.events[0].message.type === 'text' ? $('Webhook - LINE FIN').item.json.body.events[0].message.text : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "ed92f263-3890-4766-9f3f-dc69897837ec",
+              "name": "created_at",
+              "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "fa476b1a-7f5e-45b7-ac26-06477778f65c",
+      "name": "Route message type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -2480,
+        260
+      ],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "55e4bda5-0021-431e-9347-e0a9b98e5927",
+                    "leftValue": "={{ $json.message_type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "圖片"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "148ea726-562a-4b46-8c74-7a0f0be8b198",
+                    "leftValue": "={{ $json.message_type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "文字說明"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a6d0f1d6-4376-41eb-a8ad-e50b767933c0",
+                    "leftValue": "={{ $json.message_type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  },
+                  {
+                    "id": "ff7ad5cd-8553-4dbd-ac5b-d9ca72fc4fc4",
+                    "leftValue": "={{ $json.message_type }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "其他"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c0b1a0ce-ee12-4801-86dc-7223571594f5",
+      "name": "Prepare image session",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2240,
+        -40
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "39677f22-d4d2-4ca5-982a-71485e4efb4c",
+              "name": "session_id",
+              "value": "={{ 'FIN-' + $now.format('yyyyMMddHHmmss') + '-' + $json.image_message_id.slice(-6) }}",
+              "type": "string"
+            },
+            {
+              "id": "18a1b1fe-16f0-4999-8510-878753b1904a",
+              "name": "line_user_id",
+              "value": "={{ $json.line_user_id }}",
+              "type": "string"
+            },
+            {
+              "id": "8941bc6c-1122-414b-8410-a7a5de3b9639",
+              "name": "image_message_id",
+              "value": "={{ $json.image_message_id }}",
+              "type": "string"
+            },
+            {
+              "id": "1a96cf86-fa35-40f8-877b-adfd3fa027e8",
+              "name": "session_state",
+              "value": "creating",
+              "type": "string"
+            },
+            {
+              "id": "1dd92fa1-0684-436b-a9bd-99b92ee2629e",
+              "name": "image_source",
+              "value": "LINE",
+              "type": "string"
+            },
+            {
+              "id": "aabf3beb-753f-469b-a0cf-2482da7c9893",
+              "name": "created_at",
+              "value": "={{ $json.created_at }}",
+              "type": "string"
+            },
+            {
+              "id": "b55e6d99-ba3f-4ca8-89a3-c384c206d42b",
+              "name": "ai_model",
+              "value": "={{ $env.OPENAI_FIN_MODEL || 'gpt-5.4-mini' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "2a847ce4-79d8-4cd4-b6eb-a88957d68f20",
+      "name": "Append image session",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2000,
+        -40
+      ],
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_image_sessions",
+          "mode": "name",
+          "cachedResultName": "fin_image_sessions"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $json.session_id }}",
+            "line_user_id": "={{ $json.line_user_id }}",
+            "image_message_id": "={{ $json.image_message_id }}",
+            "session_state": "creating",
+            "image_source": "LINE",
+            "created_at": "={{ $json.created_at }}",
+            "ai_model": "={{ $json.ai_model }}",
+            "import_count": 0,
+            "total_amount": 0
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "line_user_id",
+              "displayName": "line_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_message_id",
+              "displayName": "image_message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_state",
+              "displayName": "session_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_source",
+              "displayName": "image_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "description_received_at",
+              "displayName": "description_received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analysis_completed_at",
+              "displayName": "analysis_completed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_description",
+              "displayName": "user_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_model",
+              "displayName": "ai_model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_response_id",
+              "displayName": "ai_response_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "import_count",
+              "displayName": "import_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "total_amount",
+              "displayName": "total_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "failed_reason",
+              "displayName": "failed_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "af459d1d-d164-40df-8e72-edaebc15e309",
+      "name": "Reply ask expense context",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1760,
+        -40
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LINE_CHANNEL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Normalize LINE Event').item.json.reply_token || $('Build Import Summary').item.json.reply_token }}\",\n  \"messages\": [\n    {\n      \"type\": \"flex\",\n      \"altText\": \"FIN 消費圖片已收到\",\n      \"contents\": {\n  \"type\": \"bubble\",\n  \"size\": \"mega\",\n  \"body\": {\n    \"type\": \"box\",\n    \"layout\": \"vertical\",\n    \"paddingAll\": \"0px\",\n    \"backgroundColor\": \"#F7FAFF\",\n    \"contents\": [\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"horizontal\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"nuvaO FIN\",\n                \"size\": \"xs\",\n                \"color\": \"#C9DAFF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"flex\": 1\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"creating\",\n                \"size\": \"xs\",\n                \"color\": \"#F4F8FF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"align\": \"end\",\n                \"flex\": 1\n              }\n            ]\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"已收到消費截圖\",\n            \"size\": \"xl\",\n            \"color\": \"#F4F8FF\",\n            \"wrap\": true,\n            \"weight\": \"bold\",\n            \"margin\": \"md\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"我已記住這張圖片。請直接回覆這張截圖裡每筆信用卡消費的補充說明，AI 會一起分析並批量匯入。\",\n            \"size\": \"sm\",\n            \"color\": \"#C9DAFF\",\n            \"wrap\": true,\n            \"margin\": \"sm\"\n          }\n        ],\n        \"backgroundColor\": \"#102A5F\",\n        \"paddingAll\": \"20px\"\n      },\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"圖片 ID\",\n                \"size\": \"xs\",\n                \"color\": \"#2563EB\",\n                \"wrap\": true,\n                \"weight\": \"bold\"\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"{{ $('Prepare image session').item.json.image_message_id }}\",\n                \"size\": \"sm\",\n                \"color\": \"#13213F\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"margin\": \"xs\"\n              }\n            ],\n            \"backgroundColor\": \"#FDFEFF\",\n            \"borderColor\": \"#D7E3F4\",\n            \"borderWidth\": \"light\",\n            \"cornerRadius\": \"md\",\n            \"paddingAll\": \"12px\"\n          },\n          {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"下一步\",\n                \"size\": \"xs\",\n                \"color\": \"#2563EB\",\n                \"wrap\": true,\n                \"weight\": \"bold\"\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"回覆商家、用途、哪幾筆要入帳，以及特殊代墊規則\",\n                \"size\": \"sm\",\n                \"color\": \"#13213F\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"margin\": \"xs\"\n              }\n            ],\n            \"backgroundColor\": \"#FDFEFF\",\n            \"borderColor\": \"#D7E3F4\",\n            \"borderWidth\": \"light\",\n            \"cornerRadius\": \"md\",\n            \"paddingAll\": \"12px\"\n          }\n        ],\n        \"paddingAll\": \"20px\",\n        \"spacing\": \"sm\",\n        \"backgroundColor\": \"#F7FAFF\"\n      }\n    ]\n  },\n  \"styles\": {\n    \"body\": {\n      \"backgroundColor\": \"#F7FAFF\"\n    }\n  }\n}\n    }\n  ],\n  \"notificationDisabled\": false\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "3554eccd-2146-423a-b749-8dd2cf8741fe",
+      "name": "Get all FIN sessions",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2240,
+        300
+      ],
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_image_sessions",
+          "mode": "name",
+          "cachedResultName": "fin_image_sessions"
+        },
+        "options": {}
+      },
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "464410fb-8971-4eb5-8235-f75a976181a0",
+      "name": "Find latest creating session",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const event = $('Normalize LINE Event').first().json;\nconst rows = $input.all()\n  .map((item) => item.json)\n  .filter((row) => row.session_id && row.line_user_id === event.line_user_id && row.session_state === 'creating');\n\nrows.sort((a, b) => {\n  const aRow = Number(a.row_number || 0);\n  const bRow = Number(b.row_number || 0);\n  return bRow - aRow;\n});\n\nif (rows.length === 0) {\n  return [{ json: { ...event, has_creating_session: 'no' } }];\n}\n\nreturn [{\n  json: {\n    ...event,\n    ...rows[0],\n    user_description: event.line_text,\n    has_creating_session: 'yes',\n  },\n}];"
+      }
+    },
+    {
+      "id": "aa1e0291-beda-4554-a1d2-7aa09da2653e",
+      "name": "If creating session exists",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1760,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6542c3b8-fddc-4f0d-9c7b-b67ccaef33a2",
+              "leftValue": "={{ $json.has_creating_session }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "662c6131-6ffb-4f8b-82e9-d6c42aa7f478",
+      "name": "Reply ask image first",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1520,
+        480
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LINE_CHANNEL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Normalize LINE Event').item.json.reply_token || $('Build Import Summary').item.json.reply_token }}\",\n  \"messages\": [\n    {\n      \"type\": \"flex\",\n      \"altText\": \"請先上傳消費圖片\",\n      \"contents\": {\n  \"type\": \"bubble\",\n  \"size\": \"mega\",\n  \"body\": {\n    \"type\": \"box\",\n    \"layout\": \"vertical\",\n    \"paddingAll\": \"0px\",\n    \"backgroundColor\": \"#F7FAFF\",\n    \"contents\": [\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"horizontal\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"nuvaO FIN\",\n                \"size\": \"xs\",\n                \"color\": \"#C9DAFF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"flex\": 1\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"需要圖片\",\n                \"size\": \"xs\",\n                \"color\": \"#F4F8FF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"align\": \"end\",\n                \"flex\": 1\n              }\n            ]\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"請先上傳消費截圖\",\n            \"size\": \"xl\",\n            \"color\": \"#F4F8FF\",\n            \"wrap\": true,\n            \"weight\": \"bold\",\n            \"margin\": \"md\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"我目前沒有找到 creating 狀態的圖片。請先傳信用卡或支付紀錄截圖，再回覆補充說明。\",\n            \"size\": \"sm\",\n            \"color\": \"#C9DAFF\",\n            \"wrap\": true,\n            \"margin\": \"sm\"\n          }\n        ],\n        \"backgroundColor\": \"#102A5F\",\n        \"paddingAll\": \"20px\"\n      },\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"流程順序\",\n                \"size\": \"xs\",\n                \"color\": \"#2563EB\",\n                \"wrap\": true,\n                \"weight\": \"bold\"\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"1. 傳圖片  2. 補充說明  3. AI 批量匯入\",\n                \"size\": \"sm\",\n                \"color\": \"#13213F\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"margin\": \"xs\"\n              }\n            ],\n            \"backgroundColor\": \"#FDFEFF\",\n            \"borderColor\": \"#D7E3F4\",\n            \"borderWidth\": \"light\",\n            \"cornerRadius\": \"md\",\n            \"paddingAll\": \"12px\"\n          }\n        ],\n        \"paddingAll\": \"20px\",\n        \"spacing\": \"sm\",\n        \"backgroundColor\": \"#F7FAFF\"\n      }\n    ]\n  },\n  \"styles\": {\n    \"body\": {\n      \"backgroundColor\": \"#F7FAFF\"\n    }\n  }\n}\n    }\n  ],\n  \"notificationDisabled\": false\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "7743beec-981a-4a2e-a1f2-b9d01107dab2",
+      "name": "Update session context",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1520,
+        200
+      ],
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_image_sessions",
+          "mode": "name",
+          "cachedResultName": "fin_image_sessions"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "session_state": "analyzing",
+            "user_description": "={{ $json.user_description }}",
+            "description_received_at": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "line_user_id",
+              "displayName": "line_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_message_id",
+              "displayName": "image_message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_state",
+              "displayName": "session_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_source",
+              "displayName": "image_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "description_received_at",
+              "displayName": "description_received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analysis_completed_at",
+              "displayName": "analysis_completed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_description",
+              "displayName": "user_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_model",
+              "displayName": "ai_model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_response_id",
+              "displayName": "ai_response_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "import_count",
+              "displayName": "import_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "total_amount",
+              "displayName": "total_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "failed_reason",
+              "displayName": "failed_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "07030ece-6665-4795-95d8-a9cc8203925e",
+      "name": "Get active categories",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1280,
+        200
+      ],
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_categories",
+          "mode": "name",
+          "cachedResultName": "fin_categories"
+        },
+        "options": {}
+      },
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "87dfe16a-d1e2-4007-ad70-bd3b19247921",
+      "name": "Aggregate categories with session",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1040,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const session = $('Find latest creating session').first().json;\nconst categoryRows = $input.all()\n  .map((item) => item.json)\n  .filter((row) => row.category_name && String(row.active ?? 'TRUE').toUpperCase() !== 'FALSE');\n\nconst fallback = [\n  { category_key: 'food', category_name: '飲食', ai_hint: '餐廳、外送、飲料、聚餐、咖啡' },\n  { category_key: 'transport', category_name: '交通', ai_hint: 'Uber、計程車、捷運、高鐵、停車、油資' },\n  { category_key: 'other', category_name: '其他', ai_hint: '無法歸入既有類別的公司支出' },\n];\n\nconst categories = categoryRows.length > 0 ? categoryRows : fallback;\n\nreturn [{\n  json: {\n    ...session,\n    categories,\n    category_list: categories.map((category) => category.category_name || category.notion_option_name).join('、'),\n  },\n}];"
+      }
+    },
+    {
+      "id": "78378107-5754-437f-90c6-eb493e37e542",
+      "name": "Download LINE image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -800,
+        200
+      ],
+      "parameters": {
+        "url": "=https://api-data.line.me/v2/bot/message/{{ $json.image_message_id }}/content",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LINE_CHANNEL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "line_image"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7f2ac83e-5a6e-40e8-8831-5b55a737da82",
+      "name": "Build OpenAI Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst session = item.json;\nconst imageBuffer = await this.helpers.getBinaryDataBuffer(0, 'line_image');\nconst mimeType = item.binary?.line_image?.mimeType || 'image/jpeg';\nconst imageBase64 = imageBuffer.toString('base64');\nconst categories = Array.isArray(session.categories) && session.categories.length > 0\n  ? session.categories\n  : [{ category_name: '飲食' }, { category_name: '交通' }, { category_name: '其他' }];\n\nconst categoryText = categories\n  .map((category) => {\n    const name = category.category_name || category.notion_option_name || category.category_key;\n    const hint = category.ai_hint ? `：${category.ai_hint}` : '';\n    return `- ${name}${hint}`;\n  })\n  .join('\\n');\n\nconst instructions = `你是 nuvaO FIN 消費分析助手。請根據信用卡/支付截圖和使用者補充說明，整理成可批量匯入 Notion 的 JSON。\n\n規則：\n1. 一張圖片可能有多筆消費，請輸出 expenses 陣列。\n2. 欄位名稱必須完全使用 schema 的中文欄位。\n3. 如果使用者沒有特別說明，預設「公司代墊」為「是」，「代墊狀態」為「代墊中」，「發票狀態」為「尚未提供」。\n4. 消費金額請輸出純數字，不要包含 NT$、逗號或幣別。\n5. 歸屬月份格式使用 YYYY/MM。若截圖與說明沒有歸屬月份，使用消費日期所在月份。\n6. 類別優先使用既有類別，但如果真的不適合，可以新增更精準的類別，並將「類別是否新增」設為 true。\n7. 如果看不清楚或資訊矛盾，仍要輸出最保守的結果，並把「需要人工確認」設為 true。\n\n目前可編輯類別：\n${categoryText}\n\n使用者補充說明：\n${session.user_description || '(未提供補充說明)'}`;\n\nconst payload = {\n  model: session.ai_model || $env.OPENAI_FIN_MODEL || 'gpt-5.4-mini',\n  input: [\n    {\n      role: 'user',\n      content: [\n        { type: 'input_text', text: instructions },\n        {\n          type: 'input_image',\n          image_url: `data:${mimeType};base64,${imageBase64}`,\n          detail: 'high',\n        },\n      ],\n    },\n  ],\n  text: {\n    format: {\n      type: 'json_schema',\n      name: 'fin_expense_batch',\n      strict: true,\n      schema: {\n        type: 'object',\n        additionalProperties: false,\n        required: ['batch_summary', 'expenses'],\n        properties: {\n          batch_summary: { type: 'string' },\n          expenses: {\n            type: 'array',\n            items: {\n              type: 'object',\n              additionalProperties: false,\n              required: [\n                '品項',\n                '代墊狀態',\n                '公司代墊',\n                '對象',\n                '歸屬年份',\n                '歸屬月份',\n                '消費日期',\n                '消費金額',\n                '幣別',\n                '發票狀態',\n                '開銷說明',\n                '類別',\n                '類別是否新增',\n                '信心分數',\n                '需要人工確認',\n                '原始文字',\n              ],\n              properties: {\n                '品項': { type: 'string' },\n                '代墊狀態': { type: 'string' },\n                '公司代墊': { type: 'string' },\n                '對象': { type: 'string' },\n                '歸屬年份': { type: 'integer' },\n                '歸屬月份': { type: 'string' },\n                '消費日期': { type: 'string' },\n                '消費金額': { type: 'number' },\n                '幣別': { type: 'string' },\n                '發票狀態': { type: 'string' },\n                '開銷說明': { type: 'string' },\n                '類別': { type: 'string' },\n                '類別是否新增': { type: 'boolean' },\n                '信心分數': { type: 'number' },\n                '需要人工確認': { type: 'boolean' },\n                '原始文字': { type: 'string' },\n              },\n            },\n          },\n        },\n      },\n    },\n  },\n};\n\nreturn [{\n  json: {\n    ...session,\n    image_mime_type: mimeType,\n    openai_payload: payload,\n  },\n}];"
+      }
+    },
+    {
+      "id": "c1d30319-7b99-4c83-8cad-0d5b43294e21",
+      "name": "OpenAI - Extract Expense Array",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -320,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.OPENAI_API_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.openai_payload) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "0049022f-bf65-4be3-933f-67635a79cf24",
+      "name": "Store AI raw log",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -80,
+        200
+      ],
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_ai_raw_logs",
+          "mode": "name",
+          "cachedResultName": "fin_ai_raw_logs"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $('Build OpenAI Payload').item.json.session_id }}",
+            "line_user_id": "={{ $('Build OpenAI Payload').item.json.line_user_id }}",
+            "image_message_id": "={{ $('Build OpenAI Payload').item.json.image_message_id }}",
+            "user_description": "={{ $('Build OpenAI Payload').item.json.user_description }}",
+            "ai_model": "={{ $('Build OpenAI Payload').item.json.ai_model }}",
+            "ai_response_id": "={{ $json.id }}",
+            "ai_status": "={{ $json.status }}",
+            "raw_response_json": "={{ JSON.stringify($json) }}",
+            "created_at": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "line_user_id",
+              "displayName": "line_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_message_id",
+              "displayName": "image_message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_description",
+              "displayName": "user_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_model",
+              "displayName": "ai_model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_response_id",
+              "displayName": "ai_response_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_status",
+              "displayName": "ai_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "raw_response_json",
+              "displayName": "raw_response_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "96bc0785-c869-4854-a64b-578da67631b0",
+      "name": "Parse AI Expense Array",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const response = $('OpenAI - Extract Expense Array').first().json;\nconst session = $('Build OpenAI Payload').first().json;\n\nconst outputText = response.output_text\n  || response.output?.flatMap((entry) => entry.content || [])\n    .find((content) => content.type === 'output_text')?.text\n  || '{}';\n\nconst parsed = typeof outputText === 'string' ? JSON.parse(outputText) : outputText;\nconst expenses = Array.isArray(parsed.expenses) ? parsed.expenses : [];\nconst now = $now.format('yyyy-MM-dd HH:mm');\n\nreturn expenses.map((expense, index) => ({\n  json: {\n    session_id: session.session_id,\n    expense_index: index + 1,\n    line_user_id: session.line_user_id,\n    image_message_id: session.image_message_id,\n    user_description: session.user_description,\n    ai_batch_summary: parsed.batch_summary || '',\n    ai_model: response.model || session.ai_model,\n    ai_response_id: response.id || '',\n    created_at: now,\n    ...expense,\n  },\n}));"
+      }
+    },
+    {
+      "id": "584a7745-41d2-4ca6-be3c-c7e1a2d63ed3",
+      "name": "Append expense rows",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        400,
+        200
+      ],
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_expense_imports",
+          "mode": "name",
+          "cachedResultName": "fin_expense_imports"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "session_id": "={{ $json.session_id }}",
+            "expense_index": "={{ $json.expense_index }}",
+            "line_user_id": "={{ $json.line_user_id }}",
+            "image_message_id": "={{ $json.image_message_id }}",
+            "品項": "={{ $json['品項'] }}",
+            "代墊狀態": "={{ $json['代墊狀態'] || '代墊中' }}",
+            "公司代墊": "={{ $json['公司代墊'] || '是' }}",
+            "對象": "={{ $json['對象'] }}",
+            "歸屬年份": "={{ $json['歸屬年份'] }}",
+            "歸屬月份": "={{ $json['歸屬月份'] }}",
+            "消費日期": "={{ $json['消費日期'] }}",
+            "消費金額": "={{ $json['消費金額'] }}",
+            "幣別": "={{ $json['幣別'] || 'TWD' }}",
+            "發票狀態": "={{ $json['發票狀態'] || '尚未提供' }}",
+            "開銷說明": "={{ $json['開銷說明'] }}",
+            "類別": "={{ $json['類別'] }}",
+            "類別是否新增": "={{ $json['類別是否新增'] }}",
+            "信心分數": "={{ $json['信心分數'] }}",
+            "需要人工確認": "={{ $json['需要人工確認'] }}",
+            "原始文字": "={{ $json['原始文字'] }}",
+            "ai_batch_summary": "={{ $json.ai_batch_summary }}",
+            "created_at": "={{ $json.created_at }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "expense_index",
+              "displayName": "expense_index",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "line_user_id",
+              "displayName": "line_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_message_id",
+              "displayName": "image_message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "品項",
+              "displayName": "品項",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "代墊狀態",
+              "displayName": "代墊狀態",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "公司代墊",
+              "displayName": "公司代墊",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "對象",
+              "displayName": "對象",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "歸屬年份",
+              "displayName": "歸屬年份",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "歸屬月份",
+              "displayName": "歸屬月份",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "消費日期",
+              "displayName": "消費日期",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "消費金額",
+              "displayName": "消費金額",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "幣別",
+              "displayName": "幣別",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "發票狀態",
+              "displayName": "發票狀態",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "開銷說明",
+              "displayName": "開銷說明",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "類別",
+              "displayName": "類別",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "類別是否新增",
+              "displayName": "類別是否新增",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "信心分數",
+              "displayName": "信心分數",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "需要人工確認",
+              "displayName": "需要人工確認",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "原始文字",
+              "displayName": "原始文字",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_batch_summary",
+              "displayName": "ai_batch_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notion_page_id",
+              "displayName": "notion_page_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "4b114270-2ca0-4340-b0ff-458ee7f34a94",
+      "name": "Build Notion Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const expense = $json;\nconst text = (value, max = 1800) => String(value ?? '').slice(0, max);\nconst select = (value, fallback) => ({ select: { name: text(value || fallback, 100) } });\nconst richText = (value) => ({ rich_text: [{ text: { content: text(value) } }] });\n\nconst payload = {\n  parent: {\n    database_id: $env.NOTION_FIN_DATABASE_ID,\n  },\n  properties: {\n    '品項': {\n      title: [\n        {\n          text: {\n            content: text(expense['品項'] || '未命名消費', 200),\n          },\n        },\n      ],\n    },\n    '代墊狀態': select(expense['代墊狀態'], '代墊中'),\n    '公司代墊': select(expense['公司代墊'], '是'),\n    '對象': richText(expense['對象']),\n    '歸屬年份': { number: Number(expense['歸屬年份'] || $now.format('yyyy')) },\n    '歸屬月份': select(expense['歸屬月份'], $now.format('yyyy/MM')),\n    '消費日期': { date: { start: text(expense['消費日期'] || $now.format('yyyy-MM-dd'), 32) } },\n    '消費金額': { number: Number(expense['消費金額'] || 0) },\n    '發票狀態': select(expense['發票狀態'], '尚未提供'),\n    '開銷說明': richText(expense['開銷說明']),\n    '類別': select(expense['類別'], '其他'),\n  },\n};\n\nreturn [{ json: { ...expense, notion_payload: payload } }];"
+      }
+    },
+    {
+      "id": "ba108387-d6ca-4e59-a5b5-c0ece26faa34",
+      "name": "Create Notion expense page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        880,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.NOTION_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Notion-Version",
+              "value": "2022-06-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.notion_payload) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "b0356aea-739b-47c1-b8ed-02e7bef74c14",
+      "name": "Build Import Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const notionItems = $input.all();\nconst expenses = $('Parse AI Expense Array').all().map((item) => item.json);\nconst session = $('Build OpenAI Payload').first().json;\nconst totalAmount = expenses.reduce((sum, expense) => sum + Number(expense['消費金額'] || 0), 0);\nconst categories = [...new Set(expenses.map((expense) => expense['類別']).filter(Boolean))];\n\nreturn [{\n  json: {\n    session_id: session.session_id,\n    row_number: session.row_number,\n    line_user_id: session.line_user_id,\n    reply_token: session.reply_token,\n    image_message_id: session.image_message_id,\n    import_count: expenses.length,\n    total_amount: totalAmount,\n    category_summary: categories.join('、') || '未分類',\n    first_item: expenses[0]?.['品項'] || '消費紀錄',\n    notion_page_ids: notionItems.map((item) => item.json.id).filter(Boolean).join(','),\n    analysis_completed_at: $now.format('yyyy-MM-dd HH:mm'),\n  },\n}];"
+      }
+    },
+    {
+      "id": "0685ab43-263d-49ae-8387-41a8d97d00f2",
+      "name": "Update session done",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1360,
+        200
+      ],
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $env.FIN_SPREADSHEET_ID }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "fin_image_sessions",
+          "mode": "name",
+          "cachedResultName": "fin_image_sessions"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "session_state": "done",
+            "analysis_completed_at": "={{ $json.analysis_completed_at }}",
+            "import_count": "={{ $json.import_count }}",
+            "total_amount": "={{ $json.total_amount }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "line_user_id",
+              "displayName": "line_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_message_id",
+              "displayName": "image_message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_state",
+              "displayName": "session_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_source",
+              "displayName": "image_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "description_received_at",
+              "displayName": "description_received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analysis_completed_at",
+              "displayName": "analysis_completed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_description",
+              "displayName": "user_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_model",
+              "displayName": "ai_model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ai_response_id",
+              "displayName": "ai_response_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "import_count",
+              "displayName": "import_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "total_amount",
+              "displayName": "total_amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "failed_reason",
+              "displayName": "failed_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "id": "5c7116dd-3e1e-4d67-89a3-2a791d5137ab",
+      "name": "Reply import summary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1600,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LINE_CHANNEL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Normalize LINE Event').item.json.reply_token || $('Build Import Summary').item.json.reply_token }}\",\n  \"messages\": [\n    {\n      \"type\": \"flex\",\n      \"altText\": \"FIN 消費匯入完成\",\n      \"contents\": {\n  \"type\": \"bubble\",\n  \"size\": \"mega\",\n  \"body\": {\n    \"type\": \"box\",\n    \"layout\": \"vertical\",\n    \"paddingAll\": \"0px\",\n    \"backgroundColor\": \"#F7FAFF\",\n    \"contents\": [\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"horizontal\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"nuvaO FIN\",\n                \"size\": \"xs\",\n                \"color\": \"#C9DAFF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"flex\": 1\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"done\",\n                \"size\": \"xs\",\n                \"color\": \"#F4F8FF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"align\": \"end\",\n                \"flex\": 1\n              }\n            ]\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"消費匯入完成\",\n            \"size\": \"xl\",\n            \"color\": \"#F4F8FF\",\n            \"wrap\": true,\n            \"weight\": \"bold\",\n            \"margin\": \"md\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"已寫入 Google Sheet，並逐筆建立到 Notion。\",\n            \"size\": \"sm\",\n            \"color\": \"#C9DAFF\",\n            \"wrap\": true,\n            \"margin\": \"sm\"\n          }\n        ],\n        \"backgroundColor\": \"#102A5F\",\n        \"paddingAll\": \"20px\"\n      },\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"匯入筆數\",\n                \"size\": \"xs\",\n                \"color\": \"#2563EB\",\n                \"wrap\": true,\n                \"weight\": \"bold\"\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"{{ $('Build Import Summary').item.json.import_count }} 筆 / NT$ {{ $('Build Import Summary').item.json.total_amount }}\",\n                \"size\": \"sm\",\n                \"color\": \"#13213F\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"margin\": \"xs\"\n              }\n            ],\n            \"backgroundColor\": \"#FDFEFF\",\n            \"borderColor\": \"#D7E3F4\",\n            \"borderWidth\": \"light\",\n            \"cornerRadius\": \"md\",\n            \"paddingAll\": \"12px\"\n          },\n          {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"類別\",\n                \"size\": \"xs\",\n                \"color\": \"#2563EB\",\n                \"wrap\": true,\n                \"weight\": \"bold\"\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"{{ $('Build Import Summary').item.json.category_summary }}\",\n                \"size\": \"sm\",\n                \"color\": \"#13213F\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"margin\": \"xs\"\n              }\n            ],\n            \"backgroundColor\": \"#FDFEFF\",\n            \"borderColor\": \"#D7E3F4\",\n            \"borderWidth\": \"light\",\n            \"cornerRadius\": \"md\",\n            \"paddingAll\": \"12px\"\n          }\n        ],\n        \"paddingAll\": \"20px\",\n        \"spacing\": \"sm\",\n        \"backgroundColor\": \"#F7FAFF\"\n      }\n    ]\n  },\n  \"styles\": {\n    \"body\": {\n      \"backgroundColor\": \"#F7FAFF\"\n    }\n  }\n}\n    }\n  ],\n  \"notificationDisabled\": false\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "71bb532c-5a23-400b-857d-9bde20b93e5b",
+      "name": "Reply unsupported message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -2240,
+        560
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LINE_CHANNEL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Normalize LINE Event').item.json.reply_token || $('Build Import Summary').item.json.reply_token }}\",\n  \"messages\": [\n    {\n      \"type\": \"flex\",\n      \"altText\": \"FIN 操作提醒\",\n      \"contents\": {\n  \"type\": \"bubble\",\n  \"size\": \"mega\",\n  \"body\": {\n    \"type\": \"box\",\n    \"layout\": \"vertical\",\n    \"paddingAll\": \"0px\",\n    \"backgroundColor\": \"#F7FAFF\",\n    \"contents\": [\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"horizontal\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"nuvaO FIN\",\n                \"size\": \"xs\",\n                \"color\": \"#C9DAFF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"flex\": 1\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"請確認\",\n                \"size\": \"xs\",\n                \"color\": \"#F4F8FF\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"align\": \"end\",\n                \"flex\": 1\n              }\n            ]\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"請傳圖片或文字說明\",\n            \"size\": \"xl\",\n            \"color\": \"#F4F8FF\",\n            \"wrap\": true,\n            \"weight\": \"bold\",\n            \"margin\": \"md\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"FIN 消費分析目前只處理截圖與下一則文字說明。請先上傳信用卡截圖。\",\n            \"size\": \"sm\",\n            \"color\": \"#C9DAFF\",\n            \"wrap\": true,\n            \"margin\": \"sm\"\n          }\n        ],\n        \"backgroundColor\": \"#102A5F\",\n        \"paddingAll\": \"20px\"\n      },\n      {\n        \"type\": \"box\",\n        \"layout\": \"vertical\",\n        \"contents\": [\n          {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"可用流程\",\n                \"size\": \"xs\",\n                \"color\": \"#2563EB\",\n                \"wrap\": true,\n                \"weight\": \"bold\"\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"圖片 -> 文字說明 -> AI 分析 -> Google Sheet / Notion\",\n                \"size\": \"sm\",\n                \"color\": \"#13213F\",\n                \"wrap\": true,\n                \"weight\": \"bold\",\n                \"margin\": \"xs\"\n              }\n            ],\n            \"backgroundColor\": \"#FDFEFF\",\n            \"borderColor\": \"#D7E3F4\",\n            \"borderWidth\": \"light\",\n            \"cornerRadius\": \"md\",\n            \"paddingAll\": \"12px\"\n          }\n        ],\n        \"paddingAll\": \"20px\",\n        \"spacing\": \"sm\",\n        \"backgroundColor\": \"#F7FAFF\"\n      }\n    ]\n  },\n  \"styles\": {\n    \"body\": {\n      \"backgroundColor\": \"#F7FAFF\"\n    }\n  }\n}\n    }\n  ],\n  \"notificationDisabled\": false\n}",
+        "options": {}
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - LINE FIN": {
+      "main": [
+        [
+          {
+            "node": "line_loading_animation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "line_loading_animation": {
+      "main": [
+        [
+          {
+            "node": "Normalize LINE Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize LINE Event": {
+      "main": [
+        [
+          {
+            "node": "Route message type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route message type": {
+      "main": [
+        [
+          {
+            "node": "Prepare image session",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get all FIN sessions",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reply unsupported message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare image session": {
+      "main": [
+        [
+          {
+            "node": "Append image session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append image session": {
+      "main": [
+        [
+          {
+            "node": "Reply ask expense context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all FIN sessions": {
+      "main": [
+        [
+          {
+            "node": "Find latest creating session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find latest creating session": {
+      "main": [
+        [
+          {
+            "node": "If creating session exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If creating session exists": {
+      "main": [
+        [
+          {
+            "node": "Update session context",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reply ask image first",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update session context": {
+      "main": [
+        [
+          {
+            "node": "Get active categories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get active categories": {
+      "main": [
+        [
+          {
+            "node": "Aggregate categories with session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate categories with session": {
+      "main": [
+        [
+          {
+            "node": "Download LINE image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download LINE image": {
+      "main": [
+        [
+          {
+            "node": "Build OpenAI Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build OpenAI Payload": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Extract Expense Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Extract Expense Array": {
+      "main": [
+        [
+          {
+            "node": "Store AI raw log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Store AI raw log": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Expense Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Expense Array": {
+      "main": [
+        [
+          {
+            "node": "Append expense rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append expense rows": {
+      "main": [
+        [
+          {
+            "node": "Build Notion Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Notion Payload": {
+      "main": [
+        [
+          {
+            "node": "Create Notion expense page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Notion expense page": {
+      "main": [
+        [
+          {
+            "node": "Build Import Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Import Summary": {
+      "main": [
+        [
+          {
+            "node": "Update session done",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update session done": {
+      "main": [
+        [
+          {
+            "node": "Reply import summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "57a1f63e-5e6e-4f27-8d9e-3f338b917e93",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "REPLACE_ON_IMPORT"
+  },
+  "tags": []
+}

@@ -1,0 +1,53 @@
+﻿sheet_name,column_key,column_name_zh,data_type,required,default_value,example,editable_by_user,source,n8n_usage,notion_property,notion_type,notes
+fin_image_sessions,session_id,Session ID,text,yes,auto,FIN-20260531153000-abc123,no,n8n,每張圖片的一次分析任務主鍵,,,圖片上傳後建立，狀態先是 creating
+fin_image_sessions,line_user_id,LINE User ID,text,yes,LINE webhook,Uxxxxxxxx,no,LINE,用來找回同一位使用者的 creating session,,,
+fin_image_sessions,image_message_id,LINE Image Message ID,text,yes,LINE webhook,5555555555555,no,LINE,下載原圖與追蹤圖片來源,,,這就是你要求系統記住的圖片 id
+fin_image_sessions,session_state,狀態,select,yes,creating,creating / analyzing / done / failed,yes,n8n,控制兩輪對話狀態,,,圖片收到 creating，文字收到 analyzing，匯入完成 done
+fin_image_sessions,image_source,圖片來源,text,no,LINE,LINE,yes,n8n,來源標記,,,
+fin_image_sessions,created_at,建立時間,datetime,yes,now,2026-05-31 15:30,no,n8n,圖片上傳時間,,,
+fin_image_sessions,description_received_at,說明收到時間,datetime,no,,2026-05-31 15:32,no,n8n,第二輪文字收到時間,,,
+fin_image_sessions,analysis_completed_at,分析完成時間,datetime,no,,2026-05-31 15:33,no,n8n,Notion 建立完成時間,,,
+fin_image_sessions,user_description,使用者補充說明,long_text,no,,這幾筆都是 5 月客戶拜訪交通，沒有特別說都是公司代墊,yes,LINE,存放第二輪說明原文,,,符合你要先把文字說明放進 Google Sheet 的需求
+fin_image_sessions,ai_model,AI 模型,text,yes,gpt-5.4-mini,gpt-5.4-mini,yes,OpenAI,本次分析模型,,,可用環境變數 OPENAI_FIN_MODEL 覆蓋
+fin_image_sessions,ai_response_id,AI Response ID,text,no,,resp_xxx,no,OpenAI,追蹤 API 回應,,,
+fin_image_sessions,import_count,匯入筆數,number,no,0,3,no,n8n,本張圖片解析出的筆數,,,
+fin_image_sessions,total_amount,匯入總金額,number,no,0,1540,no,n8n,本張圖片解析出的總額,,,
+fin_image_sessions,failed_reason,失敗原因,long_text,no,,Notion API error,no,n8n,保留失敗原因,,,
+fin_categories,category_key,類別代碼,text,yes,,food,yes,user,提供 AI 類別清單,,,使用者可新增任意代碼
+fin_categories,category_name,類別名稱,text/select,yes,,飲食,yes,user,提供 AI 類別清單與 Notion 類別,類別,select,預設建議先建 飲食 / 交通 / 其他
+fin_categories,active,啟用,boolean,yes,TRUE,TRUE,yes,user,只使用啟用類別,,,
+fin_categories,ai_hint,AI 判斷提示,long_text,no,,餐廳、外送、飲料、咖啡,yes,user,幫助 AI 選類別,,,
+fin_categories,notion_option_name,Notion 選項名稱,text,no,same as category_name,飲食,yes,user,對應 Notion select option,類別,select,
+fin_categories,sort_order,排序,number,no,999,10,yes,user,管理類別顯示順序,,,
+fin_ai_raw_logs,session_id,Session ID,text,yes,from session,FIN-20260531153000-abc123,no,n8n,串回圖片 session,,,
+fin_ai_raw_logs,line_user_id,LINE User ID,text,yes,from session,Uxxxxxxxx,no,LINE,追蹤使用者,,,
+fin_ai_raw_logs,image_message_id,LINE Image Message ID,text,yes,from session,5555555555555,no,LINE,追蹤圖片,,,
+fin_ai_raw_logs,user_description,使用者補充說明,long_text,yes,from LINE text,這三筆都是公司代墊,yes,LINE,保留第二輪文字原文,,,
+fin_ai_raw_logs,ai_model,AI 模型,text,yes,gpt-5.4-mini,gpt-5.4-mini,yes,OpenAI,追蹤模型,,,
+fin_ai_raw_logs,ai_response_id,AI Response ID,text,yes,OpenAI response id,resp_xxx,no,OpenAI,追蹤 API,,,
+fin_ai_raw_logs,ai_status,AI 狀態,text,yes,completed,completed,no,OpenAI,回應狀態,,,
+fin_ai_raw_logs,raw_response_json,AI 原始 JSON,long_text,yes,,"{""output"":[]}",no,OpenAI,Debug 與稽核用,,,
+fin_ai_raw_logs,created_at,建立時間,datetime,yes,now,2026-05-31 15:33,no,n8n,log 建立時間,,,
+fin_expense_imports,session_id,Session ID,text,yes,from session,FIN-20260531153000-abc123,no,n8n,串回圖片 session,AI Session ID,rich_text,
+fin_expense_imports,expense_index,圖片內序號,number,yes,auto,1,no,n8n,同一張圖片內第幾筆,,,
+fin_expense_imports,line_user_id,LINE User ID,text,yes,from session,Uxxxxxxxx,no,LINE,追蹤使用者,,,
+fin_expense_imports,image_message_id,LINE Image Message ID,text,yes,from session,5555555555555,no,LINE,追蹤圖片來源,,,
+fin_expense_imports,品項,品項,title/text,yes,AI extracted,Uber 乘車,yes,AI,Notion title,品項,title,沿用你提供的 Notion 匯入格式
+fin_expense_imports,代墊狀態,代墊狀態,select,yes,代墊中,代墊中,yes,AI/default,Notion select,代墊狀態,select,
+fin_expense_imports,公司代墊,公司代墊,select/boolean,yes,是,是,yes,AI/default,Notion select,公司代墊,select,沒有特別說明時預設是
+fin_expense_imports,對象,對象,text,no,,Uber,yes,AI,商家或付款對象,對象,rich_text,
+fin_expense_imports,歸屬年份,歸屬年份,number,yes,消費日期年份,2026,yes,AI,Notion number,歸屬年份,number,
+fin_expense_imports,歸屬月份,歸屬月份,select/text,yes,YYYY/MM,2026/05,yes,AI,Notion select,歸屬月份,select,
+fin_expense_imports,消費日期,消費日期,date,yes,AI extracted,2026-05-31,yes,AI,Notion date,消費日期,date,建議用 YYYY-MM-DD
+fin_expense_imports,消費金額,消費金額,number/currency,yes,AI extracted,31234,yes,AI,Notion number,消費金額,number,AI 會移除 NT$ 與逗號
+fin_expense_imports,幣別,幣別,text/select,no,TWD,TWD,yes,AI/default,保留多幣別擴充,,,
+fin_expense_imports,發票狀態,發票狀態,select,yes,尚未提供,尚未提供,yes,AI/default,Notion select,發票狀態,select,
+fin_expense_imports,開銷說明,開銷說明,long_text,no,,客戶拜訪交通費,yes,AI/user,Notion rich text,開銷說明,rich_text,
+fin_expense_imports,類別,類別,select/text,yes,其他,交通,yes,AI/categories,Notion select,類別,select,可透過 fin_categories 新增
+fin_expense_imports,類別是否新增,類別是否新增,boolean,yes,FALSE,FALSE,yes,AI,標記是否為新類別,,,
+fin_expense_imports,信心分數,信心分數,number,no,0-1,0.92,no,AI,人工檢查優先順序,AI 信心分數,number,
+fin_expense_imports,需要人工確認,需要人工確認,boolean,yes,FALSE,TRUE,yes,AI,低信心或資訊矛盾時為 TRUE,需要人工確認,checkbox,
+fin_expense_imports,原始文字,原始文字,long_text,no,,Uber * Trip 123 NT$420,no,AI,稽核用原始 OCR/描述,,,
+fin_expense_imports,ai_batch_summary,AI 批次摘要,long_text,no,,共 3 筆，皆為 5 月交通費,no,AI,整批說明,,,
+fin_expense_imports,notion_page_id,Notion Page ID,text,no,after notion create,xxxxxxxx,no,Notion,回寫 Notion 頁面 ID,,,目前 workflow 建立頁面後會在 summary 保留 ids；可再加一個 update row 節點回填
+fin_expense_imports,created_at,建立時間,datetime,yes,now,2026-05-31 15:33,no,n8n,row 建立時間,,,
