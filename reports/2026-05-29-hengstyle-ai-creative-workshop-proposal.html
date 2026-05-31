@@ -132,7 +132,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-bottom: 12px;
+      margin-top: -16px;
+      padding-bottom: 7px;
       border-bottom: 2px solid var(--ink);
     }
 
@@ -165,7 +166,7 @@
       max-width: 128mm;
       margin-top: 14px;
       color: var(--ink);
-      font-size: 55px;
+      font-size: 48px;
       font-weight: 900;
       line-height: 1.08;
       letter-spacing: 0;
@@ -173,6 +174,7 @@
 
     h1 span {
       display: block;
+      white-space: nowrap;
     }
 
     .subtitle {
@@ -422,11 +424,12 @@
 
     .toc-title {
       margin-top: 30px;
-      max-width: 150mm;
+      max-width: 100%;
     }
 
     .toc-title h2 {
-      font-size: 42px;
+      font-size: 40px;
+      white-space: nowrap;
     }
 
     .toc-title p {
@@ -1137,12 +1140,17 @@
         font-size: 38px;
       }
 
+      h1 span {
+        white-space: normal;
+      }
+
       h2 {
         font-size: 24px;
       }
 
       .toc-title h2 {
         font-size: 34px;
+        white-space: normal;
       }
 
       .cover-grid > div,
